@@ -1,0 +1,62 @@
+<!--
+title: Troubleshooting
+description: What the common WorkflowRemix problems mean and how to fix them: ComfyUI not answering, a refused run, missing models, installers that will not open, and remote access.
+section: docs
+order: 10
+-->
+<h1>Troubleshooting</h1>
+<p class="lede">The things that go wrong most often, and what each one means.</p>
+
+<h2 id="installing">Installing</h2>
+<h3>Windows says it protected my PC</h3>
+<p>The installer is not code-signed yet. Choose <strong>More info</strong>, then <strong>Run anyway</strong>.</p>
+<h3>macOS will not open it</h3>
+<p>The app is not signed and notarized yet. Right-click it and choose <strong>Open</strong> the first time.</p>
+<h3>The Linux AppImage does nothing</h3>
+<p>Make it executable (<code>chmod +x</code>). Some distributions also need <code>libfuse2</code> installed.</p>
+<h3>The app says its data folder is gone</h3>
+<p>The folder you chose is on a drive that is not connected. The app offers <em>Try again</em>, <em>Choose another folder</em> and <em>Quit</em>, and never starts fresh on its own. Reconnect the drive and try again.</p>
+
+<h2 id="comfyui">ComfyUI</h2>
+<h3>Runs do not start</h3>
+<p>ComfyUI is not answering at the address in <strong>Settings → Config</strong>. Start it, or correct the address. Where the app can find ComfyUI's launcher it offers to start it for you.</p>
+<h3>A job fails as soon as it is queued</h3>
+<p>Read the job's log. ComfyUI's own reason is in it, and it is nearly always a model, LoRA or custom node the workflow names that your install does not have. A model pill shown in <strong>amber</strong> is the app telling you the same thing before you run.</p>
+<h3>The form takes a while to appear</h3>
+<p>To build a form the app asks ComfyUI to describe every node it has installed, and a ComfyUI with many custom nodes takes a moment to answer, most of all just after it has started. The answer is reused afterwards.</p>
+<h3>A setting I expected is not in the form</h3>
+<p>Look in the hidden fields list under the form. A setting on a muted or bypassed node is listed there as asleep. One that cannot reach the output at all is left out, with a note saying what went and why; rewire the workflow in ComfyUI and it comes back.</p>
+<h3>My workflow list is empty</h3>
+<p>The app lists the workflows folder inside the ComfyUI folder you gave it. Check that folder under <strong>Settings → Config</strong>; for a Docker install it is the host side of the mounts.</p>
+
+<h2 id="runs">Runs</h2>
+<h3>A run was refused</h3>
+<p>The <a href="/docs/privacy#safeguard">built-in safeguard</a> read the run as describing a minor sexually, and the message names the words. If the prompt was about an adult, say so plainly and remove the word that reads otherwise. A model or LoRA file name can be the cause as well as the prompt.</p>
+<h3>One click queued far more jobs than I meant</h3>
+<p>Several answers ticked for a keyword multiply the run, and so do several models. The summary line of the Prompt Replacements panel states the total before you press Run; untick prompts in its preview to bring it down. <strong>Cancel</strong> on a job stops it in ComfyUI's queue.</p>
+<h3>The seed box is empty</h3>
+<p>That means random, a new seed each run. Pin a number to repeat a result, or press <strong>↺ this file's seed</strong>.</p>
+<h3>A new file is not found by its prompt</h3>
+<p>The prompt index is refreshed every ten minutes. Until then the file is found by name.</p>
+
+<h2 id="window">The app itself</h2>
+<h3>I opened the app's address in a browser and got a notice</h3>
+<p>By design. The app answers only its own window. To use it from another device, switch on <a href="/docs/remote-access">remote access</a>.</p>
+<h3>I forgot the password</h3>
+<p>Close the app, open <code>config.json</code> in your data folder, remove the <code>auth</code> entry and start the app again.</p>
+<h3>Where are the logs?</h3>
+<p>In your data folder: <strong>File → Show Data Folder</strong>.</p>
+
+<h2 id="remote">Remote access</h2>
+<h3>The address does not answer</h3>
+<ul>
+<li>The desktop app has to be open on the computer.</li>
+<li>The phone has to be on your tailnet: the Tailscale app connected and signed in with your account.</li>
+<li>The computer's Tailscale key may have expired. The Remote access page warns for a month beforehand.</li>
+</ul>
+<h3>The phone is turned away before the password</h3>
+<p>Either the phone is signed in to Tailscale with a different account while <em>Only my Tailscale account</em> is on, or the phone is a tagged device, which carries no account. Sign in with your own account and do not tag the phone.</p>
+<h3>The phone keeps being asked to sign in</h3>
+<p>A remote session lasts 8 hours without use, and a week at most. That is deliberate.</p>
+<h3>Everything in Settings is greyed out on the phone</h3>
+<p>Settings are changed at the computer. A phone can read them.</p>

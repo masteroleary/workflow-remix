@@ -1,0 +1,69 @@
+<!--
+title: Remote access
+description: Use WorkflowRemix from your phone over your own Tailscale network: how to switch it on, what a phone may do, and how to lock it down.
+section: docs
+order: 8
+-->
+<h1>Remote access</h1>
+<p class="lede">Off unless you switch it on. When it is on, your phone reaches the app over your own Tailscale network, and only over it. The app is never on the public internet.</p>
+
+<h2 id="how">How it works</h2>
+<p><a href="https://tailscale.com" rel="noopener noreferrer">Tailscale</a> is a private network between your own devices. WorkflowRemix publishes itself to that network with Tailscale Serve, at an address like <code>https://your-computer.your-tailnet.ts.net</code>. Only devices signed in to your tailnet can connect, the traffic is encrypted between them, and HTTPS runs on top.</p>
+<p>It never uses Tailscale Funnel, the feature that publishes to the internet. If something else on the computer switches Funnel on for that address, the app answers nothing through it.</p>
+
+<h2 id="switch-on">Switching it on</h2>
+<p><strong>Settings → Remote access</strong> walks through it and shows the live state of every step.</p>
+<ol class="steps">
+<li><strong>Tailscale installed</strong> on this computer.</li>
+<li><strong>Signed in</strong> to it. If this computer's Tailscale key runs out within a month, the page says so here: when it does, the address stops answering as if the computer were asleep.</li>
+<li><strong>MagicDNS and HTTPS certificates on</strong> for your tailnet. Note that an HTTPS certificate puts your computer's <code>.ts.net</code> name in public certificate logs. The name, not what is behind it.</li>
+<li><strong>An app password of at least 12 characters.</strong> A shorter one set earlier has to be set again.</li>
+<li><strong>Switch it on.</strong> A tailnet's first use of Serve asks for approval in the Tailscale admin console; the page shows the link.</li>
+<li><strong>On your phone.</strong> The page lists the ways in, below.</li>
+</ol>
+<p>Remote access works while the desktop app is open. Closing the app switches the address off, and opening it again switches it back on.</p>
+
+<h2 id="who">Who gets in</h2>
+<p>A request reaches the password screen only if all of this holds:</p>
+<ul>
+<li>it came through your tailnet, at the published name, and not through Funnel;</li>
+<li>Tailscale named an account for it. A <em>tagged</em> device carries none and is turned away, so <strong>never tag the phone</strong>;</li>
+<li>with <em>Only my Tailscale account</em> on, which it is unless you switch it off, that account is yours.</li>
+</ul>
+<p>Then the password. Wrong guesses are limited per account. A phone stays signed in for 8 hours while in use and signs in again after a week however much it is used. <strong>Settings → Security → Sign out every device</strong>, pressed at the computer, ends every session at once.</p>
+
+<h2 id="phone">On your phone</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Way in</th><th>Needs</th><th>Keeps on the phone</th></tr></thead>
+<tbody>
+<tr><td>The phone app</td><td>Not released yet. It will pair from a code on the computer's screen and needs no Tailscale app: it joins your tailnet itself, as a device of its own.</td><td>Nothing in backups or the app switcher.</td></tr>
+<tr><td>A home-screen web app</td><td>The Tailscale app on the phone, signed in with your account.</td><td>Its data goes into the phone's backups.</td></tr>
+<tr><td>A private browser tab</td><td>The Tailscale app on the phone, signed in with your account.</td><td>Nothing, the job list included.</td></tr>
+</tbody>
+</table></div>
+<p>For the last two, open the address shown on the Remote access page in the phone's browser and sign in with the app password.</p>
+
+<h2 id="limits">What a phone may do</h2>
+<p>A phone uses the app. It does not change the computer.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>A phone can</th><th>Only the computer can</th></tr></thead>
+<tbody>
+<tr><td>Browse, view, favourite, move and delete media</td><td>Change any setting: paths, the ComfyUI address, API keys, media caching, the safe-mode list</td></tr>
+<tr><td>Run and cancel remixes</td><td>Set or change the password, or switch remote access on or off</td></tr>
+<tr><td>Use the prompt library, the rules and the workflows</td><td>Start ComfyUI, restart the app's server, restore a backup</td></tr>
+<tr><td>Read Settings</td><td>Sign out every device</td></tr>
+</tbody>
+</table></div>
+<p>Settings on a phone are shown read-only, with a line saying where to change them. Of ComfyUI itself a phone reaches only the handful of calls the app makes: queue a run, read the queue, cancel, upload an input image. The rest of ComfyUI's own interface is not reachable through the app.</p>
+<p><strong>Safe mode is held on</strong> for every remote device: a file your filter list flags is not shown there at all, and neither is the list. <em>Show flagged media on remote devices</em>, ticked at the computer, lifts that.</p>
+
+<h2 id="lock-down">Locking your tailnet down</h2>
+<p>Some protections only Tailscale can give. The Remote access page lists them under <em>Lock it down</em>:</p>
+<ul>
+<li>access rules that let only your own devices reach the port the address uses (443, or 8443 or 10000 if you chose one of those);</li>
+<li>device approval, so a new device cannot join unnoticed;</li>
+<li>removing a phone you no longer use from the Machines page of the admin console.</li>
+</ul>
+
+<h2 id="if">If the app did not close normally</h2>
+<p>Closing the app switches the address off. If the app was ended outright, by a power cut say, Tailscale goes on publishing an address that nothing answers until you open the app again. The page shows the one command that turns the address off by hand.</p>

@@ -1,0 +1,32 @@
+<!--
+title: Updates
+description: How WorkflowRemix updates itself on Windows and Linux, what to do on macOS, and what an update leaves alone.
+section: docs
+order: 9
+-->
+<h1>Updates</h1>
+<p class="lede">The app looks for a new version by itself, downloads it in the background and asks before it restarts.</p>
+
+<h2 id="how">How it goes</h2>
+<ol class="steps">
+<li>The app checks 10 seconds after it opens, and every 4 hours while it stays open.</li>
+<li>A new version downloads in the background. Nothing changes yet.</li>
+<li>When it is ready you get a notice with two choices: <strong>Restart now</strong>, or <strong>Later</strong>. Later installs it the next time you quit.</li>
+</ol>
+<p><strong>Check for Updates…</strong> in the app's menu asks at once, and tells you the result. A check that fails on its own is written to the log and never interrupts you.</p>
+
+<h2 id="systems">By system</h2>
+<div class="table-wrap"><table>
+<tbody>
+<tr><td>Windows</td><td>Silent when the app was installed <em>only for me</em>, the default. Installed for everyone on the computer, each update asks for administrator approval.</td></tr>
+<tr><td>macOS</td><td>Automatic updates need a signed build. Until the app is signed, download new versions from <a href="/downloads">Downloads</a> and install them over the old one.</td></tr>
+<tr><td>Linux</td><td>The AppImage updates itself in place.</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="untouched">What an update leaves alone</h2>
+<p>Your data folder: settings, prompts, rules, the job list and your media. An update replaces the program and nothing else. Your ComfyUI, its models and its workflows are not the app's to update either.</p>
+<p>When the <a href="/acceptable-use">Acceptable Use Policy</a> changes, the app asks you to read and agree to the new version once, on its next launch.</p>
+
+<h2 id="what-is-sent">What the check sends</h2>
+<p>A request to GitHub, where the releases are published: your IP address, and the fact that a copy is checking. Nothing about your media, your prompts or your settings.</p>

@@ -1,0 +1,15 @@
+{
+  "name": "workflowremix-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The WorkflowRemix website: documentation, examples and downloads.",
+  "license": "UNLICENSED",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test \"test/**/*.test.js\""
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

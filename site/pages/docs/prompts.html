@@ -1,0 +1,73 @@
+<!--
+title: The prompt library
+description: Keywords, replacement rules, variations, captures and collections: how WorkflowRemix builds many prompts from one.
+section: docs
+order: 4
+-->
+<h1>The prompt library</h1>
+<p class="lede">Write a prompt once with <code>[keywords]</code> in it, and choose what each keyword means from a library of text you keep. One prompt becomes as many as you tick.</p>
+
+<h2 id="pieces">The three pieces</h2>
+<ul>
+<li><strong>The library</strong>, on the <strong>Prompts</strong> page: rows of reusable text, filed on shelves. A shelf is a keyword. The <em>Scene</em> shelf is what <code>[scene]</code> is answered from.</li>
+<li><strong>The rules</strong>, in the <strong>Prompt Replacements</strong> panel at the foot of the Run tab: a list of <em>find → replace</em> pairs applied to the prompt just before a run is queued.</li>
+<li><strong>The collection</strong>, a drop-down at the top of that panel: which set of shelves answers.</li>
+</ul>
+<p>The rules are stored by the app, not in a workflow, so they apply to whatever you run.</p>
+
+<h2 id="rules">Rules</h2>
+<p>A rule's find is either plain text or a keyword in square brackets.</p>
+<ul>
+<li><strong>Plain text</strong> is replaced with what you type: <code>blonde → platinum</code>.</li>
+<li><strong>A <code>[keyword]</code></strong> is answered from the library. Its value cell opens a tick list over the shelf the keyword names, so you pick answers, you do not type them.</li>
+</ul>
+<p>Keywords are answered first, and plain-text rules then run over the finished text. So <code>blonde → platinum</code> also catches a “blonde” that arrived inside a library row.</p>
+<p>When you reach the Run tab, any <code>[keyword]</code> your prompt uses and no rule answers gets an empty row of its own, so a keyword is never silently swept out of a run.</p>
+
+<h2 id="variations">Several answers are several jobs</h2>
+<p>Tick three answers for <code>[character]</code> and a run queues three jobs, one per answer. Tick two for <code>[scene]</code> as well and it is six: every combination.</p>
+<p>The panel's summary line does the arithmetic before you press Run:</p>
+<pre><code>Prompt Replacements — 9 active, 3 ignored, 12 jobs total</code></pre>
+<ul>
+<li><strong>Active</strong> rules will change this run.</li>
+<li><strong>Ignored</strong> rules are switched on but cannot fire, because this prompt never mentions their keyword. They multiply nothing. Hover the number to see which.</li>
+<li><strong>Jobs total</strong> is what one click queues, with the models and files you picked counted in.</li>
+</ul>
+
+<h3 id="preview">Read every prompt before it runs</h3>
+<p>Open the panel and it shows each prompt the run will send, in full, with every replaced stretch painted in the colour of the rule that put it there. Each one has a tick box: untick a prompt and that job is never queued. Twenty-seven combinations of which you wanted five is five ticks.</p>
+
+<h3 id="index">Two answers in one picture</h3>
+<p>Variations are “one of these per job”. To put two answers from the same shelf in one picture, address them by position, counting from 0:</p>
+<pre><code>[character][0] sits across the table from [character][1]</code></pre>
+<p>Using an index anywhere stops that keyword multiplying the run: every answer rides along, and each reference takes its own. The tick list shows each answer's number.</p>
+
+<h3 id="captures">Captures</h3>
+<p>The <strong>＋</strong> on a previewed prompt saves that whole finished paragraph to the library, on a shelf called <em>Captured</em>, and adds a rule <code>[prompt1]</code> pointing at it (then <code>[prompt2]</code>, and so on). A capture is taken after every keyword in it was answered, so it stays as it is: it does not vary and costs no extra jobs.</p>
+<p>That is how two different, fully described figures share one picture: <code>[prompt1] stands beside [prompt2]</code>. While a capture is in use, the rules it was made from are switched off and folded away, and come back when it leaves the prompt.</p>
+<p>A <code>[promptN]</code> row can also be built by hand. Its answers are then <em>parts</em> joined into one description (a character, a hair style, an outfit), not alternatives. Only two answers from the same shelf count as variations.</p>
+
+<h2 id="collections">Collections</h2>
+<p>The library is filed in <strong>collections</strong>. A new install has four: General, Fantasy World, Cyberpunk and Futuristic Space. Choosing one in the <strong>Collection</strong> drop-down decides where every keyword is answered from. So one prompt:</p>
+<pre><code>[style], [character], [expression], [action], [scene], [lighting]</code></pre>
+<p>is a robot in a rocket ship in one collection and a wizard in an enchanted forest in the next, with no rule edited. <a href="/examples/collections">The starter collections</a> shows all four.</p>
+<ul>
+<li><strong>The shelves are shared.</strong> <code>[scene]</code> means the Scene shelf whichever collection is answering. What differs is the rows on it.</li>
+<li><strong>General is the fall back.</strong> A keyword the chosen collection has no shelf for is answered from General's, and the row says so with a <em>General</em> tag.</li>
+<li><strong>A shelf with nothing ticked stays unanswered.</strong> If the collection has the shelf but you have ticked nothing on it, the keyword is left empty. It does not quietly borrow General's answer.</li>
+<li><strong>Ticks belong to their collection.</strong> Each collection remembers its own answers, so switching back finds them as you left them.</li>
+<li><strong>The choice is per device.</strong> The rules are shared; which collection is selected is this window's own.</li>
+</ul>
+<h3>Managing them</h3>
+<p>The Prompts page shows one collection at a time, as tabs. Add one with <strong>＋ Collection</strong>, rename it, or remove it. Under a collection's own shelves, a line lists the keywords it borrows from General, each with a ＋ that starts a shelf of its own for that keyword.</p>
+<div class="callout warn">
+<p class="callout-title">Removing a collection removes its rows</p>
+<p>Its prompts and the rules ticked from them go with it, after a confirmation that counts both. General can be neither renamed nor removed.</p>
+</div>
+
+<h2 id="tips">Good habits</h2>
+<ul>
+<li>Keep rows free of pronouns where you can. “Holding a lantern” reads right after any character; “she holds a lantern” does not.</li>
+<li>Give every collection the same shelves if you want one prompt to work in all of them, and leave out the ones that should be shared.</li>
+<li>Watch the jobs total. Three keywords with three answers each is 27 jobs.</li>
+</ul>

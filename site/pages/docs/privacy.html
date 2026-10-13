@@ -1,0 +1,71 @@
+<!--
+title: Privacy and security
+description: What WorkflowRemix sends off your computer and what it never does, where your data is kept, the password, safe mode, media caching and the built-in safeguard.
+section: docs
+order: 7
+-->
+<h1>Privacy and security</h1>
+<p class="lede">WorkflowRemix is local first. Your media is served straight off your disk and never leaves the computer, and nothing phones home in the background.</p>
+
+<h2 id="leaves">What leaves the computer</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Service</th><th>Where</th><th>What it is for</th><th>What is sent</th></tr></thead>
+<tbody>
+<tr><td>ComfyUI</td><td>On your computer</td><td>Runs the workflows. The app queues runs, follows progress and uploads input images.</td><td>Nothing leaves the machine.</td></tr>
+<tr><td>GitHub Releases</td><td>Cloud</td><td>The update check, 10 seconds after launch and every 4 hours, and the download of a new version.</td><td>A request to github.com: your IP address, and the fact that a copy is checking. Nothing about your media, prompts or settings.</td></tr>
+<tr><td>Civitai</td><td>Cloud</td><td>Model downloads that need an account, if you store an API key for them in Settings.</td><td>Only the requests you start yourself.</td></tr>
+<tr><td>Tailscale</td><td>Your own network</td><td><a href="/docs/remote-access">Remote access</a>, if you switch it on.</td><td>Traffic between your own devices, encrypted end to end.</td></tr>
+</tbody>
+</table></div>
+<p>The update check is the one request the app makes without being asked. There is no account, no licence server, no analytics and no crash reporting.</p>
+
+<h2 id="window">It runs only in its own window</h2>
+<p>The app is a small server and a window that shows it. The server listens on this computer only and answers nothing but that window: any other program, or a browser pointed at its address, gets a page saying where the app is.</p>
+<p>The window itself is held to its own server. Every image, script, font and connection has to come from the app; a link to anywhere else opens in your system browser and not inside the window.</p>
+
+<h2 id="data">Where your data lives</h2>
+<p>In the one folder you chose on the first launch: settings, prompts, rules, the job list with every prompt it ran, logs and, unless you put it elsewhere, the media library. <strong>File → Show Data Folder</strong> opens it.</p>
+<ul>
+<li>A folder the app creates is made private to your account.</li>
+<li>To back it up, copy the folder while the app is closed. The settings file in it holds your API keys and your password's hash, so treat a backup as you would the original.</li>
+<li>Uninstalling leaves the folder in place. Deleting it is how you remove everything.</li>
+</ul>
+<h3 id="search-index">System search</h3>
+<p>A library that Windows Search or Spotlight indexes is one whose file names can turn up in the Start menu or in Spotlight for anyone at the desk. Under <strong>Settings → Config → Paths</strong> the app says, for each folder it keeps things in, whether the system indexes it, and names the system setting that excludes it. It only reads; it changes nothing about what is indexed.</p>
+
+<h2 id="password">A password for the app</h2>
+<p><strong>Settings → Security</strong>. With a password set and <em>Require a password</em> ticked, the whole app sits behind a lock screen: pages, files, thumbnails and the live connection to ComfyUI alike.</p>
+<ul>
+<li>At least 7 characters; 12 if you use remote access.</li>
+<li>Only a salted hash is stored, never the password.</li>
+<li>Changing it, removing it or switching protection off needs the current password. Being signed in is not enough.</li>
+<li><strong>Sign out every device</strong> ends every session at once without a new password. It is the button for a lost phone, and can be pressed only at the computer.</li>
+</ul>
+<p>Forgotten it? Close the app, open <code>config.json</code> in your data folder, remove the <code>auth</code> entry and start the app again.</p>
+
+<h2 id="safe-mode">Safe mode</h2>
+<p>The eye in the browse bar hides any file whose prompt matches a word on your filter list, from listings and from the word directory. It is for a shared screen, or someone looking over your shoulder.</p>
+<ul>
+<li>The list is yours, under <strong>Settings → Privacy</strong>, and starts with only a few generic words.</li>
+<li>Matching ignores case and sees through digit-for-letter spellings, which model and LoRA file names use on purpose.</li>
+<li>A video and the still beside it are one item: if either is flagged, both are hidden.</li>
+<li>On a device using <a href="/docs/remote-access">remote access</a>, safe mode is held on by the computer and the list itself is never shown there, unless you tick <em>Show flagged media on remote devices</em> at the computer.</li>
+</ul>
+<p>It is a filter on prompt words, not an image classifier. It hides what the words in a file's prompt match, and knows nothing about a file with no prompt in it.</p>
+
+<h2 id="caching">Media caching</h2>
+<p><strong>Settings → Privacy → Media caching</strong> decides whether thumbnails and media the window has already loaded may be kept on disk for reuse. The default is never. Signing out clears what was kept.</p>
+
+<h2 id="safeguard">The built-in safeguard</h2>
+<p>Every run is read before it reaches ComfyUI, whichever screen or device it came from.</p>
+<ul>
+<li><strong>A run that describes a minor sexually is refused.</strong> A few words are refused wherever they appear. An age under 18, or a word such as “teen” or “high school”, is refused when a sexual word is present as well. The names of the models and LoRAs are read as well as the prompt, and a word on your own safe-mode list counts as a sexual word too.</li>
+<li><strong>An ordinary picture of a child, or of a school, runs.</strong> So does an ordinary adult prompt.</li>
+<li><strong>Every run that goes on gets a few words added to its negative prompt</strong>: age words, or, where the prompt names a minor, sexual words. A file therefore records a negative prompt slightly longer than the one you typed.</li>
+<li><strong>Nothing switches it off.</strong> There is no setting for it.</li>
+</ul>
+<p>A refused run tells you which words it was refused for. If the prompt was about an adult, say so plainly (“a woman in her thirties”) and drop the word that reads otherwise.</p>
+<p>It is a word check and not an image classifier: it stops the run that asks, and cannot see what a model draws unasked. What you make remains your responsibility under the <a href="/acceptable-use">Acceptable Use Policy</a>.</p>
+
+<h2 id="site">This website</h2>
+<p>It sets no cookies, runs no scripts and loads nothing from any other site. The Downloads page links to the installers on GitHub; your browser talks to GitHub only when you click one.</p>

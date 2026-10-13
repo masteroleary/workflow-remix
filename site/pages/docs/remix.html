@@ -1,0 +1,74 @@
+<!--
+title: Remixing a file
+description: How WorkflowRemix turns the workflow inside a file into a form, what the seed, model, LoRA and size controls do, and how many jobs a run queues.
+section: docs
+order: 3
+-->
+<h1>Remixing a file</h1>
+<p class="lede">Remix turns a workflow into a form, fills it from the file you opened, and queues what you changed on your ComfyUI.</p>
+
+<p>The same form appears in two places: the <strong>Remix</strong> dialog raised from any tile, and the <strong>inspect</strong> page of a file. They are one form, so anything that works in one works in the other.</p>
+
+<h2 id="which-workflow">Which workflow runs</h2>
+<p>The drop-down at the top offers:</p>
+<ul>
+<li><strong>⤷ Inherit (this image)</strong>, the exact workflow written into the file.</li>
+<li><strong>The workflows in your library</strong>, with the file's own prompt carried into them. This is how a picture made one way is sent through a different model, a detailer pass or an image-to-video workflow.</li>
+<li><strong>Shortcuts</strong>, a workflow saved together with the values on screen (<strong>💾 Save as workflow shortcut</strong>).</li>
+</ul>
+<p>Every workflow carries a prompt of its own, so switching asks which one you want to keep: the one in the box, or the new workflow's. A shortcut never asks, because its prompt is what was saved.</p>
+
+<h2 id="form">The form</h2>
+<p>WorkflowRemix reads the graph and works out which of its settings are worth a control: the prompt, the seed, steps and guidance, the size, the models and LoRAs it loads, the images it takes in. The controls are grouped the way the graph is.</p>
+<p>What it found and left out sits in the <strong>hidden fields</strong> list, where you can switch a field on. A setting that cannot reach the render, because its node is not wired to an output, is not offered at all: a control that changes nothing is worse than no control.</p>
+
+<h3 id="seed">Seed</h3>
+<p>The seed box states what will be used, or nothing.</p>
+<ul>
+<li><strong>Empty</strong> (it reads <em>random</em>, 🎲) means a fresh seed for every run.</li>
+<li><strong>Pinned</strong> (📌) means exactly the number in the box.</li>
+<li><strong>↺ this file's seed</strong> puts back the seed the opened file was made with, and pins it. With the same seed and nothing else changed, you get the same picture again.</li>
+</ul>
+
+<h3 id="models">Models</h3>
+<p>A model field is a search box whose results are pills beside it. The first model you pick replaces the one the form arrived with; every pick after that adds one. A run is then queued <strong>once per picked model</strong>.</p>
+<ul>
+<li>Runs go to ComfyUI model by model, so each checkpoint is loaded once and not swapped between every render.</li>
+<li>All the models share the same seeds. What differs between the results is the model.</li>
+<li>A pill in <strong>amber</strong> names a model your ComfyUI does not list. That run would fail at the loader.</li>
+<li>Picking models from different families puts a line under the pills: the LoRAs, VAE and text encoder in the form were set up for one of them.</li>
+</ul>
+
+<h3 id="loras">LoRAs</h3>
+<p>At the foot of every LoRA stack is the same search box, over your whole LoRA library as ComfyUI lists it. Pick one to add it, or to switch a row back on. A high-noise and low-noise pair counts as one LoRA: adding it to one stack adds its partner to the other.</p>
+
+<h3 id="size">Size, and Match Input Image</h3>
+<p>A workflow that takes an image in and also has a width and height is stating its frame twice. <strong>Match Input Image</strong> appears under the size fields, starts ticked, and sizes each run to the image going in. Untick it to type a size yourself.</p>
+
+<h3 id="images">Image inputs</h3>
+<p>An image field has <strong>🖼 Browse</strong>, which opens your library to pick from; pick several and each becomes a job of its own. Some workflows have an optional second image, a reference say. It arrives empty, and choosing an image is what switches that branch of the workflow on for the run.</p>
+
+<h3 id="keyword-or-remix">Keyword Prompt or Remix Prompt</h3>
+<p>If the file was made from a prompt with <code>[keywords]</code> in it, the file holds that prompt twice: as you typed it, and as it ran once the keywords were answered. A switch above the prompt field offers both. <strong>Keyword Prompt</strong> gives you the template, to be answered afresh; <strong>Remix Prompt</strong> gives you the finished text, to edit by hand.</p>
+
+<h2 id="run">Running</h2>
+<p>The <strong>Run</strong> tab holds the run count, the button, and under them the <a href="/docs/prompts">Prompt Replacements</a> panel. The app states how many jobs one click queues before you press, beside the button and on the panel's summary line:</p>
+<pre><code>models picked  ×  files picked  ×  prompt variations ticked</code></pre>
+<p>Each job renders the run count you set. Outputs arrive as thumbnails as each one finishes, with favourite and delete on them, and every job is listed on the <a href="/docs/jobs">Jobs</a> page whether or not you stay on this one.</p>
+<p>ComfyUI has to be running. If it is not, the app says so and, where it can find ComfyUI's launcher, offers to start it.</p>
+<div class="callout">
+<p class="callout-title">Every run is checked first</p>
+<p>Before a run reaches ComfyUI it is read by the built-in safeguard, which refuses a run that describes a minor sexually and adds a short set of words to the negative prompt of every other run. So the negative prompt a file records can hold a few words more than you typed. <a href="/docs/privacy#safeguard">How the safeguard works</a>.</p>
+</div>
+
+<h2 id="stick">Making a change stick</h2>
+<p>Anything you type lasts for the visit: a trip to the viewer and back keeps it, going Home starts again from the file. To keep it for good, it depends what you want kept.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Keeps</th><th>Where</th></tr></thead>
+<tbody>
+<tr><td>✏️ Update workflow</td><td>The values on screen</td><td>In the workflow's own <code>.json</code>, so ComfyUI sees them too. A one-time <code>.bak</code> is left beside the file before the first overwrite.</td></tr>
+<tr><td>Save field setup</td><td>Which fields show, and what they are called</td><td>In the app. The workflow file is not touched.</td></tr>
+<tr><td>⚙ roles</td><td>Which field is the prompt, seed, steps or guidance</td><td>In the app, from the <a href="/docs/workflows">Workflows</a> page.</td></tr>
+<tr><td>💾 Save as workflow shortcut</td><td>A workflow with these values, under a name of its own</td><td>In the app, listed in the drop-down.</td></tr>
+</tbody>
+</table></div>

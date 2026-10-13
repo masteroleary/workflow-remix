@@ -1,0 +1,63 @@
+<!--
+title: Getting started
+description: Install WorkflowRemix on Windows, macOS or Linux, choose where your data lives and connect it to your ComfyUI.
+section: docs
+order: 1
+-->
+<h1>Getting started</h1>
+<p class="lede">Install the app, answer three questions on its first launch, and your ComfyUI output folder is a library you can search and remix.</p>
+
+<h2 id="need">What you need</h2>
+<ul>
+<li><strong>A 64-bit computer</strong> running Windows, macOS (Apple silicon or Intel) or Linux.</li>
+<li><strong>Your own ComfyUI</strong>, with the models and custom nodes you use. A Docker install works as well as a native one. WorkflowRemix talks to it over its local address, by default <code>http://127.0.0.1:8188</code>.</li>
+<li><strong>To be 18 or older</strong>, and to agree to the <a href="/acceptable-use">Acceptable Use Policy</a>.</li>
+</ul>
+
+<h2 id="install">Install it</h2>
+<p>Get the installer for your system from <a href="/downloads">Downloads</a>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>System</th><th>File</th><th>What to expect</th></tr></thead>
+<tbody>
+<tr><td>Windows</td><td><code>WorkflowRemix-Setup-&lt;version&gt;.exe</code></td><td>A short wizard asks who it is for and where the program goes. <em>Only for me</em>, the default, needs no administrator rights and keeps updates silent. Until the installer is code-signed, Windows shows <em>Windows protected your PC</em>: choose <strong>More info</strong>, then <strong>Run anyway</strong>.</td></tr>
+<tr><td>macOS</td><td><code>WorkflowRemix-&lt;version&gt;-arm64.dmg</code> for Apple silicon, <code>-x64.dmg</code> for Intel</td><td>Until the app is signed and notarized, right-click it and choose <strong>Open</strong> the first time.</td></tr>
+<tr><td>Linux</td><td><code>WorkflowRemix-&lt;version&gt;.AppImage</code></td><td>Make it executable with <code>chmod +x</code>, then run it. Some distributions need <code>libfuse2</code>.</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="first-launch">The first launch</h2>
+<p>The app asks its questions itself, the first time it opens, on every system. No server starts until you press <strong>Start WorkflowRemix</strong>.</p>
+<ol class="steps">
+<li><strong>Where your data lives.</strong> This folder holds your settings, prompts and replacement rules, the job list with the full text of every prompt you run, the logs and, unless you choose otherwise, your media library. For the most privacy, pick a drive your operating system does not index for search, ideally an encrypted one (BitLocker, FileVault or LUKS). The screen says, for each folder you pick, whether it is probably indexed, and warns about a folder that syncs to a cloud service.</li>
+<li><strong>Media library</strong> (optional). Where favourites and archived media go. Leave it empty to keep the library inside the data folder.</li>
+<li><strong>ComfyUI.</strong> The address ComfyUI answers on; it does not need to be running yet, and <strong>Test</strong> checks it if it is. Then, optionally, the ComfyUI folder: the one holding its <code>input</code>, <code>output</code> and <code>user</code> folders (for Docker, the host side of those mounts). That is what lets the app list your workflows and outputs. If your output folder is somewhere else, name it too.</li>
+<li><strong>The Acceptable Use Policy.</strong> Read it, tick <em>I am 18 or older, and I agree</em>, and press Start.</li>
+</ol>
+<div class="callout">
+<p class="callout-title">The data folder is a real decision</p>
+<p>It cannot be moved from inside the app afterwards. A search index keeps its own copy of file names and of the text inside files, and that copy outlives the files. If you accept the default, your data goes in your user profile: <code>%LOCALAPPDATA%\WorkflowRemix</code> on Windows, <code>~/Library/Application Support/WorkflowRemix</code> on macOS, <code>~/.config/WorkflowRemix</code> on Linux.</p>
+</div>
+
+<h2 id="look-round">A first look round</h2>
+<p>The home page is five tiles.</p>
+<div class="table-wrap"><table>
+<tbody>
+<tr><td>Media</td><td>The grid over ComfyUI's output and input folders and everything you have kept. <a href="/docs/browse">Browsing your media</a>.</td></tr>
+<tr><td>Jobs</td><td>Running and completed runs. <a href="/docs/jobs">Jobs</a>.</td></tr>
+<tr><td>Workflows</td><td>The library Remix runs from. <a href="/docs/workflows">Workflows</a>.</td></tr>
+<tr><td>Prompts</td><td>Reusable text for <code>[keyword]</code> rules. <a href="/docs/prompts">The prompt library</a>.</td></tr>
+<tr><td>Settings</td><td>Paths, privacy, the password and remote access.</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="first-remix">Your first remix</h2>
+<ol class="steps">
+<li>Start ComfyUI, if it is not running.</li>
+<li>Open <strong>Media</strong> and switch to <strong>Output</strong>. Pick a picture ComfyUI made.</li>
+<li>Press the bar under its thumbnail to raise <strong>Remix</strong>. The workflow inside the file is offered as <strong>⤷ Inherit (this image)</strong>, alongside the workflows in your library.</li>
+<li>Change the prompt, and press Run. The job appears in <strong>Jobs</strong>, and its outputs arrive as thumbnails when each one finishes.</li>
+</ol>
+<p>A new install also copies a few <a href="/examples/workflows">starter workflows</a> into your ComfyUI workflows folder and switches them on. They name custom nodes and models you may not have, so read that page before running one.</p>
+
+<h2 id="where">Finding your data later</h2>
+<p><strong>File → Show Data Folder</strong> opens the folder you chose. Uninstalling the app leaves it in place.</p>

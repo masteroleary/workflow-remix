@@ -1,0 +1,67 @@
+<!--
+title: Prompt recipes
+description: Short WorkflowRemix patterns: variations from one prompt, two figures in one picture, comparing models on the same seed, and repeating a result.
+section: examples
+order: 3
+nav: Prompt recipes
+-->
+<h1>Prompt recipes</h1>
+<p class="lede">Short patterns built from keywords, answers and the model pills. Each one is a prompt and what to tick.</p>
+
+<h2 id="one-of-each">One character, four places</h2>
+<pre><code>[style], [character], [scene]</code></pre>
+<ul>
+<li>Tick one answer for <code>[style]</code> and one for <code>[character]</code>.</li>
+<li>Tick four for <code>[scene]</code>.</li>
+</ul>
+<p>The summary reads <em>4 jobs total</em>. Each job is labelled with the scene that made it, so the results tell you which is which.</p>
+
+<h2 id="pick-from-grid">A grid, then only the good ones</h2>
+<p>Three characters, three scenes and three kinds of lighting is 27 jobs. Usually you want a handful.</p>
+<ul>
+<li>Tick all nine answers and open the Prompt Replacements panel.</li>
+<li>Read the 27 prompts in its preview and untick the ones you do not want.</li>
+</ul>
+<p>The total follows the ticks. A prompt you unticked is never queued, which is not the same as queueing it and cancelling.</p>
+
+<h2 id="two-figures">Two different figures in one picture</h2>
+<p>A keyword used twice gives the same answer twice. Address the answers by position instead:</p>
+<pre><code>[style], [character][0] and [character][1] sharing an umbrella, [scene]</code></pre>
+<p>Tick two characters. The first one ticked is <code>[0]</code> and the second <code>[1]</code>; the menu shows each one's number. An indexed keyword does not multiply the run, so this is one job.</p>
+
+<h2 id="capture">Two finished descriptions side by side</h2>
+<p>When each figure is itself built from keywords (a character, hair, an outfit), build it once and capture it.</p>
+<ol class="steps">
+<li>Write the first figure with its keywords and tick its answers.</li>
+<li>In the preview, press <strong>＋</strong> on the prompt you like. It is saved as <code>[prompt1]</code>.</li>
+<li>Change the ticks for the second figure and capture it as <code>[prompt2]</code>.</li>
+<li>Write the scene around them: <code>[prompt1] stands beside [prompt2], [scene]</code>.</li>
+</ol>
+<p>A capture is finished text. It does not vary, and both figures keep their own hair and outfit where two uses of one keyword would share an answer.</p>
+
+<h2 id="change-the-world">Change the world, keep the prompt</h2>
+<pre><code>[style], [character], [expression], [action], [scene], [lighting]</code></pre>
+<p>Run it, change the <strong>Collection</strong> drop-down, run it again. Nothing else is edited. <a href="/examples/collections">Starter collections</a> shows this prompt in all four.</p>
+
+<h2 id="compare-models">The same picture on three models</h2>
+<ul>
+<li>In the model field, search for and pick three checkpoints. Each becomes a pill.</li>
+<li>Leave the seed empty and set the run count to 2.</li>
+</ul>
+<p>That is three jobs of two runs. The models share seeds: run 1 uses one seed on all three, run 2 another. ComfyUI loads each checkpoint once and renders both of its runs before moving to the next.</p>
+
+<h2 id="repeat">That picture again, with one change</h2>
+<ul>
+<li>Open the file and raise Remix with <strong>⤷ Inherit (this image)</strong>.</li>
+<li>Press <strong>↺ this file's seed</strong>. The seed is pinned.</li>
+<li>Change one word of the prompt, or one LoRA's strength, and run.</li>
+</ul>
+<p>With the seed pinned, what changes in the result is what you changed.</p>
+
+<h2 id="reframe">A kept picture through another workflow</h2>
+<ul>
+<li>Open a picture you like and raise Remix.</li>
+<li>Choose an image-to-video or image-to-image workflow from the drop-down. The picture becomes its input image.</li>
+<li>When asked which prompt to keep, keep the picture's own.</li>
+</ul>
+<p>With <em>Match Input Image</em> ticked, the run is sized to the picture.</p>

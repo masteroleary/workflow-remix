@@ -1,0 +1,49 @@
+<!--
+title: Workflows
+description: Which of your ComfyUI workflows WorkflowRemix offers, how it builds a form from a graph, and how to correct what it detected.
+section: docs
+order: 5
+-->
+<h1>Workflows</h1>
+<p class="lede">The <strong>Workflows</strong> page is the library Remix runs from: every workflow saved in your ComfyUI, with a switch for whether the app offers it.</p>
+
+<h2 id="library">The library</h2>
+<p>WorkflowRemix reads the workflows folder of the ComfyUI you pointed it at. Nothing is copied or renamed. For each workflow you can:</p>
+<ul>
+<li><strong>Switch it on</strong>, so it appears in Remix's drop-down.</li>
+<li><strong>Give it a label</strong>, the name it goes by in the app.</li>
+<li><strong>Open it</strong> on the inspect page with no file behind it, to see and edit its form.</li>
+<li><strong>Correct its roles</strong> with <strong>⚙ roles</strong> (below).</li>
+</ul>
+<p>Those choices are kept by the app, beside your other settings. Your workflow files are left as they are.</p>
+<div class="callout">
+<p class="callout-title">The app runs ComfyUI's copy</p>
+<p>A run always uses the workflow file in your ComfyUI folder as it is now. Edit a workflow in ComfyUI and save it, and the next remix uses the new version.</p>
+</div>
+
+<h2 id="detection">How a form is made</h2>
+<p>There is nothing to map by hand. The app reads the graph, asks ComfyUI what each node's settings are, and decides which are worth a control and what kind: a prompt box, a seed, a slider, a model picker, a LoRA stack, an image picker. It follows the wiring, so it knows which settings can reach the output and offers only those.</p>
+<p>Three things it also works out:</p>
+<ul>
+<li><strong>Muted and bypassed nodes.</strong> Their settings are listed as asleep in the hidden fields, and stay available: a style preset may wake them.</li>
+<li><strong>Optional image inputs.</strong> A bypassed image loader that feeds the render is offered as an empty picker. Choosing an image switches its branch on for that run.</li>
+<li><strong>Edit-instruction workflows.</strong> A workflow can declare that its prompt is an instruction for the image going in (“make the jacket red”) and not a description. Such a workflow keeps its own prompt when you switch to it.</li>
+</ul>
+
+<h2 id="correct">Correcting it</h2>
+<p>Detection is usually right, and when it is not, three controls change the answer for good.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Control</th><th>Use it when</th><th>Writes</th></tr></thead>
+<tbody>
+<tr><td>⚙ roles</td><td>The wrong field was taken for the prompt, seed, steps or guidance.</td><td>The app's settings.</td></tr>
+<tr><td>Save field setup</td><td>You want different fields shown, or different names on them.</td><td>The app's settings.</td></tr>
+<tr><td>✏️ Update workflow</td><td>You want the values on screen to be the workflow's new defaults.</td><td>The workflow's own <code>.json</code>, after a one-time <code>.bak</code>.</td></tr>
+</tbody>
+</table></div>
+<p>Only the values a run would have set are written. The rest of the graph is left exactly as it was.</p>
+
+<h2 id="from-a-file">A workflow from a file</h2>
+<p>Any file that carries a workflow can give it back: the workflow inside it can be saved into your ComfyUI workflows folder as a new one, and then switched on like any other. If the app recognises a file's workflow as one that is in your ComfyUI but not switched on, it says so and offers to add it.</p>
+
+<h2 id="starter">Starter workflows</h2>
+<p>A new install copies a handful of example workflows into your ComfyUI workflows folder and switches them on. They are a starting point: they name custom nodes and models you may need to install or swap for your own. <a href="/examples/workflows">The starter workflows</a> lists what each one does and needs.</p>

@@ -1,0 +1,150 @@
+<!--
+title: Starter collections
+description: The four prompt collections WorkflowRemix starts with, and one prompt answered by each of them.
+section: examples
+order: 2
+nav: Starter collections
+-->
+<h1>Starter collections</h1>
+<p class="lede">A new install starts with a prompt library filed in four collections. This page shows what is in them, and what one prompt becomes in each.</p>
+
+<h2 id="one-prompt">One prompt</h2>
+<p>The library has a shelf called <strong>Showcase</strong> with a single row in it, and the rule <code>[showcase]</code> points at that row. Its text is six keywords and nothing else:</p>
+<p class="demo-prompt"><span class="kw k1">[style]</span>, <span class="kw k2">[character]</span>, <span class="kw k3">[expression]</span>, <span class="kw k4">[action]</span>, <span class="kw k5">[scene]</span>, <span class="kw k6">[lighting]</span></p>
+<p>Each keyword is answered from the collection chosen in the <strong>Collection</strong> drop-down at the top of the rules panel. Change the drop-down and every keyword is answered again, with no rule edited. The colours below are the ones the app's own preview uses: each stretch of text is painted in the colour of the keyword that put it there.</p>
+
+<h2 id="general">General</h2>
+<p class="resolved"><span class="k1">natural photograph, realistic detail, true-to-life colors</span>, <span class="k2">a young woman in her twenties with wavy shoulder-length hair, wearing a denim jacket and jeans</span>, <span class="k3">she is laughing, her eyes bright</span>, <span class="k4">she smiles as she takes a selfie, holding her phone up at arm's length</span>, <span class="k5">on an outdoor tennis court with spectators watching from the bleachers</span>, <span class="k6">warm golden hour light, long soft shadows</span></p>
+<p>General is the collection every other one falls back to. A keyword that another collection has no shelf for is answered from here.</p>
+<p>Its shelves, and the rows on each:</p>
+<div class="table-wrap"><table class="shelf">
+<thead><tr><th>Shelf</th><th>Rows</th><th>Names</th></tr></thead>
+<tbody>
+<tr><td>Action</td><td>15</td><td>Arms Crossed, Hands on Hips, Jumping, Looking Back, Pointing, Selfie Pose, Shading Eyes, Stretching, Swing for Ball, Thumbs Up, Tucking Hair, Twirling, Victory Pose, Walking, Waving</td></tr>
+<tr><td>Expression</td><td>9</td><td>Cheerful, Confident, Intense Concentration, Playful, Serene, Soft Smile, Surprised, Thoughtful, Winking</td></tr>
+<tr><td>Female</td><td>6</td><td>Artistic, Athletic, Casual, Elegant, Outdoorsy, Professional</td></tr>
+<tr><td>Hair</td><td>8</td><td>Auburn Curls, Brunette Ponytail, Long Straight Black, Messy Bun, Red Braid, Short Black, Silver Pixie, Wavy Blonde</td></tr>
+<tr><td>Lighting</td><td>6</td><td>Blue Hour, Golden Hour, Midday Sun, Night Neon, Overcast, Rainy</td></tr>
+<tr><td>Male</td><td>2</td><td>Sitting, Standing</td></tr>
+<tr><td>Outfit</td><td>11</td><td>Athletic, Casual Denim, Evening Dress, Hiking Gear, Knit Sweater, Leather Jacket, Professional Suit, Rain Jacket, Sun Dress, Tennis, Winter Coat</td></tr>
+<tr><td>Scene</td><td>15</td><td>Art Museum, Beach Boardwalk, Botanical Garden, Busy City Block, Coffee Shop, Farmers Market, Gym, Library, Mountain Trail, Public Park, Rooftop Terrace, Snowy Street, Subway Platform, Tennis Court, Train Station</td></tr>
+<tr><td>Shot</td><td>6</td><td>Candid, Close-Up, Full Body, Low Angle, Medium Shot, Wide Shot</td></tr>
+<tr><td>Character</td><td>8</td><td>Boy, Girl, Young Man, Young Woman, Grandfather, Grandmother, Golden Retriever, Friendly Robot</td></tr>
+<tr><td>Style</td><td>5</td><td>Photograph, Soft 3D Cartoon, Light Cartoon, Watercolor, Pencil Sketch</td></tr>
+<tr><td>Showcase</td><td>1</td><td>Switch the Collection</td></tr>
+</tbody>
+</table></div>
+<p>Female, Hair, Outfit, Male and Shot are General's alone. No starter collection has a shelf for them, so <code>[hair]</code> or <code>[shot]</code> means the same in all four.</p>
+<h2 id="fantasy-world">Fantasy World</h2>
+<p class="resolved"><span class="k1">classic storybook illustration, soft watercolor washes, fine ink outlines, warm inviting colors</span>, <span class="k2">an old wizard with a long white beard and bushy eyebrows, wearing star-patterned blue robes and a tall pointed hat</span>, <span class="k3">wide-eyed with wonder</span>, <span class="k4">leaning over an open treasure chest that spills golden light</span>, <span class="k5">in an enchanted forest of twisting ancient trees, giant glowing mushrooms and drifting fireflies</span>, <span class="k6">warm golden hour light, long soft shadows</span></p>
+<p>Out of the box this collection has three characters ticked, Old Wizard, Elf Girl and Baby Dragon, so one click on Run queues three jobs: the paragraph above and the same again for the other two.</p>
+<p>Fantasy World has no Lighting shelf of its own, on purpose: the last stretch above is General's <em>Golden Hour</em>. That is the fall back at work.</p>
+<div class="table-wrap"><table class="shelf">
+<thead><tr><th>Shelf</th><th>Name</th><th>Text</th></tr></thead>
+<tbody>
+<tr><td>Character</td><td>Farm Boy</td><td>a boy about nine years old with tousled sandy hair, wearing a patched tunic with a wooden toy sword tucked into his belt</td></tr>
+<tr><td></td><td>Elf Girl</td><td>an elf girl about nine years old with long silver braids and pointed ears, wearing a green hooded cloak and leather boots</td></tr>
+<tr><td></td><td>Knight</td><td>a woman knight in her thirties with a determined face and a braid over one shoulder, wearing polished plate armor and a red cape</td></tr>
+<tr><td></td><td>Old Wizard</td><td>an old wizard with a long white beard and bushy eyebrows, wearing star-patterned blue robes and a tall pointed hat</td></tr>
+<tr><td></td><td>Dwarf Smith</td><td>a stout middle-aged dwarf with a braided ginger beard, wearing a leather apron over chainmail</td></tr>
+<tr><td></td><td>Baby Dragon</td><td>a small friendly dragon with emerald green scales, stubby wings and big curious amber eyes</td></tr>
+<tr><td></td><td>Clockwork Golem</td><td>a clockwork golem built of brass and copper, with glowing rune eyes and gears turning in its chest</td></tr>
+<tr><td></td><td>Goblin Tinker</td><td>a small green goblin with huge ears and a toothy grin, wearing a patchwork vest and brass goggles</td></tr>
+<tr><td>Style</td><td>Storybook</td><td>classic storybook illustration, soft watercolor washes, fine ink outlines, warm inviting colors</td></tr>
+<tr><td></td><td>Soft 3D Cartoon</td><td>stylized 3D animated film still, soft rounded shapes, gently exaggerated cartoon proportions, smooth clean shading</td></tr>
+<tr><td></td><td>Painterly</td><td>painterly fantasy concept art, rich brushwork, sweeping composition, luminous colors</td></tr>
+<tr><td></td><td>Woodcut</td><td>old woodcut print, bold black lines, muted earthy inks on aged paper</td></tr>
+<tr><td>Expression</td><td>Wonder</td><td>wide-eyed with wonder</td></tr>
+<tr><td></td><td>Brave</td><td>a brave, determined look, chin raised</td></tr>
+<tr><td></td><td>Mischievous</td><td>a mischievous grin, one eyebrow raised</td></tr>
+<tr><td></td><td>Joyful</td><td>laughing with pure delight</td></tr>
+<tr><td>Action</td><td>Opening a Treasure Chest</td><td>leaning over an open treasure chest that spills golden light</td></tr>
+<tr><td></td><td>Casting a Spell</td><td>holding one hand up as swirling sparks of magic rise from it</td></tr>
+<tr><td></td><td>Reading a Spellbook</td><td>reading from a huge leather-bound spellbook with glowing pages</td></tr>
+<tr><td></td><td>Riding a Griffin</td><td>riding on the back of a friendly griffin, holding on to its feathers</td></tr>
+<tr><td></td><td>Holding a Lantern</td><td>holding a glowing lantern up high to light the way</td></tr>
+<tr><td>Scene</td><td>Enchanted Forest</td><td>in an enchanted forest of twisting ancient trees, giant glowing mushrooms and drifting fireflies</td></tr>
+<tr><td></td><td>Castle Courtyard</td><td>in a stone castle courtyard with fluttering banners, a well and towers rising behind</td></tr>
+<tr><td></td><td>Wizard's Tower</td><td>inside a cluttered wizard's tower with floating candles, towering bookshelves and bubbling potions</td></tr>
+<tr><td></td><td>Dragon's Hoard</td><td>inside a vast cave heaped with gold coins and gems, shafts of light falling from above</td></tr>
+<tr><td></td><td>Village Market</td><td>in a bustling medieval village market with timber-framed houses and stalls of bread, cloth and pottery</td></tr>
+<tr><td></td><td>Above the Clouds</td><td>high above a patchwork of fields and a hilltop castle, clouds drifting past below</td></tr>
+</tbody>
+</table></div>
+<h2 id="cyberpunk">Cyberpunk</h2>
+<p class="resolved"><span class="k1">cinematic cyberpunk film still, moody neon noir, anamorphic lens flares, deep contrast</span>, <span class="k2">a sleek android with white ceramic plating, visible joints and softly glowing blue seams</span>, <span class="k3">grinning with wide-eyed thrill</span>, <span class="k4">riding a sleek hover-bike low over the street, leaning into the turn</span>, <span class="k5">on a rain-slick street between towering buildings covered in glowing neon signs and holograms</span>, <span class="k6">lit by magenta and cyan neon, colored reflections on every surface</span></p>
+<p>Out of the box this collection has three characters ticked, Android, Street Kid and Netrunner, so one click on Run queues three jobs: the paragraph above and the same again for the other two.</p>
+<div class="table-wrap"><table class="shelf">
+<thead><tr><th>Shelf</th><th>Name</th><th>Text</th></tr></thead>
+<tbody>
+<tr><td>Character</td><td>Street Kid</td><td>a boy about ten years old with a shaved-side haircut and a glowing visor pushed up on his forehead, wearing an oversized patched bomber jacket</td></tr>
+<tr><td></td><td>Courier Girl</td><td>a girl about ten years old with neon pink streaks in her black hair, wearing a yellow rain poncho and light-up sneakers</td></tr>
+<tr><td></td><td>Netrunner</td><td>a woman in her twenties with an undercut dyed electric blue and a data port behind one ear, wearing a high-collared tech jacket and cargo trousers</td></tr>
+<tr><td></td><td>Old Fixer</td><td>a man in his sixties with a grey beard and a chrome cybernetic arm, wearing a long weathered trench coat</td></tr>
+<tr><td></td><td>Street Samurai</td><td>a woman in her forties with a scarred eyebrow and mirrored implant eyes, wearing matte black armor plating</td></tr>
+<tr><td></td><td>Android</td><td>a sleek android with white ceramic plating, visible joints and softly glowing blue seams</td></tr>
+<tr><td></td><td>Robo-Dog</td><td>a four-legged robot dog with matte grey panels, a glowing orange eye strip and an antenna tail</td></tr>
+<tr><td>Style</td><td>Neon Noir</td><td>cinematic cyberpunk film still, moody neon noir, anamorphic lens flares, deep contrast</td></tr>
+<tr><td></td><td>Anime</td><td>cyberpunk anime key art, crisp cel shading, bold line work, saturated neon palette</td></tr>
+<tr><td></td><td>Soft 3D Cartoon</td><td>stylized 3D animated film still, soft rounded shapes, gently exaggerated cartoon proportions, smooth clean shading</td></tr>
+<tr><td></td><td>Synthwave Poster</td><td>retro synthwave poster art, magenta and cyan gradients, glowing grid horizon, hard chrome highlights</td></tr>
+<tr><td>Expression</td><td>Thrilled</td><td>grinning with wide-eyed thrill</td></tr>
+<tr><td></td><td>Cool</td><td>a cool, confident smirk</td></tr>
+<tr><td></td><td>Focused</td><td>narrowed eyes, completely focused</td></tr>
+<tr><td></td><td>Curious</td><td>head tilted, looking around with curiosity</td></tr>
+<tr><td>Action</td><td>Riding a Hover-Bike</td><td>riding a sleek hover-bike low over the street, leaning into the turn</td></tr>
+<tr><td></td><td>Hacking a Terminal</td><td>typing on a floating holographic keyboard as lines of code scroll past</td></tr>
+<tr><td></td><td>Eating Noodles</td><td>sitting at a tiny street food counter with a steaming bowl of noodles</td></tr>
+<tr><td></td><td>On the Rooftop</td><td>standing at the edge of a rooftop, looking out over the city</td></tr>
+<tr><td></td><td>Fixing a Drone</td><td>crouching to repair a small delivery drone with a glowing tool</td></tr>
+<tr><td>Scene</td><td>Neon Street</td><td>on a rain-slick street between towering buildings covered in glowing neon signs and holograms</td></tr>
+<tr><td></td><td>Night Market</td><td>in a crowded night market under tangled cables, paper lanterns and flickering holographic signs</td></tr>
+<tr><td></td><td>Megacity Skyline</td><td>high above a sprawling megacity at night, flying cars streaming between the towers</td></tr>
+<tr><td></td><td>Arcade</td><td>inside a dim underground arcade full of glowing game cabinets</td></tr>
+<tr><td></td><td>Maglev Station</td><td>on a maglev station platform as a bullet train slides in under cold white lights</td></tr>
+<tr><td>Lighting</td><td>Neon Glow</td><td>lit by magenta and cyan neon, colored reflections on every surface</td></tr>
+<tr><td></td><td>Rainy Night</td><td>at night in the rain, reflective streets and a glowing haze</td></tr>
+<tr><td></td><td>Hologram Light</td><td>lit by the shifting blue light of giant holographic billboards</td></tr>
+<tr><td></td><td>Smoggy Dawn</td><td>hazy orange dawn light filtering through the smog</td></tr>
+</tbody>
+</table></div>
+<h2 id="futuristic-space">Futuristic Space</h2>
+<p class="resolved"><span class="k1">stylized 3D animated film still, soft rounded shapes, gently exaggerated cartoon proportions, smooth clean shading</span>, <span class="k2">a small friendly robot with a rounded white body, big glowing blue eyes and two stubby antennae</span>, <span class="k3">eyes wide and bright with excitement, beaming with delight</span>, <span class="k4">riding in the cockpit of a small spacecraft that looks like a classic rocket ship, both hands on the controls</span>, <span class="k5">stars streaking past the round cockpit window, a ringed planet glowing ahead</span>, <span class="k6">warm glow from the control panel, colorful indicator lights</span></p>
+<p>Out of the box this collection has three characters ticked, Robot, Little Boy and Little Girl, so one click on Run queues three jobs: the paragraph above and the same again for the other two.</p>
+<div class="table-wrap"><table class="shelf">
+<thead><tr><th>Shelf</th><th>Name</th><th>Text</th></tr></thead>
+<tbody>
+<tr><td>Character</td><td>Little Boy</td><td>a little boy about seven years old with messy brown hair and a gap-toothed grin, wearing an orange flight suit and a round space helmet with the visor up</td></tr>
+<tr><td></td><td>Little Girl</td><td>a little girl about seven years old with curly black hair in two puffs, wearing a white flight suit with mission patches and a round space helmet with the visor up</td></tr>
+<tr><td></td><td>Robot</td><td>a small friendly robot with a rounded white body, big glowing blue eyes and two stubby antennae</td></tr>
+<tr><td></td><td>Rookie Pilot</td><td>a young man in his twenties with a buzz cut and an eager smile, wearing a blue flight suit with the sleeves rolled up</td></tr>
+<tr><td></td><td>Veteran Captain</td><td>a woman in her fifties with short silver hair and a calm, steady gaze, wearing a captain's flight jacket with gold piping</td></tr>
+<tr><td></td><td>Old Engineer</td><td>a man in his seventies with a bushy white moustache and round glasses, wearing grease-stained mechanic's overalls</td></tr>
+<tr><td></td><td>Friendly Alien</td><td>a small friendly alien with smooth teal skin, large dark eyes and two short antennae, wearing a tiny silver space suit</td></tr>
+<tr><td>Style</td><td>Soft 3D Cartoon</td><td>stylized 3D animated film still, soft rounded shapes, gently exaggerated cartoon proportions, smooth clean shading</td></tr>
+<tr><td></td><td>Light Cartoon</td><td>lightly stylized cartoon illustration, clean outlines, soft cel shading, bright friendly colors</td></tr>
+<tr><td></td><td>Retro Sci-Fi Poster</td><td>retro 1950s science fiction poster art, bold flat colors, halftone texture, clean geometric shapes</td></tr>
+<tr><td></td><td>Cinematic</td><td>cinematic science fiction film still, realistic detail, dramatic depth</td></tr>
+<tr><td>Expression</td><td>Excited</td><td>eyes wide and bright with excitement, beaming with delight</td></tr>
+<tr><td></td><td>Awestruck</td><td>gazing ahead in wide-eyed awe</td></tr>
+<tr><td></td><td>Determined</td><td>a look of fierce, focused determination</td></tr>
+<tr><td></td><td>Laughing</td><td>laughing out loud with joy</td></tr>
+<tr><td>Action</td><td>Piloting the Rocket</td><td>riding in the cockpit of a small spacecraft that looks like a classic rocket ship, both hands on the controls</td></tr>
+<tr><td></td><td>Floating Weightless</td><td>floating weightless in zero gravity, arms out wide</td></tr>
+<tr><td></td><td>Waving from the Hatch</td><td>leaning out of the open hatch of a small rocket ship and waving</td></tr>
+<tr><td></td><td>Planting a Flag</td><td>planting a small flag in the dusty ground</td></tr>
+<tr><td></td><td>Pressing the Launch Button</td><td>reaching out to press a big glowing red launch button</td></tr>
+<tr><td>Scene</td><td>Among the Stars</td><td>stars streaking past the round cockpit window, a ringed planet glowing ahead</td></tr>
+<tr><td></td><td>Moon Surface</td><td>on the grey cratered surface of the moon, the Earth rising over the horizon</td></tr>
+<tr><td></td><td>Launch Pad</td><td>on a launch pad at dawn, a retro rocket ship standing tall with steam drifting across the ground</td></tr>
+<tr><td></td><td>Space Station</td><td>inside a bright space station hangar with docked shuttles and a huge window onto the stars</td></tr>
+<tr><td></td><td>Alien Planet</td><td>on a colorful alien planet with towering rock arches and two moons in a violet sky</td></tr>
+<tr><td></td><td>Asteroid Field</td><td>weaving through a field of tumbling asteroids with a glowing nebula behind</td></tr>
+<tr><td>Lighting</td><td>Cockpit Glow</td><td>warm glow from the control panel, colorful indicator lights</td></tr>
+<tr><td></td><td>Starlight</td><td>soft cool starlight with a gentle rim light</td></tr>
+<tr><td></td><td>Planet-Shine</td><td>bright light reflected from a nearby planet, deep crisp shadows</td></tr>
+<tr><td></td><td>Engine Flare</td><td>orange light from the rocket engines, strong contrast</td></tr>
+</tbody>
+</table></div>
+<h2 id="your-own">Make your own</h2>
+<p>Collections are added, renamed and removed on the <strong>Prompts</strong> page. A new collection starts empty and borrows every keyword from General; give it a shelf and that keyword becomes its own. <a href="/docs/prompts#collections">How collections work</a> has the rules.</p>

@@ -1,0 +1,26 @@
+<!--
+title: Jobs
+description: The run list in WorkflowRemix: progress, outputs, the order runs are queued in, cancelling, and what a job keeps.
+section: docs
+order: 6
+-->
+<h1>Jobs</h1>
+<p class="lede">Every run you start is a job. The <strong>Jobs</strong> page lists them, running and finished, with their progress and what they made.</p>
+
+<h2 id="list">The list</h2>
+<p>A job shows the workflow it ran, the choices that made it this job and not its neighbour (which model, which answer to which keyword), its runs, a progress line while it works and a thumbnail for each output as it finishes. A thin progress line and a <strong>⚡</strong> count stay at the top of every page while anything is running, so you can leave and carry on browsing.</p>
+<p>Opening an output takes you to the viewer; going back returns you to the list where you left it. <strong>🧹 Clear Done</strong> removes the finished jobs from the list. It does not delete what they made.</p>
+
+<h2 id="order">The order things run in</h2>
+<p>One click can queue many jobs: several models, several files, several prompt variations. They are handed to ComfyUI in a fixed order, model first, then file, then prompt variation, and one job finishes queueing before the next starts. So ComfyUI loads each checkpoint once and works through everything for it, instead of swapping models between every render.</p>
+<p>When several models run the same job, they share seeds: the first run of each model uses the same seed, the second the same second seed. A side-by-side comparison is then a comparison of models.</p>
+
+<h2 id="cancel">Cancelling</h2>
+<p>Cancel stops the job in ComfyUI's queue, not just in the list: runs still waiting are removed, the one in progress is interrupted, and the app checks the queue afterwards. Deleting a running job cancels it first.</p>
+
+<h2 id="kept">What a job keeps</h2>
+<p>The job list is kept by the app's own window, in your data folder, and survives closing and reopening the app. It holds the full text of every prompt you ran. That is one of the reasons the first launch asks where your data should live.</p>
+<p>Progress is followed over a live connection to ComfyUI. If that drops, or the app was closed while ComfyUI kept working, the list catches up from ComfyUI's history the next time it can.</p>
+
+<h2 id="log">When a job fails</h2>
+<p>Each job has a log. A run ComfyUI rejects shows ComfyUI's own reason there, most often a model or a custom node the workflow names that your install does not have. A run the built-in safeguard refuses shows a sentence naming the words it was refused for. <strong>💾 Save log</strong> writes the log to your data folder.</p>

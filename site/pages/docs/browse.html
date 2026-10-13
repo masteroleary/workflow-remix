@@ -1,0 +1,53 @@
+<!--
+title: Browsing your media
+description: The media grid in WorkflowRemix: folders, search by file name or by prompt, the word directory, favourites, the viewer, blur and safe mode.
+section: docs
+order: 2
+-->
+<h1>Browsing your media</h1>
+<p class="lede">The <strong>Media</strong> tile opens a grid over everything you have: images, video and audio, by folder.</p>
+
+<h2 id="roots">Where it looks</h2>
+<p>A switch at the top moves between the places the app knows about:</p>
+<ul>
+<li><strong>Output</strong>, fresh from the queue: ComfyUI's own output folder, so a render shows up without being copied anywhere.</li>
+<li><strong>Input</strong>, what runs are fed from: ComfyUI's input folder.</li>
+<li><strong>Favorites</strong>, everything you kept: the media library you chose at setup.</li>
+</ul>
+<p>Filter by type (folders, videos, images, audio), sort by date or name, and choose the tile size. The page scrolls as one long grid and comes back to where you were when you return from the viewer.</p>
+
+<h2 id="search">Search by name, or by prompt</h2>
+<p>A background index reads the prompt written inside each generated file. So a search for “ocean” finds every picture whose prompt mentioned it, whatever the file is called. Search can also go down into every subfolder, and groups what it finds under the folders they are in.</p>
+<p>The index is built shortly after the app starts and refreshed every ten minutes. A file rendered a moment ago is found by name at once, and by prompt after the next refresh.</p>
+<h3>The word directory</h3>
+<p>Every word and phrase used across your prompts, sorted by how often it appears or from A to Z. Pick one to see every file that used it.</p>
+
+<h2 id="tiles">What a tile tells you</h2>
+<p>Each tile is a square thumbnail with a bar under it.</p>
+<ul>
+<li><strong>The thumbnail</strong> opens the viewer.</li>
+<li><strong>The bar</strong> raises <a href="/docs/remix">Remix</a> for that file.</li>
+<li>A <strong>wf</strong> tag means the file carries a workflow.</li>
+<li>A <strong>kw</strong> tag means the file is still a template: the prompt it was written from holds <code>[keywords]</code> you have rules for, so remixing it will answer them again. Hover the tag to see which.</li>
+</ul>
+<p>A video and the still image saved beside it under the same name are one item. They are listed, moved and deleted together.</p>
+
+<h2 id="viewer">The viewer</h2>
+<p>Full screen, with swipe or the arrows to move through the folder, and a slideshow whose speed you set. Video plays in the page. From here you can open the file's <strong>inspect</strong> page, which shows everything written into it and has the same Remix form in tabs: <strong>Workflow</strong>, <strong>Run</strong> and <strong>Preview</strong>.</p>
+
+<h2 id="keep">Keeping and removing</h2>
+<ul>
+<li><strong>Favorite</strong> moves a file into your library, which is how a render becomes a kept file. A file that is already in the library goes into its <code>_Favorites</code> folder.</li>
+<li><strong>Delete</strong> removes the file from disk, with its thumbnail.</li>
+<li><strong>Multi-select</strong> does either to many files at once.</li>
+</ul>
+<div class="callout warn">
+<p class="callout-title">Delete means delete</p>
+<p>The file is removed from the folder it is in, not hidden. The app's delete buttons reach every folder listed above, ComfyUI's own included.</p>
+</div>
+
+<h2 id="shared-screen">On a shared screen</h2>
+<ul>
+<li><strong>Blur</strong> (the padlock in the bar) blurs every thumbnail, so the grid can be browsed without showing what is in it.</li>
+<li><strong>Safe mode</strong> (the eye) leaves out any file whose prompt matches a word on your own filter list. It is on when you first open the app. The list is yours to fill in under <strong>Settings → Privacy</strong>. <a href="/docs/privacy#safe-mode">More about safe mode</a>.</li>
+</ul>
