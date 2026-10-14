@@ -5,9 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{title}}</title>
 <meta name="description" content="{{description}}">
-<meta name="color-scheme" content="dark light">
-<meta name="theme-color" content="#131210" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#131210">
 <meta property="og:title" content="{{title}}">
 <meta property="og:description" content="{{description}}">
 <meta property="og:type" content="website">
@@ -22,14 +21,15 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="head">
-<div class="head-in">
-<a class="brand" href="/" aria-label="WorkflowRemix home"><span class="brand-mark">{{icon:shuffle-variant}}</span><span>Workflow<b>Remix</b></span></a>
-<nav class="nav" aria-label="Main">
-{{nav}}
+<div class="site">
+<nav class="sidebar" aria-label="Main">
+<a class="sb-brand" href="/" aria-label="WorkflowRemix home"><span class="brand-mark">{{icon:shuffle-variant}}</span><span>Workflow<b>Remix</b></span></a>
+{{sidebar}}
+<div class="sb-fill"></div>
+<a class="sb-card" href="/downloads"><span class="sb-card-ic">{{icon:tray-arrow-down}}</span><span class="sb-card-text"><span class="sb-card-title">Get the app</span><span class="sb-card-sub">{{release-short}}</span></span></a>
 </nav>
-</div>
-</header>
+<div class="site-main">
+<header class="m-head"><a class="brand" href="/" aria-label="WorkflowRemix home"><span class="brand-mark">{{icon:shuffle-variant}}</span><span>Workflow<b>Remix</b></span></a></header>
 {{main}}
 <footer class="foot">
 <div class="foot-in">
@@ -60,5 +60,10 @@
 <p>Set in Instrument Sans and JetBrains Mono, with icons, the brand mark among them, from Material Design Icons: <a href="/assets/third-party.txt">third-party notices</a>.</p>
 </div>
 </footer>
+</div>
+</div>
+<nav class="tab-bar" aria-label="Main">
+{{tabs}}
+</nav>
 </body>
 </html>

@@ -43,10 +43,15 @@ const TYPES = {
   '.txt': 'text/plain; charset=utf-8',
   '.woff2': 'font/woff2',
 };
+// The site's places, drawn as the app draws its own: a sidebar on a computer, with the
+// pages of the section you are in listed under it, and a tab bar along the bottom of a
+// phone, whose middle button is the raised one (`main`), as Jobs is in the app.
 const NAV = [
-  { href: '/docs', label: 'Docs' },
-  { href: '/examples', label: 'Examples' },
-  { href: '/downloads', label: 'Downloads', cls: 'nav-cta', icon: 'tray-arrow-down' },
+  { href: '/', label: 'Home', icon: 'home-outline' },
+  { href: '/docs', label: 'Docs', icon: 'book-open-page-variant-outline', section: 'docs' },
+  { href: '/downloads', label: 'Downloads', tab: 'Get it', icon: 'tray-arrow-down', main: true },
+  { href: '/examples', label: 'Examples', icon: 'lightbulb-on-outline', section: 'examples' },
+  { href: '/acceptable-use', label: 'Acceptable Use', tab: 'Policy', icon: 'scale-balance' },
 ];
 const SECTIONS = { docs: 'Documentation', examples: 'Examples' };
 
@@ -259,6 +264,12 @@ function renderReleaseLine(feeds) {
   return `Version ${esc(any[0].version)} for Windows, macOS and Linux.`;
 }
 
+// The sidebar card's line: the version on offer, or that there is none yet.
+function renderReleaseShort(feeds) {
+  const any = FEEDS.map((f) => feeds[f.key]).filter(Boolean);
+  return any.length ? `Version ${esc(any[0].version)}` : 'First release soon';
+}
+
 // ── The site ─────────────────────────────────────────────────────────────────
 
 function createSite(opts = {}) {
@@ -316,13 +327,12 @@ function createSite(opts = {}) {
       licence,
     });
     let main;
-    if (page.meta.section) {
-      const side = sideNav(page);
-      main = `<div class="shell sided">
-<aside class="side">
+    const side = page.meta.section ? sideNav(page) : null;
+    if (side) {
+      // The sidebar lists the section's pages on a computer; a phone has no sidebar,
+      // so the page carries them itself, folded away above the text.
+      main = `<div class="shell">
 <details class="side-menu"><summary>${esc(side.label)} menu</summary><ul>${side.items}</ul></details>
-<nav class="side-nav" aria-label="${esc(side.label)}"><p class="side-title">${esc(side.label)}</p><ul>${side.items}</ul></nav>
-</aside>
 <main id="main" class="prose">
 ${body}
 ${side.pager}
@@ -333,16 +343,24 @@ ${side.pager}
     } else {
       main = `<div class="shell"><main id="main" class="prose">\n${body}\n</main></div>`;
     }
+    // Which place the page belongs to: its first path segment, so /docs/remix is Docs.
     const top = '/' + page.route.split('/')[1];
-    const nav = NAV.map((n) => `<a href="${n.href}"${n.href === top ? ' aria-current="page"' : ''}`
-      + `${n.cls ? ` class="${n.cls}"` : ''}>${n.icon ? icon(n.icon) : ''}${n.label}</a>`).join('\n');
+    const current = (n) => (n.href === top ? ' aria-current="page"' : '');
+    const sidebar = NAV.map((n) => `<a class="sb-item${n.href === top ? ' on' : ''}" href="${n.href}"${current(n)}>`
+      + `${icon(n.icon)}<span>${esc(n.label)}</span></a>`
+      + (side && n.section === page.meta.section ? `\n<ul class="sb-sub">${side.items}</ul>` : '')).join('\n');
+    const tabs = NAV.map((n) => (n.main
+      ? `<a class="tab-main${n.href === top ? ' on' : ''}" href="${n.href}"${current(n)}><span class="tab-main-ic">${icon(n.icon)}</span><span>${esc(n.tab || n.label)}</span></a>`
+      : `<a class="tab-item${n.href === top ? ' on' : ''}" href="${n.href}"${current(n)}>${icon(n.icon)}<span>${esc(n.tab || n.label)}</span></a>`)).join('\n');
     const title = page.route === '/' ? page.meta.title : `${page.meta.title} · WorkflowRemix`;
     return fill(layout, {
       title: esc(title),
       description: esc(page.meta.description || ''),
       canonical: esc(origin + (page.route === '/' ? '/' : page.route)),
       css: cssV,
-      nav,
+      sidebar,
+      tabs,
+      'release-short': renderReleaseShort(feeds),
       main,
       robots: page.meta.hidden ? '<meta name="robots" content="noindex">' : '',
     });

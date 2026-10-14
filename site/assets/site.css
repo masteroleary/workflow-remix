@@ -1,7 +1,7 @@
 /* WorkflowRemix website. One stylesheet, in the app's own look: its warm-dark ground and
    surfaces, its one orange accent with dark ink on it, Instrument Sans for the words and
-   JetBrains Mono for names, numbers and the small capitals over a section. Dark is the
-   designed theme; light follows the system, in the same warm hues.
+   JetBrains Mono for names, numbers and the small capitals over a section. Dark only,
+   as the app is, whatever the system's own setting.
 
    The two typefaces are served from this site (assets/*.woff2, the Latin subsets), and
    the icons are inline SVG written into the pages by the server (icons.js): nothing here
@@ -20,7 +20,7 @@
 
 :root{
   /* Ground, a darker band, and the surfaces a card or a control sits on. */
-  --bg:#131210;--bg2:#0e0d0b;--surface:#1b1a17;--surface2:#24221e;--surface3:#2e2b26;
+  --bg:#131210;--bg2:#0e0d0b;--bg-bar:#161513;--surface:#1b1a17;--surface2:#24221e;--surface3:#2e2b26;
   --border:#2c2925;--border2:#3a352f;--line:#24211d;
   --text:#efe8dc;--text-soft:#c9c1b3;--text2:#a8a092;--text3:#716a5e;
   /* The accent: a fill with dark ink on it (white on this orange does not read), as
@@ -39,28 +39,13 @@
   --mono:'JetBrains Mono',ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;
   color-scheme:dark;
 }
-@media (prefers-color-scheme:light){
-  :root{
-    --bg:#faf7f2;--bg2:#f2ece3;--surface:#ffffff;--surface2:#f1ebe1;--surface3:#e7dfd2;
-    --border:#e4dccf;--border2:#d2c7b6;--line:#ebe4d8;
-    --text:#1f1b16;--text-soft:#3d372f;--text2:#5f574b;--text3:#857c6e;
-    --accent-text:#b4470c;--accent-bg:rgba(255,122,46,.13);--accent-line:rgba(217,86,26,.45);
-    --link:#b4470c;--link-hover:#7f2f05;
-    --green:#2f7a33;--amber:#a86400;--amber-bg:rgba(245,185,66,.14);--amber-line:rgba(168,100,0,.35);
-    --cyan:#1d7287;
-    --k1:#0a6fa8;--k2:#4f7a12;--k3:#8f5c00;--k4:#c03a3a;--k5:#7a45b8;--k6:#11806a;
-    --glow:rgba(255,122,46,.16);--glow2:rgba(245,185,66,.12);
-    --shadow:0 18px 44px rgba(60,40,20,.12);
-    color-scheme:light;
-  }
-}
 
 *,*::before,*::after{box-sizing:border-box}
 /* JetBrains Mono draws its code ligatures as contextual alternates, which turn the
    -> or -< of a file name or a prompt into a symbol that is not there. Off on every
    element, and over the font shorthands that would otherwise reset it to normal. */
 *,*::before,*::after{font-variant-ligatures:no-contextual!important}
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:5rem}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:1.5rem}
 body{
   margin:0;background:var(--bg);color:var(--text);
   font:1rem/1.65 var(--font);
@@ -87,76 +72,105 @@ kbd{
 .skip{position:absolute;left:-999px;top:0;background:var(--accent);color:var(--on-accent);font-weight:700;padding:.6rem 1rem;z-index:20}
 .skip:focus{left:0}
 
-/* ── Header ─────────────────────────────────────────────── */
-.head{
-  position:sticky;top:0;z-index:10;
-  background:color-mix(in srgb,var(--bg) 86%,transparent);
-  backdrop-filter:saturate(1.3) blur(14px);-webkit-backdrop-filter:saturate(1.3) blur(14px);
-  border-bottom:1px solid var(--line);
+/* ── Navigation ─────────────────────────────────────────── */
+/* The app's own frame: from 700px wide a sidebar beside the page, below it a tab bar
+   along the bottom of the screen and the name over the page. Both navigations are
+   always in the page; one break decides which is shown, as in the app. */
+.site{display:flex;min-height:100vh;min-height:100dvh}
+.site-main{flex:1;min-width:0;display:flex;flex-direction:column}
+.site-main>main,.site-main>.shell{flex:1 0 auto}
+.sidebar{
+  position:sticky;top:0;height:100vh;height:100dvh;width:236px;flex:none;z-index:10;
+  display:flex;flex-direction:column;gap:4px;padding:22px 12px 16px;
+  background:var(--bg-bar);border-right:1px solid var(--line);overflow-y:auto;
 }
-.head-in{
-  max-width:72rem;margin:0 auto;padding:.7rem 1.25rem;
-  display:flex;align-items:center;justify-content:space-between;gap:.6rem 1rem;flex-wrap:wrap;
+/* The brand: the tile — the accent with the shuffle glyph in its dark ink, the same mark
+   as the site's icon — beside the name, its second word in the accent. */
+.sb-brand,.brand{
+  display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;
+  font-size:18px;font-weight:700;letter-spacing:-.01em;
 }
-/* The product's name as a wordmark, as the app's sidebar has it: no logo ships until
-   there is one under the name. */
-.brand{display:flex;align-items:center;gap:.6rem;color:var(--text);text-decoration:none;font-weight:700;font-size:1.2rem;letter-spacing:-.01em;padding:.2rem 0}
-.brand:hover{color:var(--text)}
-.brand b,.foot-name b{font-weight:inherit;color:var(--accent-text)}
-/* The brand mark: the app's tile, the accent with the shuffle glyph in its dark ink —
-   the same mark as the site's icon. */
+.sb-brand{padding:2px 10px 22px}
+.sb-brand:hover,.brand:hover{color:var(--text)}
+.sb-brand b,.brand b,.foot-name b{font-weight:inherit;color:var(--accent-text)}
 .brand-mark{
-  display:inline-flex;align-items:center;justify-content:center;flex:none;width:1.85rem;height:1.85rem;border-radius:.55rem;
-  background:var(--accent);color:var(--on-accent);font-size:1.12rem;
+  display:inline-flex;align-items:center;justify-content:center;flex:none;width:30px;height:30px;border-radius:9px;
+  background:var(--accent);color:var(--on-accent);font-size:18px;
 }
 .brand-mark .ic{vertical-align:0}
-.nav{display:flex;align-items:center;gap:.25rem;flex-wrap:wrap}
-.nav a{
-  display:inline-flex;align-items:center;gap:.45rem;height:2.4rem;padding:0 .85rem;border-radius:10px;
-  color:var(--text2);text-decoration:none;font-weight:600;font-size:.94rem;
+.sb-item{
+  height:42px;flex:none;display:flex;align-items:center;gap:12px;padding:0 12px;border-radius:10px;
+  color:var(--text2);font-size:14.5px;font-weight:600;text-decoration:none;
 }
-.nav a .ic{font-size:1.1rem}
-.nav a:hover{color:var(--text);background:var(--surface)}
-.nav a[aria-current]{color:var(--accent-text);background:var(--accent-bg)}
-.nav a.nav-cta{margin-left:.35rem;background:var(--accent);color:var(--on-accent);font-weight:700}
-.nav a.nav-cta:hover{color:var(--on-accent);filter:brightness(1.07)}
-.nav a.nav-cta[aria-current]{box-shadow:0 0 0 3px var(--accent-bg)}
-/* A phone has no room for the name and the three links on one line, so the links go
-   under it, and the header scrolls away with the page rather than holding two rows of
-   the screen. */
-@media (max-width:560px){
-  .head{position:static}
-  .head-in{padding:.7rem 1rem .75rem}
-  .nav{width:100%;gap:.2rem}
-  .nav a{height:2.25rem;padding:0 .7rem;font-size:.92rem}
-  .nav a.nav-cta{margin-left:auto}
+.sb-item .ic{font-size:20px}
+.sb-item:hover{background:var(--surface);color:var(--text)}
+.sb-item.on{background:var(--accent-bg);color:var(--accent-text)}
+/* The section's pages, under its place while you are in it. */
+.sb-sub{list-style:none;margin:2px 0 10px 22px;padding:0 0 0 10px;border-left:1px solid var(--line)}
+.sb-sub a{
+  display:block;padding:6px 10px;margin:1px 0;border-radius:8px;
+  color:var(--text2);font-size:13.5px;font-weight:550;line-height:1.35;text-decoration:none;
+}
+.sb-sub a:hover{color:var(--text);background:var(--surface)}
+.sb-sub a[aria-current]{color:var(--text);background:var(--surface2);font-weight:650}
+.sb-fill{flex:1}
+/* The way to the installers, where the app keeps its running-jobs card. */
+.sb-card{
+  display:flex;align-items:center;gap:12px;padding:12px;border-radius:var(--r-lg);flex:none;margin-top:12px;
+  background:var(--surface);border:1px solid var(--border);color:var(--text);text-decoration:none;
+}
+.sb-card:hover{border-color:var(--accent-line);color:var(--text)}
+.sb-card-ic{
+  display:flex;align-items:center;justify-content:center;flex:none;width:40px;height:40px;border-radius:50%;
+  background:var(--accent);color:var(--on-accent);font-size:20px;
+}
+.sb-card-text{display:flex;flex-direction:column;gap:2px;min-width:0}
+.sb-card-title{font-size:13.5px;font-weight:650}
+.sb-card-sub{font:400 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--text3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.m-head{display:none}
+.tab-bar{display:none}
+.tab-item,.tab-main{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  color:#8a8275;font-size:10.5px;font-weight:600;text-decoration:none;
+}
+.tab-item{width:66px;height:56px}
+.tab-item .ic{font-size:24px}
+.tab-item.on,.tab-main.on{color:var(--accent-text)}
+/* The raised middle button, as the app's Jobs is: the way to the installers. */
+.tab-main{width:74px;margin-top:-26px;padding-bottom:5px;gap:4px;color:var(--text2)}
+.tab-main-ic{
+  display:flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:50%;
+  background:var(--accent);color:var(--on-accent);font-size:27px;
+  border:3px solid var(--bg-bar);box-shadow:0 10px 26px rgba(255,122,46,.22);
+}
+@media (max-width:699px){
+  .sidebar{display:none}
+  .m-head{display:flex;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line);background:var(--bg-bar)}
+  .tab-bar{
+    position:fixed;left:0;right:0;bottom:0;z-index:20;
+    display:flex;align-items:flex-end;justify-content:space-around;
+    height:calc(64px + env(safe-area-inset-bottom,0px));padding:0 6px env(safe-area-inset-bottom,0px);
+    background:var(--bg-bar);border-top:1px solid var(--line);
+  }
+  .site-main{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
 }
 
 /* ── Shells ─────────────────────────────────────────────── */
-.shell{max-width:48rem;margin:0 auto;padding:2.75rem 1.25rem 4rem}
-.shell.sided{
-  max-width:72rem;display:grid;grid-template-columns:15rem minmax(0,1fr);gap:3rem;align-items:start;
-}
-.side{position:sticky;top:4.8rem;max-height:calc(100vh - 5.7rem);overflow:auto;padding-bottom:1rem}
+.shell{width:100%;max-width:50rem;margin:0 auto;padding:2.75rem 2rem 4rem}
+/* On a phone the section's pages are folded away above the text, since there is no
+   sidebar to list them in. */
 .side-menu{display:none}
-.side-title{
-  margin:0 0 .6rem;padding:0 .75rem;font:400 .7rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--text3);
-}
-.side ul{list-style:none;margin:0;padding:0}
-.side li a{
-  display:block;padding:.45rem .75rem;margin:1px 0;border-radius:10px;
-  color:var(--text2);text-decoration:none;font-size:.95rem;font-weight:550;
-}
-.side li a:hover{color:var(--text);background:var(--surface)}
-.side li a[aria-current]{color:var(--accent-text);background:var(--accent-bg);font-weight:650}
-.sided .prose{max-width:46rem}
-@media (max-width:860px){
-  .shell.sided{display:block}
-  .side{position:static;max-height:none;margin-bottom:1.6rem}
-  .side-nav{display:none}
-  .side-menu{display:block;border:1px solid var(--border);border-radius:var(--r);background:var(--surface)}
+@media (max-width:699px){
+  .shell{padding:1.75rem 1.1rem 3rem}
+  .side-menu{display:block;margin-bottom:1.6rem;border:1px solid var(--border);border-radius:var(--r);background:var(--surface)}
   .side-menu summary{padding:.75rem 1rem;font-weight:650;cursor:pointer}
-  .side-menu ul{padding:0 .4rem .5rem}
+  .side-menu ul{list-style:none;margin:0;padding:0 .4rem .5rem}
+  .side-menu li a{
+    display:block;padding:.45rem .75rem;margin:1px 0;border-radius:10px;
+    color:var(--text2);text-decoration:none;font-size:.95rem;font-weight:550;
+  }
+  .side-menu li a[aria-current]{color:var(--accent-text);background:var(--accent-bg);font-weight:650}
 }
 
 /* ── Prose ──────────────────────────────────────────────── */
@@ -246,12 +260,12 @@ td:first-child{font-weight:600}
     radial-gradient(40rem 24rem at -8% 112%,var(--glow2),transparent 60%);
 }
 .hero-in{
-  max-width:72rem;margin:0 auto;padding:4.75rem 1.25rem 4.75rem;
+  max-width:72rem;margin:0 auto;padding:4.75rem 2.5rem 4.75rem;
   display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:3.5rem;align-items:center;
 }
 /* The small capitals over a heading, in the mono face as the app writes them. */
 .eyebrow{font:400 .74rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent-text);margin:0 0 1rem}
-.hero h1{font-size:clamp(2.4rem,5.4vw,3.9rem);line-height:1.03;letter-spacing:-.035em;margin:0 0 1.25rem}
+.hero h1{font-size:clamp(2.3rem,4.3vw,3.5rem);line-height:1.03;letter-spacing:-.035em;margin:0 0 1.25rem}
 .hero h1 em{font-style:normal;color:var(--accent-text)}
 .hero .sub{font-size:1.15rem;color:var(--text2);max-width:34rem;margin:0 0 1.9rem}
 .cta{display:flex;gap:.65rem;flex-wrap:wrap;margin-bottom:1rem}
@@ -287,7 +301,7 @@ td:first-child{font-weight:600}
 /* A segmented switch: one of a few, the chosen one filled with the accent. */
 .demo-tabs{display:flex;flex-wrap:wrap;gap:2px;background:var(--bg);border:1px solid var(--border);border-radius:11px;padding:3px;margin:0 0 1.1rem}
 .demo-tabs label{
-  flex:1 1 auto;display:grid;place-items:center;height:2.2rem;padding:0 .7rem;border-radius:8px;
+  flex:1 1 auto;display:grid;place-items:center;height:2.2rem;padding:0 .5rem;border-radius:8px;
   font-size:.86rem;font-weight:600;color:var(--text2);cursor:pointer;white-space:nowrap;
 }
 .demo-tabs label:hover{color:var(--text)}
@@ -308,7 +322,7 @@ td:first-child{font-weight:600}
 
 .band{border-bottom:1px solid var(--line)}
 .band.alt{background:var(--bg2)}
-.band-in{max-width:72rem;margin:0 auto;padding:4.75rem 1.25rem}
+.band-in{max-width:72rem;margin:0 auto;padding:4.75rem 2.5rem}
 .band h2{font-size:clamp(1.65rem,3.4vw,2.3rem);margin:0 0 .75rem;letter-spacing:-.03em}
 .band .intro{color:var(--text2);font-size:1.08rem;max-width:40rem;margin:0 0 2.4rem}
 .grid{display:grid;gap:.9rem;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;margin:0;padding:0}
@@ -347,14 +361,20 @@ td:first-child{font-weight:600}
 .closing{text-align:center}
 .closing .intro{margin-left:auto;margin-right:auto}
 .closing .cta{justify-content:center}
-@media (max-width:900px){
+/* The page is the window less the sidebar's 236px, so the hero and the two-column bands
+   stack sooner than the window alone would suggest. */
+@media (max-width:1140px){
   .hero-in,.split{grid-template-columns:1fr;gap:2.5rem}
-  .hero-in{padding-top:3rem;padding-bottom:3rem}
-  .grid,.howto{grid-template-columns:1fr}
-  .band-in{padding:3.3rem 1.25rem}
+  .hero-in{padding-top:3.5rem;padding-bottom:3.5rem}
   .demo-out{min-height:0}
+  .howto{grid-template-columns:1fr}
 }
-@media (min-width:901px) and (max-width:1100px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:1240px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:699px){
+  .hero-in{padding:2.25rem 1.1rem 2.75rem}
+  .grid{grid-template-columns:1fr}
+  .band-in{padding:3rem 1.1rem}
+}
 
 /* ── Downloads ──────────────────────────────────────────── */
 .dl-version{color:var(--text2)}
@@ -385,7 +405,7 @@ td:first-child{font-weight:600}
 /* ── Footer ─────────────────────────────────────────────── */
 .foot{background:var(--bg2);border-top:1px solid var(--line);color:var(--text2);font-size:.93rem}
 .band+.foot,.hero+.foot{border-top:0}
-.foot-in{max-width:72rem;margin:0 auto;padding:2.8rem 1.25rem 1rem;display:grid;grid-template-columns:minmax(0,2fr) 1fr 1fr;gap:2.5rem}
+.foot-in{max-width:72rem;margin:0 auto;padding:2.8rem 2.5rem 1rem;display:grid;grid-template-columns:minmax(0,2fr) 1fr 1fr;gap:2.5rem}
 .foot-name{display:flex;align-items:center;gap:.55rem;font-weight:700;font-size:1.1rem;color:var(--text);margin:0 0 .7rem;letter-spacing:-.01em}
 .foot-brand p:last-child{margin:0;max-width:26rem}
 .foot-h{font:400 .7rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin:0 0 .7rem}
@@ -396,7 +416,7 @@ td:first-child{font-weight:600}
 .foot-fine{display:block;padding-top:1.4rem;padding-bottom:2.4rem;border-top:1px solid var(--line);font-size:.84rem;color:var(--text3)}
 .foot-fine p{margin:0 0 .5rem;max-width:60rem}
 .foot-fine a{color:var(--text3);text-decoration:underline}
-@media (max-width:700px){.foot-in{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}}
+@media (max-width:699px){.foot-in{grid-template-columns:1fr 1fr;padding-left:1.1rem;padding-right:1.1rem}.foot-brand{grid-column:1/-1}}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
-@media print{.head,.side,.foot,.pager,.skip{display:none}.shell.sided{display:block}body{background:#fff;color:#000}}
+@media print{.sidebar,.tab-bar,.m-head,.side-menu,.foot,.pager,.skip{display:none}.site-main{padding:0}body{background:#fff;color:#000}}
