@@ -1,7 +1,8 @@
 'use strict';
 // The WorkflowRemix website. Plain pages, wrapped in one layout as the server starts:
 // no build step, no dependencies, no script sent to a browser, and nothing loaded from
-// anywhere but this server. The one request it makes itself is for the public release
+// anywhere but this server — the typefaces and the icons included (assets/*.woff2, and
+// icons.js written into the pages as inline SVG). The one request it makes itself is for the public release
 // feeds (latest*.yml), so the Downloads page can link the installers without a visitor's
 // browser ever talking to GitHub before they click one.
 
@@ -11,6 +12,7 @@ const fs = require('fs');
 const path = require('path');
 const zlib = require('zlib');
 const crypto = require('crypto');
+const ICONS = require('./icons.js');
 
 const ROOT = __dirname;
 const RELEASES = 'https://github.com/masteroleary/workflow-remix/releases';
@@ -39,17 +41,27 @@ const TYPES = {
   '.ico': 'image/x-icon',
   '.png': 'image/png',
   '.txt': 'text/plain; charset=utf-8',
+  '.woff2': 'font/woff2',
 };
 const NAV = [
   { href: '/docs', label: 'Docs' },
   { href: '/examples', label: 'Examples' },
-  { href: '/downloads', label: 'Downloads' },
+  { href: '/downloads', label: 'Downloads', cls: 'nav-cta', icon: 'tray-arrow-down' },
 ];
 const SECTIONS = { docs: 'Documentation', examples: 'Examples' };
 
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => (
   { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const fill = (tpl, vars) => tpl.replace(/\{\{([a-z-]+)\}\}/g, (m, k) => (k in vars ? vars[k] : m));
+
+// An icon of icons.js as inline SVG, in the text colour, hidden from a screen reader: the
+// words beside it say what it is. A name icons.js does not have is a mistake in a page,
+// and stops the server rather than leaving a gap.
+function icon(name) {
+  if (!Object.prototype.hasOwnProperty.call(ICONS, name)) throw new Error(`no icon named "${name}" in icons.js`);
+  return `<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="${ICONS[name]}"/></svg>`;
+}
+const icons = (html) => html.replace(/\{\{icon:([a-z0-9-]+)\}\}/g, (m, name) => icon(name));
 
 // ── Pages ────────────────────────────────────────────────────────────────────
 
@@ -232,7 +244,7 @@ function renderDownloads(feeds) {
     const size = fmtSize(file.size);
     return `<li class="dl">${head}<p class="dl-file">${esc(file.name)}${size ? ` · ${size}` : ''}</p></div>`
       + `<a class="btn primary" href="${RELEASES}/latest/download/${encodeURIComponent(file.name)}" `
-      + `rel="noopener noreferrer">Download</a></li>`;
+      + `rel="noopener noreferrer">${icon('tray-arrow-down')}Download</a></li>`;
   });
   return [
     `<p class="dl-version">Version <strong>${esc(newest.version)}</strong>`
@@ -255,7 +267,7 @@ function createSite(opts = {}) {
   const fetchFeed = opts.fetchFeed || ((file) => fetchText(`${RELEASES}/latest/download/${file}`));
   const log = opts.log || ((...a) => console.log(...a));
 
-  const layout = fs.readFileSync(path.join(ROOT, 'layout.html'), 'utf8');
+  const layout = icons(fs.readFileSync(path.join(ROOT, 'layout.html'), 'utf8'));
   const pages = readPages(path.join(ROOT, 'pages'));
   const policy = renderPolicy(fs.readFileSync(path.join(ROOT, 'legal', 'ACCEPTABLE_USE.md'), 'utf8'));
   const licence = renderLicence(fs.readFileSync(path.join(ROOT, 'legal', 'LICENSE'), 'utf8'));
@@ -297,7 +309,7 @@ function createSite(opts = {}) {
   }
 
   function renderPage(page) {
-    const body = fill(page.body, {
+    const body = fill(icons(page.body), {
       downloads: renderDownloads(feeds),
       'release-line': renderReleaseLine(feeds),
       policy,
@@ -322,7 +334,8 @@ ${side.pager}
       main = `<div class="shell"><main id="main" class="prose">\n${body}\n</main></div>`;
     }
     const top = '/' + page.route.split('/')[1];
-    const nav = NAV.map((n) => `<a href="${n.href}"${n.href === top ? ' aria-current="page"' : ''}>${n.label}</a>`).join('\n');
+    const nav = NAV.map((n) => `<a href="${n.href}"${n.href === top ? ' aria-current="page"' : ''}`
+      + `${n.cls ? ` class="${n.cls}"` : ''}>${n.icon ? icon(n.icon) : ''}${n.label}</a>`).join('\n');
     const title = page.route === '/' ? page.meta.title : `${page.meta.title} · WorkflowRemix`;
     return fill(layout, {
       title: esc(title),
@@ -481,4 +494,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { createSite, parseFeed, renderPolicy, renderLicence, renderDownloads };
+module.exports = { createSite, parseFeed, renderPolicy, renderLicence, renderDownloads, icon };

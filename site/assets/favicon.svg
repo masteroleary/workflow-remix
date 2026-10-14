@@ -1,25 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <title>WorkflowRemix</title>
-  <defs>
-    <linearGradient id="g" x1="5" y1="27" x2="27" y2="5" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#8b5cff"/>
-      <stop offset="1" stop-color="#f08bff"/>
-    </linearGradient>
-    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="32" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#17111f"/>
-      <stop offset="1" stop-color="#08080a"/>
-    </linearGradient>
-  </defs>
-  <rect width="32" height="32" rx="7" fill="url(#tile)"/>
-  <g fill="none" stroke="url(#g)" stroke-width="2" stroke-linecap="round">
-    <path d="M9.6 16h2.2c2.8 0 2.6-3.6 4.6-5.6 1.1-1.1 2-1.4 3.4-1.4"/>
-    <path d="M9.6 16h10.2"/>
-    <path d="M9.6 16h2.2c2.8 0 2.6 3.6 4.6 5.6 1.1 1.1 2 1.4 3.4 1.4"/>
-  </g>
-  <g fill="url(#g)">
-    <circle cx="8" cy="16" r="3"/>
-    <circle cx="23" cy="9" r="2.8"/>
-    <circle cx="23" cy="16" r="2.8"/>
-    <circle cx="23" cy="23" r="2.8"/>
-  </g>
+  <title>WorkflowRemix</title>
+  <!-- The brand tile the sidebar and the website draw beside the wordmark: the
+       accent orange, rx 7 on a 32 box (22%, the macOS corner render-icon.js lays
+       its margin around), with the shuffle glyph in the dark ink an accent fill
+       always carries, since white on this orange does not read. The glyph is three
+       fifths of the tile, as the redesign drew it at 18 on 30.
+
+       The glyph is Material Design Icons' shuffle-variant (@mdi/js 7.4.47, by
+       Pictogrammers), licensed under the Apache License, Version 2.0, as the app's
+       vendor/mdi-icons.js is. favicon.ico, apple-touch-icon.png and the desktop
+       app's icon are rendered from this file (npm run desktop:icon): edit this and
+       re-render, never them. -->
+  <rect width="32" height="32" rx="7" fill="#ff7a2e"/>
+  <path transform="translate(6.4 6.4) scale(.8)" fill="#1a0f05"
+        d="M17,3L22.25,7.5L17,12L22.25,16.5L17,21V18H14.26L11.44,15.18L13.56,13.06L15.5,15H17V12L17,9H15.5L6.5,18H2V15H5.26L14.26,6H17V3M2,6H6.5L9.32,8.82L7.2,10.94L5.26,9H2V6Z"/>
 </svg>

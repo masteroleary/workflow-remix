@@ -6,6 +6,8 @@
 <title>{{title}}</title>
 <meta name="description" content="{{description}}">
 <meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#131210" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)">
 <meta property="og:title" content="{{title}}">
 <meta property="og:description" content="{{description}}">
 <meta property="og:type" content="website">
@@ -14,6 +16,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/site.css?v={{css}}">
 {{robots}}
 </head>
@@ -21,7 +24,7 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="head">
 <div class="head-in">
-<a class="brand" href="/" aria-label="WorkflowRemix home"><img src="/favicon.svg" width="28" height="28" alt=""><span>Workflow<b>Remix</b></span></a>
+<a class="brand" href="/" aria-label="WorkflowRemix home"><span class="brand-mark">{{icon:shuffle-variant}}</span><span>Workflow<b>Remix</b></span></a>
 <nav class="nav" aria-label="Main">
 {{nav}}
 </nav>
@@ -31,7 +34,7 @@
 <footer class="foot">
 <div class="foot-in">
 <div class="foot-brand">
-<p class="foot-name">Workflow<b>Remix</b></p>
+<p class="foot-name"><span class="brand-mark">{{icon:shuffle-variant}}</span><span>Workflow<b>Remix</b></span></p>
 <p>A private desktop app for browsing, curating and remixing the media you make with ComfyUI. For adults (18+).</p>
 </div>
 <nav aria-label="Site">
@@ -54,6 +57,7 @@
 <div class="foot-in foot-fine">
 <p>Copyright © 2026 Matthew (masteroleary). All rights reserved.</p>
 <p>WorkflowRemix is an independent product. It is not affiliated with, endorsed by, or sponsored by Comfy Org, Inc. “ComfyUI” is the branding of Comfy Org. This site sets no cookies, runs no scripts and loads nothing from anywhere else.</p>
+<p>Set in Instrument Sans and JetBrains Mono, with icons, the brand mark among them, from Material Design Icons: <a href="/assets/third-party.txt">third-party notices</a>.</p>
 </div>
 </footer>
 </body>

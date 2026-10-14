@@ -10,8 +10,8 @@ layout: wide
 <h1>Every file you made is a workflow you can <em>run again</em>.</h1>
 <p class="sub">WorkflowRemix is a private desktop app for the images, video and audio you generate with ComfyUI. Browse the library, open any file to see the workflow inside it, and remix it with a new prompt, seed or model. Your library never leaves your computer.</p>
 <div class="cta">
-<a class="btn primary" href="/downloads">Downloads</a>
-<a class="btn" href="/docs/getting-started">Read the docs</a>
+<a class="btn primary" href="/downloads">{{icon:tray-arrow-down}}Downloads</a>
+<a class="btn" href="/docs/getting-started">{{icon:book-open-page-variant-outline}}Read the docs</a>
 </div>
 <p class="release-line">{{release-line}}</p>
 </div>
@@ -21,6 +21,7 @@ layout: wide
 <input type="radio" name="collection" id="c-fantasy" checked>
 <input type="radio" name="collection" id="c-cyber">
 <input type="radio" name="collection" id="c-space">
+<p class="demo-head">{{icon:shuffle-variant}}<span>Prompt replacements</span><span>6 active · 1 job</span></p>
 <p class="demo-label">Your prompt</p>
 <p class="demo-prompt"><span class="kw k1">[style]</span>, <span class="kw k2">[character]</span>, <span class="kw k3">[expression]</span>, <span class="kw k4">[action]</span>, <span class="kw k5">[scene]</span>, <span class="kw k6">[lighting]</span></p>
 <p class="demo-label">Collection</p>
@@ -45,27 +46,27 @@ layout: wide
 <h2>What it does</h2>
 <p class="intro">ComfyUI makes the pictures. WorkflowRemix is where you find them again, keep the good ones, and make the next version without rebuilding a graph.</p>
 <ul class="grid">
-<li class="card"><span class="tag k1">Browse</span>
+<li class="card"><p class="card-top"><span class="card-ic k1">{{icon:image-multiple-outline}}</span><span class="tag k1">Browse</span></p>
 <h3>Find it by what you asked for</h3>
 <p>A fast grid over your library and ComfyUI's output folder. Search by file name or by the prompt written inside the file, so “ocean” finds the picture even when it is called <code>Final_0042.png</code>.</p>
 <a href="/docs/browse">Browsing your media →</a></li>
-<li class="card"><span class="tag k2">Remix</span>
+<li class="card"><p class="card-top"><span class="card-ic k2">{{icon:shuffle-variant}}</span><span class="tag k2">Remix</span></p>
 <h3>The workflow becomes a form</h3>
 <p>Open a file and the graph inside it turns into the controls that matter: prompt, seed, steps, models, LoRAs, size. Change one thing and run it again, or send the picture through a different workflow.</p>
 <a href="/docs/remix">Remixing a file →</a></li>
-<li class="card"><span class="tag k3">Prompts</span>
+<li class="card"><p class="card-top"><span class="card-ic k3">{{icon:text-box-multiple-outline}}</span><span class="tag k3">Prompts</span></p>
 <h3>Keywords, answers and collections</h3>
 <p>Write <code>[character]</code> in a prompt and tick the answers from your library. Three answers queue three jobs. Switch the collection and the same prompt is answered from another world.</p>
 <a href="/docs/prompts">The prompt library →</a></li>
-<li class="card"><span class="tag k4">Compare</span>
+<li class="card"><p class="card-top"><span class="card-ic k4">{{icon:compare-horizontal}}</span><span class="tag k4">Compare</span></p>
 <h3>Several models, the same seeds</h3>
 <p>Pick more than one checkpoint and a run is queued once per model, model by model, on shared seeds. What differs between the results is the model and not the noise.</p>
 <a href="/docs/remix#models">Running several models →</a></li>
-<li class="card"><span class="tag k5">Jobs</span>
+<li class="card"><p class="card-top"><span class="card-ic k5">{{icon:lightning-bolt-outline}}</span><span class="tag k5">Jobs</span></p>
 <h3>Runs that outlive the page</h3>
 <p>Every run is tracked with its progress and its outputs as they finish. Open a result in the viewer and come back to the list where you left it. Cancel stops the queue, not only the row.</p>
 <a href="/docs/jobs">The run list →</a></li>
-<li class="card"><span class="tag k6">Remote</span>
+<li class="card"><p class="card-top"><span class="card-ic k6">{{icon:cellphone-link}}</span><span class="tag k6">Remote</span></p>
 <h3>From your phone, privately</h3>
 <p>Reach the app over your own Tailscale network. It is never on the public internet, and a phone can browse and run without being able to change anything on the computer.</p>
 <a href="/docs/remote-access">Remote access →</a></li>
@@ -126,7 +127,7 @@ layout: wide
 <h2>Start with the files you already have</h2>
 <p class="intro">Install it, point it at ComfyUI, and your output folder is a library.</p>
 <div class="cta">
-<a class="btn primary" href="/downloads">Downloads</a>
+<a class="btn primary" href="/downloads">{{icon:tray-arrow-down}}Downloads</a>
 <a class="btn" href="/docs">Documentation</a>
 <a class="btn" href="/examples">Examples</a>
 </div>

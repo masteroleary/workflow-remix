@@ -49,7 +49,7 @@ test('every page answers, in the layout, with a title and one heading', async ()
       assert.match(html, /<title>[^<]{5,}<\/title>/, page.route);
       assert.match(html, /<meta name="description" content="[^"]{20,}">/, `${page.route} has a description`);
       assert.ok(html.includes(`<link rel="canonical" href="${ORIGIN}${page.route === '/' ? '/' : page.route}">`), page.route);
-      assert.ok(!/\{\{[a-z-]+\}\}/.test(html), `${page.route} has no unfilled marker`);
+      assert.ok(!/\{\{[a-z0-9:-]+\}\}/.test(html), `${page.route} has no unfilled marker`);
       assert.ok(html.includes('id="main"'), page.route);
     }
   } finally { await s.close(); }
@@ -94,8 +94,48 @@ test('no page needs anything the policy refuses, or loads from anywhere else', a
         assert.match(m[1], allowed, `${page.route} links to ${m[1]}`);
       }
     }
+    // The stylesheet loads its two typefaces from this site, and nothing else.
     const css = fs.readFileSync(path.join(__dirname, '..', 'assets', 'site.css'), 'utf8');
-    assert.ok(!/url\(|@import/i.test(css), 'the stylesheet loads nothing');
+    assert.ok(!/@import/i.test(css), 'the stylesheet imports nothing');
+    const urls = [...css.matchAll(/url\(\s*['"]?([^'")]+)['"]?\s*\)/gi)].map((m) => m[1]);
+    assert.deepEqual(urls.sort(), ['/assets/instrument-sans-latin.woff2', '/assets/jetbrains-mono-latin.woff2'], 'only the fonts');
+    for (const u of urls) {
+      const r = await s.get(u);
+      assert.equal(r.status, 200, u);
+      assert.equal(r.headers['content-type'], 'font/woff2', u);
+      assert.equal(r.body.subarray(0, 4).toString('latin1'), 'wOF2', `${u} is a woff2 file`);
+    }
+  } finally { await s.close(); }
+});
+
+test('the icons are inline SVG from icons.js, and a name it lacks stops the server', async () => {
+  const { icon } = require('../server.js');
+  const svg = icon('tray-arrow-down');
+  assert.match(svg, /^<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M[0-9A-Za-z .,-]+"\/><\/svg>$/);
+  for (const bad of ['no-such-icon', 'constructor', '__proto__', 'toString']) assert.throws(() => icon(bad), /no icon named/, bad);
+  const s = await start({ 'latest.yml': WIN });
+  try {
+    await s.site.refreshReleases();
+    const home = (await s.get('/')).body.toString('utf8');
+    assert.ok((home.match(/<svg class="ic"/g) || []).length >= 9, 'the home page draws its icons');
+    assert.match((await s.get('/downloads')).body.toString('utf8'), /<a class="btn primary" href="[^"]+" rel="noopener noreferrer"><svg class="ic"[^>]*><path d="[^"]+"\/><\/svg>Download<\/a>/);
+  } finally { await s.close(); }
+});
+
+test('what the site draws with is credited, and its licences are served beside it', async () => {
+  const s = await start();
+  try {
+    const r = await s.get('/assets/third-party.txt');
+    assert.equal(r.status, 200);
+    assert.match(r.headers['content-type'], /^text\/plain/);
+    const text = r.body.toString('utf8');
+    for (const phrase of ['Instrument Sans', 'JetBrains Mono', 'SIL OPEN FONT LICENSE Version 1.1', 'Material Design Icons',
+      'Apache License', 'END OF TERMS AND CONDITIONS']) assert.ok(text.includes(phrase), phrase);
+    const icons = fs.readFileSync(path.join(__dirname, '..', 'icons.js'), 'utf8');
+    assert.match(icons, /Apache License, Version 2\.0/, 'icons.js names its licence');
+    for (const page of visible(s.site)) {
+      assert.ok(s.site.routes.get(page.route).buf.toString('utf8').includes('<a href="/assets/third-party.txt">'), `${page.route} links the notices`);
+    }
   } finally { await s.close(); }
 });
 
@@ -148,7 +188,7 @@ test('addresses are tidied by redirect', async () => {
 test('what is not a page is a 404, and nothing outside the pages is served', async () => {
   const s = await start();
   try {
-    for (const p of ['/nope', '/404', '/server.js', '/layout.html', '/package.json', '/railway.json', '/legal/LICENSE',
+    for (const p of ['/nope', '/404', '/server.js', '/icons.js', '/layout.html', '/package.json', '/railway.json', '/legal/LICENSE',
       '/legal/ACCEPTABLE_USE.md', '/pages/index.html', '/test/site.test.js', '/assets/../server.js', '/assets/..%2fserver.js',
       '/..%2f..%2fserver.js', '/assets/', '/docs/nope', '/%00', '/.git/config', '/.env']) {
       const r = await s.get(p);

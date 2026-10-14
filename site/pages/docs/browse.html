@@ -5,16 +5,16 @@ section: docs
 order: 2
 -->
 <h1>Browsing your media</h1>
-<p class="lede">The <strong>Media</strong> tile opens a grid over everything you have: images, video and audio, by folder.</p>
+<p class="lede"><strong>Media</strong> opens a grid over everything you have: images, video and audio, by folder.</p>
 
 <h2 id="roots">Where it looks</h2>
-<p>A switch at the top moves between the places the app knows about:</p>
+<p>The folder name at the top opens <strong>Library</strong>, which moves between the places the app knows about:</p>
 <ul>
 <li><strong>Output</strong>, fresh from the queue: ComfyUI's own output folder, so a render shows up without being copied anywhere.</li>
 <li><strong>Input</strong>, what runs are fed from: ComfyUI's input folder.</li>
 <li><strong>Favorites</strong>, everything you kept: the media library you chose at setup.</li>
 </ul>
-<p>Filter by type (folders, videos, images, audio), sort by date or name, and choose the tile size. The page scrolls as one long grid and comes back to where you were when you return from the viewer.</p>
+<p>The chips under the search box sort by date or name (<strong>Sort</strong>), choose the layout, the tile size and how many items a page holds (<strong>View</strong>), and filter by type or flatten every subfolder into one grid (<strong>Filters</strong>). Folders are cards above the pictures. The page comes back to where you were when you return from the viewer.</p>
 
 <h2 id="search">Search by name, or by prompt</h2>
 <p>A background index reads the prompt written inside each generated file. So a search for “ocean” finds every picture whose prompt mentioned it, whatever the file is called. Search can also go down into every subfolder, and groups what it finds under the folders they are in.</p>
@@ -48,6 +48,6 @@ order: 2
 
 <h2 id="shared-screen">On a shared screen</h2>
 <ul>
-<li><strong>Blur</strong> (the padlock in the bar) blurs every thumbnail, so the grid can be browsed without showing what is in it.</li>
+<li><strong>Blur</strong> (a chip in the bar, and a button in the viewer) blurs every thumbnail and the picture open in the viewer, so the library can be browsed without showing what is in it. It comes back on by itself whenever the app goes out of sight, so returning to it shows nothing at a glance; each device can switch that off under <strong>Settings → Privacy</strong>.</li>
 <li><strong>Safe mode</strong> (the eye) leaves out any file whose prompt matches a word on your own filter list. It is on when you first open the app. The list is yours to fill in under <strong>Settings → Privacy</strong>. <a href="/docs/privacy#safe-mode">More about safe mode</a>.</li>
 </ul>
