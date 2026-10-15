@@ -21,8 +21,12 @@
 :root{
   /* Ground, a darker band, and the surfaces a card or a control sits on. */
   --bg:#131210;--bg2:#0e0d0b;--bg-bar:#161513;--surface:#1b1a17;--surface2:#24221e;--surface3:#2e2b26;
-  --border:#2c2925;--border2:#3a352f;--line:#24211d;
-  --text:#efe8dc;--text-soft:#c9c1b3;--text2:#a8a092;--text3:#716a5e;
+  --border:#5d4a78;--border-hi:#7d64a3;--border2:#3a352f;--line:#24211d;
+  --gray2:#b6ae9f;--gray3:#958c7e;
+  --text:#efe8dc;--text-soft:#c9c1b3;--text2:var(--gray2);--text3:var(--gray3);
+  /* Inside a purple-edged card the dim text is purple, as in the app (below, *Purple
+     edges*), and so are the icons on cards and plain buttons. */
+  --purple:#b48cf0;--purple-text2:#bcb0d4;--purple-text3:#9a88b8;
   /* The accent: a fill with dark ink on it (white on this orange does not read), as
      text on the ground, and the two tints a lit control is drawn with. */
   --accent:#ff7a2e;--accent-text:#ff9a5c;--on-accent:#1a0f05;
@@ -63,7 +67,7 @@ strong{font-weight:650}
 code,kbd,pre{font-family:var(--mono);font-size:.86em}
 code{background:var(--surface2);color:var(--text-soft);padding:.12em .4em;border-radius:6px}
 kbd{
-  background:var(--surface2);border:1px solid var(--border2);border-bottom-width:2px;
+  background:var(--surface2);border:1px solid var(--border-hi);border-bottom-width:2px;
   padding:.08em .42em;border-radius:6px;font-size:.8em;white-space:nowrap;
 }
 /* An icon: inline SVG in the colour of the text around it. */
@@ -132,7 +136,7 @@ kbd{
 .tab-bar{display:none}
 .tab-item,.tab-main{
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
-  color:#8a8275;font-size:10.5px;font-weight:600;text-decoration:none;
+  color:var(--text3);font-size:10.5px;font-weight:600;text-decoration:none;
 }
 .tab-item{width:66px;height:56px}
 .tab-item .ic{font-size:24px}
@@ -190,7 +194,7 @@ kbd{
 .prose pre code{background:none;padding:0;color:var(--text-soft)}
 .table-wrap{overflow-x:auto;margin:0 0 1.2rem;border:1px solid var(--border);border-radius:var(--r)}
 table{border-collapse:collapse;width:100%;font-size:.94rem}
-th,td{text-align:left;vertical-align:top;padding:.65rem .85rem;border-bottom:1px solid var(--border)}
+th,td{text-align:left;vertical-align:top;padding:.65rem .85rem;border-bottom:1px solid var(--line)}
 tr:last-child td{border-bottom:0}
 th{
   background:var(--surface);white-space:nowrap;
@@ -233,10 +237,18 @@ td:first-child{font-weight:600}
 .cards a:hover{border-color:var(--accent-line);transform:translateY(-2px)}
 .cards a>.ic{
   grid-area:ic;width:2.5rem;height:2.5rem;padding:.55rem;border-radius:11px;
-  background:var(--accent-bg);color:var(--accent-text);
+  background:rgba(180,140,240,.12);color:var(--purple);
 }
 .cards b{grid-area:title;display:block;font-size:1.02rem;margin:.05rem 0 .15rem}
 .cards span{grid-area:text;color:var(--text2);font-size:.93rem;line-height:1.5;display:block}
+
+/* ── Purple edges ─────────────────────────────────────── */
+/* What is not the accent is edged in purple, and the dim text inside a card takes the
+   same purple rather than the page's gray: --text2 and --text3 are given the purple
+   values within these, so every rule that paints with them follows. As in the app. */
+.card,.cards a,.dl,.wf,.demo,.sb-card,.pager a,.resolved,.table-wrap,.side-menu,.btn{
+  --text2:var(--purple-text2);--text3:var(--purple-text3);
+}
 
 /* ── Buttons ────────────────────────────────────────────── */
 .btn{
@@ -246,10 +258,11 @@ td:first-child{font-weight:600}
   white-space:nowrap;
 }
 .btn .ic{font-size:1.15rem}
-.btn:hover{color:var(--text);border-color:var(--border2)}
+.btn:not(.primary) .ic{color:var(--purple-text2)}
+.btn:hover{color:var(--text);border-color:var(--border-hi)}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:700}
 .btn.primary:hover{color:var(--on-accent);filter:brightness(1.07)}
-.btn.off{color:var(--text3);background:transparent;border-style:dashed;border-color:var(--border2);cursor:default}
+.btn.off{color:var(--text3);background:transparent;border-style:dashed;border-color:var(--border-hi);cursor:default}
 .btn.off:hover{color:var(--text3)}
 
 /* ── Home ───────────────────────────────────────────────── */
@@ -282,7 +295,7 @@ td:first-child{font-weight:600}
   display:flex;align-items:center;gap:.6rem;margin:0 -1.2rem 1.1rem;padding:.85rem 1.2rem;
   border-bottom:1px solid var(--line);font-weight:650;font-size:.95rem;
 }
-.demo-head .ic{font-size:1.15rem;color:var(--accent-text)}
+.demo-head .ic{font-size:1.15rem;color:var(--purple)}
 .demo-head span{white-space:nowrap}
 .demo-head span:first-of-type{min-width:0;overflow:hidden;text-overflow:ellipsis}
 .demo-head span:last-child{
@@ -334,13 +347,13 @@ td:first-child{font-weight:600}
 .card-top{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
 .card-ic{
   display:grid;place-items:center;width:2.6rem;height:2.6rem;border-radius:12px;font-size:1.3rem;
-  background:color-mix(in srgb,currentColor 12%,transparent);border:1px solid color-mix(in srgb,currentColor 26%,transparent);
+  background:rgba(180,140,240,.12);color:var(--purple);
 }
 .card h3{font-size:1.12rem;margin:0 0 .45rem}
 .card p{color:var(--text2);margin:0 0 .9rem;font-size:.97rem;line-height:1.6}
 .card a{margin-top:auto;font-weight:600;font-size:.93rem;text-decoration:none}
 .card a:hover{text-decoration:underline}
-.tag{display:inline-block;font:400 .7rem var(--mono);letter-spacing:.11em;text-transform:uppercase}
+.tag{display:inline-block;font:400 .7rem var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--purple)}
 .howto{counter-reset:how;display:grid;gap:1.4rem;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;margin:0;padding:0}
 .howto li{counter-increment:how;border-top:1px solid var(--border2);padding-top:1.05rem}
 .howto li::before{content:"0" counter(how);font:600 .8rem var(--mono);letter-spacing:.06em;color:var(--accent-text)}
