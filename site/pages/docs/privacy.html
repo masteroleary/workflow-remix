@@ -43,6 +43,23 @@ order: 7
 </ul>
 <p>Forgotten it? Close the app, open <code>config.json</code> in your data folder, remove the <code>auth</code> entry and start the app again.</p>
 
+<h2 id="secure-wipe">Secure wipe and the panic password</h2>
+<p><strong>Settings → Secure wipe</strong>. A private library should be yours to remove without a backup utility or a command line. Secure wipe empties the app's own folders — the media library, ComfyUI's input, output and cache, and the app's prompts, rules, saved workflows and index — in the app itself, with no admin rights and no scheduled task. It is off until you turn it on.</p>
+<ul>
+<li><strong>You choose what goes.</strong> Tick the folders to empty. Add the app's own data, and your settings with it if you want the app to forget how it was set up. Leave a backup folder and the app copies everything into a dated folder first; leave it empty to erase with no backup.</li>
+<li><strong>It refuses to reach past its own data.</strong> It empties only the folders you configured, and will not empty a system folder or a drive root even if one is pointed there by mistake — every folder is re-checked at the moment of deletion.</li>
+<li><strong>Windows' own trail, if you ask.</strong> A tick clears the Recent-files list and the jump lists Windows keeps. Cached thumbnails are left to Windows' own <strong>Disk Cleanup</strong> (tick <em>Thumbnails</em>): the app will not close Explorer to get at them, on purpose.</li>
+</ul>
+<p>The <strong>panic password</strong> is the same wipe, armed on the lock screen. Set a second password under <strong>Settings → Security</strong> and typing it does not unlock the app — it erases everything, instantly, with no confirmation and no backup. If you are ever made to open the app, it opens onto nothing. It fires only once secure wipe is on, and the lock screen cannot tell it apart from a wrong password.</p>
+<h3 id="sell-pc">Before you sell or hand on the computer</h3>
+<p>Wiping the app's data clears what WorkflowRemix made. For the whole machine, let the operating system do the rest — the app never reaches that far itself:</p>
+<ul>
+<li><strong>Turn on drive encryption</strong> — BitLocker on Windows, FileVault on a Mac — so the disk is unreadable without your key if the computer is lost, sold or taken.</li>
+<li><strong>Clear cached thumbnails</strong> with Windows' Disk Cleanup, ticking <em>Thumbnails</em>.</li>
+<li><strong>Reset the machine</strong> when it changes hands: on Windows, <em>Settings → System → Recovery → Reset this PC → Remove everything</em> with <em>Clean the drive</em> on; a Mac erases from Recovery.</li>
+</ul>
+<p>WorkflowRemix does none of these for you. They belong to the operating system, and an ordinary app that reached for shadow copies, event logs or free space would behave like the software your antivirus is built to stop — which is exactly what this app is built not to be.</p>
+
 <h2 id="safe-mode">Safe mode</h2>
 <p>The eye in the browse bar hides any file whose prompt matches a word on your filter list, from listings and from the word directory. It is for a shared screen, or someone looking over your shoulder.</p>
 <ul>
