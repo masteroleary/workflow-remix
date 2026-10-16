@@ -21,7 +21,7 @@ order: 5
 <h2 id="check">Checking a workflow, then running it</h2>
 <p>A workflow that has not been checked yet wears an <strong>Enable</strong> button over its card. Press it and the app works out everything the workflow needs (every custom node, checkpoint, LoRA, VAE and text encoder) and ticks each one off in turn, ✓ found or ✗ missing.</p>
 <ul>
-<li><strong>Everything found.</strong> The workflow is marked as checked, the button goes, and a big <strong>Run</strong> appears. It runs the workflow once on its own settings and takes you to <a href="/docs/jobs">Jobs</a> to watch. Where a starter workflow takes a picture, Run feeds it one of the sample pictures a new install comes with, all but Krea Image Edit by Reference, which needs two pictures of your own.</li>
+<li><strong>Everything found.</strong> The workflow is marked as checked, the button goes, and a big <strong>Run</strong> appears. It runs the workflow once on its own settings and takes you to <a href="/docs/jobs">Jobs</a> to watch. Where a starter workflow takes a picture, Run feeds it one of the sample pictures a new install comes with (two for Krea Image Edit by Reference: the scene and the person).</li>
 <li><strong>Something missing.</strong> The sheet lists the missing custom nodes, and the missing files grouped by the folder each belongs in under <code>ComfyUI/models</code>. <strong>Copy details</strong> copies that list as plain text with what to do about it: install the nodes through ComfyUI-Manager, put the files in those folders, restart ComfyUI and check again.</li>
 <li><strong>ComfyUI not running.</strong> Which nodes exist can only be asked of ComfyUI, so the sheet says to start it rather than reporting everything as missing.</li>
 </ul>
