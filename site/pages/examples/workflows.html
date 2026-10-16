@@ -1,16 +1,16 @@
 <!--
 title: Starter workflows
-description: The six ComfyUI workflows WorkflowRemix copies into a new install: text-to-image, image-to-image, instruction edits and image-to-video, and what each one needs.
+description: The five ComfyUI workflows WorkflowRemix copies into a new install: text to image, edits by instruction, and image to video with and without sound, and what each one needs.
 section: examples
 order: 1
 nav: Starter workflows
 -->
 <h1>Starter workflows</h1>
-<p class="lede">On first run WorkflowRemix copies six example workflows into your ComfyUI workflows folder and switches them on, so Remix has something to run.</p>
+<p class="lede">On first run WorkflowRemix copies five example workflows into your ComfyUI workflows folder and switches them on, so Remix has something to run. A few sample pictures come with them, in your Favorites.</p>
 
 <div class="callout warn">
-<p class="callout-title">Expect to swap the models</p>
-<p>Each workflow names the checkpoints, LoRAs and custom nodes its author used. Open one in ComfyUI first to see which custom nodes you are missing. In WorkflowRemix, a model your ComfyUI does not have shows as an <strong>amber</strong> pill, ready to be replaced with one you do have. Models are never downloaded for you, and each carries a licence of its own that you must follow.</p>
+<p class="callout-title">Expect to install or swap the models</p>
+<p>Each workflow names the models, LoRAs and custom nodes its author used. Press <strong>Enable</strong> on its card on the Workflows page and the app checks every one against your ComfyUI, then lists what is missing and which folder each file belongs in (<a href="/docs/workflows#check">checking a workflow</a>). In Remix, a model your ComfyUI does not have shows as an <strong>amber</strong> pill, ready to be replaced with one you do have. Models are never downloaded for you, and each carries a licence of its own that you must follow.</p>
 </div>
 
 <h2 id="text-to-image">Text to image</h2>
@@ -21,69 +21,58 @@ nav: Starter workflows
 <p>A prompt in, a picture out, in eight steps. Thirteen nodes: a model, its text encoder and VAE, a LoRA stack and a sampler. The one to start with, and the easiest to read in ComfyUI.</p>
 <dl>
 <dt>File</dt><dd><code>APP Krea2.json</code></dd>
-<dt>Form</dt><dd>Prompt, seed, steps, size, model, LoRAs</dd>
-<dt>Needs</dt><dd>A Krea 2 turbo diffusion model with its text encoder and VAE</dd>
+<dt>Form</dt><dd>Prompt, seed, steps, guidance, size, model, LoRAs</dd>
+<dt>Needs</dt><dd>A Krea 2 turbo diffusion model with its text encoder and VAE, and the rgthree and Easy-Use node packs</dd>
 </dl>
 </div>
 
-<div class="wf">
-<h3>T2I</h3>
-<p class="kind">Text to image · anime, with detail passes</p>
-<p>A full illustration pipeline on an SDXL-family checkpoint: a fast first pass, a high-resolution second pass, then detailers that find and redraw faces and hands, and an upscale at the end. Good for seeing how Remix reduces a graph of about 150 nodes to a short form.</p>
-<dl>
-<dt>File</dt><dd><code>APP T2I.json</code></dd>
-<dt>Form</dt><dd>Prompt and negative prompt, seed, size, checkpoint, LoRAs, the detail and upscale passes</dd>
-<dt>Needs</dt><dd>An SDXL or Illustrious checkpoint and VAE, face and hand detector models, an upscale model, and the rgthree, Impact Pack, Efficiency Nodes and Easy-Use node packs among others</dd>
-</dl>
-</div>
+<h2 id="edit">Editing a picture</h2>
 
 <div class="wf">
-<h3>ANIMA T2I</h3>
-<p class="kind">Text to image · presets</p>
-<p>The same shape as T2I, built for the Anima model family, with groups of ready-made style and quality presets: anime, semi-real, realism. Tick several presets and each one runs as a pass of its own.</p>
-<dl>
-<dt>File</dt><dd><code>APP ANIMA T2I.json</code></dd>
-<dt>Form</dt><dd>Prompt, seed, size, model, LoRAs, style and quality presets</dd>
-<dt>Needs</dt><dd>An Anima diffusion model with its text encoder and VAE, detector and upscale models, and the same node packs as T2I</dd>
-</dl>
-</div>
-
-<h2 id="image-to-image">From an image</h2>
-
-<div class="wf">
-<h3>REAL</h3>
-<p class="kind">Image to image · photoreal</p>
-<p>Takes a picture and remakes it as a photograph. ControlNet holds the composition (edges, depth, pose), IPAdapter and FaceID carry a likeness across, and a refiner, face detailers and an upscale finish it. With Remix's <em>Match Input Image</em> ticked, each run is sized to the picture going in.</p>
-<dl>
-<dt>File</dt><dd><code>APP REAL.json</code></dd>
-<dt>Form</dt><dd>Input image, prompt, seed, checkpoint, LoRAs, the control and refine stages</dd>
-<dt>Needs</dt><dd>SDXL checkpoints, a ControlNet union model, IPAdapter and FaceID models, detector and upscale models, and the node packs that go with them</dd>
-</dl>
-</div>
-
-<div class="wf">
-<h3>Krea2 Identity Edit</h3>
+<h3>Krea Image Edit</h3>
 <p class="kind">Image edit · by instruction</p>
-<p>You give it a picture and say what to change: “make the jacket red”, “put her in a winter street”. Its prompt is an instruction and not a description, so WorkflowRemix leaves the workflow's own prompt in place when you switch to it, where it would otherwise carry the picture's prompt over. An optional second image is a person to place into the scene; that part stays off until you pick one.</p>
+<p>You give it a picture and say what to change: “make the jacket red”, “relight the scene with warm golden-hour sun”. Its prompt is an instruction and not a description, so WorkflowRemix keeps the workflow's own instruction when you switch to it, where it would otherwise carry the picture's prompt over. The picture you remix is the one it edits, and <em>Match Input Image</em> sizes the result to it. Its sample run turns the cartoon portrait in your Favorites into a photograph.</p>
 <dl>
-<dt>File</dt><dd><code>APP Krea2 Identity Edit.json</code></dd>
-<dt>Form</dt><dd>Image to edit, optional second reference, instruction, seed, steps</dd>
-<dt>Needs</dt><dd>The Krea 2 turbo model, its text encoder and VAE, and the Krea 2 identity edit LoRA</dd>
+<dt>File</dt><dd><code>APP Krea Image Edit.json</code></dd>
+<dt>Form</dt><dd>Picture to edit, instruction, seed, steps, guidance, size, model</dd>
+<dt>Needs</dt><dd>The Krea 2 turbo model, its text encoder and VAE, the Krea 2 identity edit LoRA, and the comfyui-krea2edit node pack</dd>
+</dl>
+</div>
+
+<div class="wf">
+<h3>Krea Image Edit by Reference</h3>
+<p class="kind">Image edit · a person into a scene</p>
+<p>Two pictures: a scene, and a person to place into it (“place this person at the café table, holding a coffee”). The main image is the scene and the second reference is the person. Like Krea Image Edit, it keeps its own instruction when you switch to it. It ships with no sample pictures, so run it from Remix on two of your own.</p>
+<dl>
+<dt>File</dt><dd><code>APP Krea Image Edit by Reference.json</code></dd>
+<dt>Form</dt><dd>Scene, the person's picture, instruction, seed, steps, guidance, size, model</dd>
+<dt>Needs</dt><dd>The same as Krea Image Edit</dd>
 </dl>
 </div>
 
 <h2 id="image-to-video">Image to video</h2>
 
 <div class="wf">
-<h3>VIDEO CLIP SFW</h3>
-<p class="kind">Image to video · WAN 2.2</p>
-<p>A still in, a short clip out. WAN 2.2 uses a pair of models, one for the high-noise steps and one for the low-noise steps, each with a LoRA stack of its own. Remix treats a high and low LoRA pair as one: add it to one stack and its partner is added to the other.</p>
+<h3>Minimax H3 Video</h3>
+<p class="kind">Image to video · with sound</p>
+<p>MiniMax H3 makes the picture move and writes its soundtrack in the same pass: voices, sound effects and music together, in stereo, for clips of up to about fifteen seconds. Describe the motion and the sound in the prompt. Its sample run animates the cyberpunk portrait in your Favorites to a 1980s synthwave score.</p>
 <dl>
-<dt>File</dt><dd><code>APP VIDEO CLIP SFW.json</code></dd>
-<dt>Form</dt><dd>Input image, prompt, seed, the high and low models and their LoRAs</dd>
-<dt>Needs</dt><dd>WAN 2.2 image-to-video models (high and low noise), their text encoder, CLIP vision model and VAE, and the GGUF, rgthree and KJNodes node packs</dd>
+<dt>File</dt><dd><code>APP Minimax H3 Video.json</code></dd>
+<dt>Form</dt><dd>Input picture, prompt, seed, duration, model</dd>
+<dt>Needs</dt><dd>The MiniMax H3 diffusion model, its text encoder, video and audio VAEs and turbo LoRA, and a recent ComfyUI, whose own nodes run it: no custom nodes</dd>
+</dl>
+</div>
+
+<div class="wf">
+<h3>Wan High Low</h3>
+<p class="kind">Image to video · WAN 2.2</p>
+<p>A still in, a short clip out. WAN 2.2 uses a pair of models, one for the high-noise steps and one for the low-noise steps, each with a LoRA stack of its own. Remix treats a high and low LoRA pair as one: add it to one stack and its partner is added to the other. Frame interpolation smooths the motion, and the clip's last frame is saved beside it as a picture, so the next clip can start where this one ends.</p>
+<dl>
+<dt>File</dt><dd><code>APP Wan High Low.json</code></dd>
+<dt>Form</dt><dd>Input picture, prompt, seed, total and high-noise steps, guidance, frames, size, the high and low models and their LoRAs</dd>
+<dt>Needs</dt><dd>WAN 2.2 image-to-video models (high and low noise, in GGUF form), their text encoder, CLIP vision model and VAE, a RIFE interpolation model, and the GGUF, rgthree, KJNodes, Video Helper Suite, Frame Interpolation, Easy-Use and Quality of Life Suit node packs</dd>
 </dl>
 </div>
 
 <h2 id="your-own">Using your own</h2>
-<p>Nothing about these six is special. Any workflow you save in ComfyUI appears on the <a href="/docs/workflows">Workflows</a> page, where one tick offers it in Remix. The form is worked out from the graph, so there is nothing to convert.</p>
+<p>Nothing about these five is special. Any workflow you save in ComfyUI appears on the <a href="/docs/workflows">Workflows</a> page, where one tick offers it in Remix. The form is worked out from the graph, so there is nothing to convert. Changed one of these and want the original back? <a href="/docs/workflows#restore">Restore defaults</a> puts it back and keeps your version beside it.</p>

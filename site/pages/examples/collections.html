@@ -1,12 +1,12 @@
 <!--
 title: Starter collections
-description: The four prompt collections WorkflowRemix starts with, and one prompt answered by each of them.
+description: The five prompt collections WorkflowRemix starts with, and one prompt answered by each of them: a scene in four, a logo in the fifth.
 section: examples
 order: 2
 nav: Starter collections
 -->
 <h1>Starter collections</h1>
-<p class="lede">A new install starts with a prompt library filed in four collections. This page shows what is in them, and what one prompt becomes in each.</p>
+<p class="lede">A new install starts with a prompt library filed in five collections. This page shows what is in them, and what one prompt becomes in each: a scene in four of them, and a logo in the fifth.</p>
 
 <h2 id="one-prompt">One prompt</h2>
 <p>The library has a shelf called <strong>Showcase</strong> with a single row in it, and the rule <code>[showcase]</code> points at that row. Its text is six keywords and nothing else:</p>
@@ -34,7 +34,7 @@ nav: Starter collections
 <tr><td>Showcase</td><td>1</td><td>Switch the Collection</td></tr>
 </tbody>
 </table></div>
-<p>Female, Hair, Outfit, Male and Shot are General's alone. No starter collection has a shelf for them, so <code>[hair]</code> or <code>[shot]</code> means the same in all four.</p>
+<p>Female, Hair, Outfit, Male and Shot are General's alone. No starter collection has a shelf for them, so <code>[hair]</code> or <code>[shot]</code> means the same in every collection.</p>
 <h2 id="fantasy-world">Fantasy World</h2>
 <p class="resolved"><span class="k1">classic storybook illustration, soft watercolor washes, fine ink outlines, warm inviting colors</span>, <span class="k2">an old wizard with a long white beard and bushy eyebrows, wearing star-patterned blue robes and a tall pointed hat</span>, <span class="k3">wide-eyed with wonder</span>, <span class="k4">leaning over an open treasure chest that spills golden light</span>, <span class="k5">in an enchanted forest of twisting ancient trees, giant glowing mushrooms and drifting fireflies</span>, <span class="k6">warm golden hour light, long soft shadows</span></p>
 <p>Out of the box this collection has three characters ticked, Old Wizard, Elf Girl and Baby Dragon, so one click on Run queues three jobs: the paragraph above and the same again for the other two.</p>
@@ -144,6 +144,22 @@ nav: Starter collections
 <tr><td></td><td>Starlight</td><td>soft cool starlight with a gentle rim light</td></tr>
 <tr><td></td><td>Planet-Shine</td><td>bright light reflected from a nearby planet, deep crisp shadows</td></tr>
 <tr><td></td><td>Engine Flare</td><td>orange light from the rocket engines, strong contrast</td></tr>
+</tbody>
+</table></div>
+<h2 id="logo-design">Logo Design</h2>
+<p>The one collection whose picture is not a scene. It has a Showcase row of its own, so here <code>[showcase]</code> is answered by the collection itself, and names five keywords of its own:</p>
+<p class="demo-prompt"><span class="kw k1">[style]</span>, <span class="kw k2">[subject]</span>, <span class="kw k3">[layout]</span>, <span class="kw k4">[palette]</span>, <span class="kw k5">[background]</span>, professional brand identity design, vector artwork, crisp edges, high contrast</p>
+<p class="resolved"><span class="k1">minimalist flat vector logo, simple geometric shapes, clean lines, solid colors</span>, <span class="k2">a fox head</span>, <span class="k3">a single centered icon mark with no lettering</span>, <span class="k4">orange and charcoal color palette</span>, <span class="k5">on a plain white background</span>, professional brand identity design, vector artwork, crisp edges, high contrast</p>
+<p>Out of the box it has three styles ticked, Minimal Flat, Vintage Badge and Mascot, and one of everything else, so one click on Run queues one fox mark in three styles. It is the same fall back read the other way: a collection overrides any keyword by having the shelf, the template included.</p>
+<div class="table-wrap"><table class="shelf">
+<thead><tr><th>Shelf</th><th>Rows</th><th>Names</th></tr></thead>
+<tbody>
+<tr><td>Style</td><td>7</td><td>Minimal Flat, Vintage Badge, Mascot, Line Art, Geometric, Negative Space, Glossy Gradient</td></tr>
+<tr><td>Subject</td><td>8</td><td>Fox, Owl, Robot, Rocket, Mountain, Coffee Cup, Lighthouse, Honeybee</td></tr>
+<tr><td>Layout</td><td>5</td><td>Icon Only, Circular Badge, App Icon, Shield Crest, Icon and Wordmark</td></tr>
+<tr><td>Palette</td><td>6</td><td>Orange and Charcoal, Navy and Gold, Teal and Coral, Forest and Cream, Monochrome, Violet Gradient</td></tr>
+<tr><td>Background</td><td>5</td><td>White, Charcoal, Kraft Paper, Blueprint, Storefront Sign</td></tr>
+<tr><td>Showcase</td><td>1</td><td>Logo Sheet</td></tr>
 </tbody>
 </table></div>
 <h2 id="your-own">Make your own</h2>

@@ -36,7 +36,7 @@ layout: wide
 <p class="demo-out o-fantasy"><span class="k1">classic storybook illustration, soft watercolor washes, fine ink outlines, warm inviting colors</span>, <span class="k2">an old wizard with a long white beard and bushy eyebrows, wearing star-patterned blue robes and a tall pointed hat</span>, <span class="k3">wide-eyed with wonder</span>, <span class="k4">leaning over an open treasure chest that spills golden light</span>, <span class="k5">in an enchanted forest of twisting ancient trees, giant glowing mushrooms and drifting fireflies</span>, <span class="k6">warm golden hour light, long soft shadows</span></p>
 <p class="demo-out o-cyber"><span class="k1">cinematic cyberpunk film still, moody neon noir, anamorphic lens flares, deep contrast</span>, <span class="k2">a sleek android with white ceramic plating, visible joints and softly glowing blue seams</span>, <span class="k3">grinning with wide-eyed thrill</span>, <span class="k4">riding a sleek hover-bike low over the street, leaning into the turn</span>, <span class="k5">on a rain-slick street between towering buildings covered in glowing neon signs and holograms</span>, <span class="k6">lit by magenta and cyan neon, colored reflections on every surface</span></p>
 <p class="demo-out o-space"><span class="k1">stylized 3D animated film still, soft rounded shapes, gently exaggerated cartoon proportions, smooth clean shading</span>, <span class="k2">a small friendly robot with a rounded white body, big glowing blue eyes and two stubby antennae</span>, <span class="k3">eyes wide and bright with excitement, beaming with delight</span>, <span class="k4">riding in the cockpit of a small spacecraft that looks like a classic rocket ship, both hands on the controls</span>, <span class="k5">stars streaking past the round cockpit window, a ringed planet glowing ahead</span>, <span class="k6">warm glow from the control panel, colorful indicator lights</span></p>
-<p class="demo-foot">One prompt, four collections, nothing retyped. These are the starter collections a new install comes with. <a href="/examples/collections">See what is in them</a>.</p>
+<p class="demo-foot">One prompt, four collections, nothing retyped. These are four of the five starter collections a new install comes with; the fifth turns the same prompt into a logo. <a href="/examples/collections">See what is in them</a>.</p>
 </div>
 </div>
 </section>
@@ -48,12 +48,16 @@ layout: wide
 <ul class="grid">
 <li class="card"><p class="card-top"><span class="card-ic">{{icon:image-multiple-outline}}</span><span class="tag">Browse</span></p>
 <h3>Find it by what you asked for</h3>
-<p>A fast grid over your library and ComfyUI's output folder. Search by file name or by the prompt written inside the file, so “ocean” finds the picture even when it is called <code>Final_0042.png</code>.</p>
+<p>A fast grid over your library and ComfyUI's own output folder, right where ComfyUI saves: nothing to import and nothing to file. Search by file name or by the prompt written inside the file, so “ocean” finds the picture even when it is called <code>Final_0042.png</code>.</p>
 <a href="/docs/browse">Browsing your media →</a></li>
 <li class="card"><p class="card-top"><span class="card-ic">{{icon:shuffle-variant}}</span><span class="tag">Remix</span></p>
 <h3>The workflow becomes a form</h3>
 <p>Open a file and the graph inside it turns into the controls that matter: prompt, seed, steps, models, LoRAs, size. Change one thing and run it again, or send the picture through a different workflow.</p>
 <a href="/docs/remix">Remixing a file →</a></li>
+<li class="card"><p class="card-top"><span class="card-ic">{{icon:check-circle-outline}}</span><span class="tag">Workflows</span></p>
+<h3>Check it, then run it</h3>
+<p>Press <strong>Enable</strong> on a workflow and the app checks that every custom node, model and LoRA it names is installed, ticking them off one by one. Anything missing is listed with the folder it goes in, ready to copy. If nothing is, one button runs the workflow on its own settings.</p>
+<a href="/docs/workflows#check">Checking a workflow →</a></li>
 <li class="card"><p class="card-top"><span class="card-ic">{{icon:text-box-multiple-outline}}</span><span class="tag">Prompts</span></p>
 <h3>Keywords, answers and collections</h3>
 <p>Write <code>[character]</code> in a prompt and tick the answers from your library. Three answers queue three jobs. Switch the collection and the same prompt is answered from another world.</p>
@@ -66,6 +70,14 @@ layout: wide
 <h3>Runs that outlive the page</h3>
 <p>Every run is tracked with its progress and its outputs as they finish. Open a result in the viewer and come back to the list where you left it. Cancel stops the queue, not only the row.</p>
 <a href="/docs/jobs">The run list →</a></li>
+<li class="card"><p class="card-top"><span class="card-ic">{{icon:filmstrip}}</span><span class="tag">Video</span></p>
+<h3>Clips as well as stills</h3>
+<p>Send any picture through an image-to-video workflow. Join clips end to end into one video, or save a clip's last frame so the next clip starts where this one ends. The starter workflows include one that makes video with its own soundtrack.</p>
+<a href="/docs/browse#video">Working with video →</a></li>
+<li class="card"><p class="card-top"><span class="card-ic">{{icon:magnify-plus-outline}}</span><span class="tag">Viewer</span></p>
+<h3>A closer look</h3>
+<p>Full screen, with swipe, arrows and a slideshow. Expand a picture to pinch or scroll in on the detail and drag it around. Blur, if it is on, stays on while you zoom.</p>
+<a href="/docs/browse#viewer">The viewer →</a></li>
 <li class="card"><p class="card-top"><span class="card-ic">{{icon:cellphone-link}}</span><span class="tag">Remote</span></p>
 <h3>From your phone, privately</h3>
 <p>Reach the app over your own Tailscale network. It is never on the public internet, and a phone can browse and run without being able to change anything on the computer.</p>
@@ -79,8 +91,8 @@ layout: wide
 <h2>How it works</h2>
 <p class="intro">WorkflowRemix generates nothing itself and contains no ComfyUI code. It talks to the ComfyUI you already run, with your models and your custom nodes.</p>
 <ol class="howto">
-<li><h3>Point it at your ComfyUI</h3>
-<p>On first launch you choose where your data lives and give the address ComfyUI answers on. That is the whole setup.</p></li>
+<li><h3>Install it, point it at your ComfyUI</h3>
+<p>It installs like any other app: no Python, no command line. On first launch you choose where your data lives and give the address ComfyUI answers on. That is the whole setup, and on Windows and Linux it updates itself from then on.</p></li>
 <li><h3>Open any file</h3>
 <p>ComfyUI writes the workflow into what it saves. WorkflowRemix reads it back, so every picture remembers how it was made.</p></li>
 <li><h3>Change one thing and run</h3>
@@ -98,11 +110,12 @@ layout: wide
 </div>
 <ul class="checks">
 <li><strong>Your library never leaves the machine.</strong> Media is served straight off your disk. Nothing phones home.</li>
-<li><strong>It runs only in its own window.</strong> The app answers nothing but that window. A browser pointed at its address gets a page saying where the app is.</li>
+<li><strong>It runs only in its own window, and loads nothing from the internet.</strong> Fonts and icons are built in, and the window refuses any request that is not to the app itself. A browser pointed at its address gets a page saying where the app is.</li>
 <li><strong>You choose where the data lives.</strong> The first launch asks, and says whether the folder you picked is probably indexed by system search.</li>
 <li><strong>Nothing is cached on disk by default.</strong> Thumbnails and media are not kept by the window unless you change the setting.</li>
+<li><strong>Blur that comes back by itself.</strong> One tap blurs every thumbnail and the picture you are viewing. Whenever the app goes out of sight, the blur is back on when you return, so a glance shows nothing.</li>
 <li><strong>A password and a safe mode, if you want them.</strong> Lock the whole app, and hide files whose prompt matches your own word list on a shared screen.</li>
-<li><strong>One background request, and it is named.</strong> The update check tells GitHub your IP address and that a copy is checking. Nothing about your media, prompts or settings.</li>
+<li><strong>One background request, and it is named.</strong> The update check tells GitHub your IP address and that a copy is checking. Nothing about your media, prompts or settings. No account, no licence server, no analytics and no crash reports.</li>
 </ul>
 </div>
 </section>

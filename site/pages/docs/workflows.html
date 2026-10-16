@@ -16,6 +16,16 @@ order: 5
 <li><strong>Correct its roles</strong> with <strong>Roles</strong> (below).</li>
 </ul>
 <p>Those choices are kept by the app, beside your other settings. Your workflow files are left as they are.</p>
+<p>Each card also says what the workflow makes, read off its graph: <strong>T2I</strong> (text to image), <strong>I2I</strong> (image to image), <strong>T2V</strong>, <strong>I2V</strong> and <strong>V2V</strong> for video, and <strong>…2A</strong> for audio. A workflow whose output the app does not recognise gets a plain graph icon.</p>
+
+<h2 id="check">Checking a workflow, then running it</h2>
+<p>A workflow that has not been checked yet wears an <strong>Enable</strong> button over its card. Press it and the app works out everything the workflow needs (every custom node, checkpoint, LoRA, VAE and text encoder) and ticks each one off in turn, ✓ found or ✗ missing.</p>
+<ul>
+<li><strong>Everything found.</strong> The workflow is marked as checked, the button goes, and a big <strong>Run</strong> appears. It runs the workflow once on its own settings and takes you to <a href="/docs/jobs">Jobs</a> to watch. Where a starter workflow takes a picture, Run feeds it one of the sample pictures a new install comes with, all but Krea Image Edit by Reference, which needs two pictures of your own.</li>
+<li><strong>Something missing.</strong> The sheet lists the missing custom nodes, and the missing files grouped by the folder each belongs in under <code>ComfyUI/models</code>. <strong>Copy details</strong> copies that list as plain text with what to do about it: install the nodes through ComfyUI-Manager, put the files in those folders, restart ComfyUI and check again.</li>
+<li><strong>ComfyUI not running.</strong> Which nodes exist can only be asked of ComfyUI, so the sheet says to start it rather than reporting everything as missing.</li>
+</ul>
+<p>A file counts as installed if ComfyUI lists it or if it is on disk in your ComfyUI's <code>models</code> folder, so a Docker install with models mounted elsewhere and a local one with files not yet loaded both come out right. The check reads only; it installs and downloads nothing.</p>
 <div class="callout">
 <p class="callout-title">The app runs ComfyUI's copy</p>
 <p>A run always uses the workflow file in your ComfyUI folder as it is now. Edit a workflow in ComfyUI and save it, and the next remix uses the new version.</p>
@@ -46,4 +56,11 @@ order: 5
 <p>Any file that carries a workflow can give it back: the workflow inside it can be saved into your ComfyUI workflows folder as a new one, and then switched on like any other. If the app recognises a file's workflow as one that is in your ComfyUI but not switched on, it says so and offers to add it.</p>
 
 <h2 id="starter">Starter workflows</h2>
-<p>A new install copies a handful of example workflows into your ComfyUI workflows folder and switches them on. They are a starting point: they name custom nodes and models you may need to install or swap for your own. <a href="/examples/workflows">The starter workflows</a> lists what each one does and needs.</p>
+<p>A new install copies five example workflows into your ComfyUI workflows folder and switches them on. They are a starting point: they name custom nodes and models you may need to install or swap for your own, which is what <a href="#check">Enable</a> is for. <a href="/examples/workflows">The starter workflows</a> lists what each one does and needs.</p>
+<h3 id="restore">Putting the starters back</h3>
+<p><strong>Settings → Restore defaults</strong> puts back what a new install starts with, part by part: <strong>Overwrite keywords</strong>, <strong>Overwrite prompts</strong> and <strong>Overwrite workflows</strong>, none ticked to begin with, and the app asks before it writes anything.</p>
+<ul>
+<li>A starter workflow you changed is kept beside itself as <code>&lt;name&gt;.bak</code> before the shipped one goes back. Your own workflows and shortcuts are left alone.</li>
+<li>The keywords and the prompt library are replaced as shipped, and no copy is kept, so that part cannot be undone.</li>
+<li>Only from the computer the app runs on, not from a phone.</li>
+</ul>

@@ -7,14 +7,15 @@ order: 3
 <h1>Remixing a file</h1>
 <p class="lede">Remix turns a workflow into a form, fills it from the file you opened, and queues what you changed on your ComfyUI.</p>
 
-<p>The same form appears in two places: the <strong>Remix</strong> dialog raised from any tile, and the <strong>inspect</strong> page of a file. They are one form, so anything that works in one works in the other.</p>
+<p>The same form appears in two places: the <strong>Remix</strong> page raised from the bar under any tile (or from the viewer), and the <strong>inspect</strong> page of a file. They are one form, so anything that works in one works in the other.</p>
+<p>The Remix page goes in three steps, as tabs: <strong>Workflow</strong> (which workflow and its form), <strong>Keywords</strong> (the <a href="/docs/prompts">prompt replacements</a>) and <strong>Run</strong>. <strong>Next</strong> walks through them, and skips Keywords when the prompt has no <code>[keyword]</code> in it. Back, Esc or the browser's back button returns you to wherever you raised it from.</p>
 
 <h2 id="which-workflow">Which workflow runs</h2>
-<p>The drop-down at the top offers:</p>
+<p>The workflow card at the top opens a menu of:</p>
 <ul>
-<li><strong>⤷ Inherit (this image)</strong>, the exact workflow written into the file.</li>
+<li><strong>Inherit (this file)</strong>, the exact workflow written into the file.</li>
 <li><strong>The workflows in your library</strong>, with the file's own prompt carried into them. This is how a picture made one way is sent through a different model, a detailer pass or an image-to-video workflow.</li>
-<li><strong>Shortcuts</strong>, a workflow saved together with the values on screen (<strong>Save shortcut</strong>).</li>
+<li><strong>Shortcuts</strong>, a workflow saved together with the values on screen (<strong>Save shortcut</strong>), listed under the workflow they belong to.</li>
 </ul>
 <p>Every workflow carries a prompt of its own, so switching asks which one you want to keep: the one in the box, or the new workflow's. A shortcut never asks, because its prompt is what was saved.</p>
 
@@ -46,13 +47,13 @@ order: 3
 <p>A workflow that takes an image in and also has a width and height is stating its frame twice. <strong>Match Input Image</strong> appears under the size fields, starts ticked, and sizes each run to the image going in. Untick it to type a size yourself.</p>
 
 <h3 id="images">Image inputs</h3>
-<p>An image field has <strong>🖼 Browse</strong>, which opens your library to pick from; pick several and each becomes a job of its own. Some workflows have an optional second image, a reference say. It arrives empty, and choosing an image is what switches that branch of the workflow on for the run.</p>
+<p>A workflow's main image (its loader titled <em>MAIN IMAGE</em>) is the file you are remixing, and the image box says so: it shows that file, not the picture the workflow was saved with. An image field has <strong>Browse</strong>, which opens your library to pick something else; pick several and each becomes a job of its own. Some workflows have an optional second image, a reference say. It arrives empty, and choosing an image is what switches that branch of the workflow on for the run.</p>
 
 <h3 id="keyword-or-remix">Keyword Prompt or Remix Prompt</h3>
 <p>If the file was made from a prompt with <code>[keywords]</code> in it, the file holds that prompt twice: as you typed it, and as it ran once the keywords were answered. A switch above the prompt field offers both. <strong>Keyword Prompt</strong> gives you the template, to be answered afresh; <strong>Remix Prompt</strong> gives you the finished text, to edit by hand.</p>
 
 <h2 id="run">Running</h2>
-<p>The <strong>Run</strong> tab holds the run count, the button, and under them the <a href="/docs/prompts">Prompt Replacements</a> panel. The app states how many jobs one click queues before you press, beside the button and on the panel's summary line:</p>
+<p>The <strong>Run</strong> tab holds the run count and the button, which says how many jobs one press queues (<em>Run · 3 jobs</em>); the <a href="/docs/prompts">Prompt Replacements</a> panel's summary line states the same number. On the inspect page the panel sits at the foot of its Run tab. The count is:</p>
 <pre><code>models picked  ×  files picked  ×  prompt variations ticked</code></pre>
 <p>Each job renders the run count you set. Outputs arrive as thumbnails as each one finishes, with favourite and delete on them, and every job is listed on the <a href="/docs/jobs">Jobs</a> page whether or not you stay on this one.</p>
 <p>ComfyUI has to be running. If it is not, the app says so and, where it can find ComfyUI's launcher, offers to start it.</p>
@@ -62,7 +63,7 @@ order: 3
 </div>
 
 <h2 id="stick">Making a change stick</h2>
-<p>Anything you type lasts for the visit: a trip to the viewer and back keeps it, going Home starts again from the file. To keep it for good, it depends what you want kept.</p>
+<p>Anything you type lasts for the visit: opening one of the results in the viewer and coming back keeps it, while leaving for another page starts again from the file. To keep it for good, it depends what you want kept.</p>
 <div class="table-wrap"><table>
 <thead><tr><th>Control</th><th>Keeps</th><th>Where</th></tr></thead>
 <tbody>

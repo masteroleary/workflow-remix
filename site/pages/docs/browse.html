@@ -34,17 +34,26 @@ order: 2
 
 <h2 id="viewer">The viewer</h2>
 <p>Full screen, with swipe or the arrows to move through the folder, and a slideshow whose speed you set. Video plays in the page. From here you can open the file's <strong>inspect</strong> page, which shows everything written into it and has the same Remix form in tabs: <strong>Workflow</strong>, <strong>Run</strong> and <strong>Preview</strong>.</p>
+<h3 id="zoom">A closer look</h3>
+<p>The expand button at the top right of a picture opens it alone, over everything else. Pinch or scroll to zoom, drag to move around, and double-tap or double-click to jump to a readable zoom and back. <strong>Esc</strong> or ✕ returns you to the viewer where you were. If <strong>Blur</strong> is on, the picture stays blurred here too. A video goes full screen through its own controls instead.</p>
 
 <h2 id="keep">Keeping and removing</h2>
 <ul>
 <li><strong>Favorite</strong> moves a file into your library, which is how a render becomes a kept file. A file that is already in the library goes into its <code>_Favorites</code> folder.</li>
 <li><strong>Delete</strong> removes the file from disk, with its thumbnail.</li>
-<li><strong>Multi-select</strong> does either to many files at once.</li>
+<li><strong>Selecting</strong> turns the bar into the selection's: pick all, only files or only folders on the page, then <strong>Move</strong>, <strong>Favorite</strong> or <strong>Delete</strong> them together. <strong>Merge folders</strong> moves the contents of the selected folders into one and removes the empty ones.</li>
 </ul>
 <div class="callout warn">
 <p class="callout-title">Delete means delete</p>
 <p>The file is removed from the folder it is in, not hidden. The app's delete buttons reach every folder listed above, ComfyUI's own included.</p>
 </div>
+
+<h2 id="video">Working with video</h2>
+<ul>
+<li><strong>From a still to a clip.</strong> Raise <a href="/docs/remix">Remix</a> on a picture and choose an image-to-video workflow: the picture is its input. The <a href="/examples/workflows#image-to-video">starter workflows</a> include one that adds its own soundtrack.</li>
+<li><strong>Merge clips.</strong> Select two or more videos and choose <strong>Merge clips</strong> to join them end to end into one new video. The clips you picked are left as they are.</li>
+<li><strong>Last frame.</strong> In the viewer's tools, <strong>Last frame → clips</strong> saves a video's final frame as a picture in ComfyUI's clips folder. Remix that picture through an image-to-video workflow and the next clip starts where this one ended.</li>
+</ul>
 
 <h2 id="shared-screen">On a shared screen</h2>
 <ul>

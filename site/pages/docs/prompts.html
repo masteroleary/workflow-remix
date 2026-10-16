@@ -10,7 +10,7 @@ order: 4
 <h2 id="pieces">The three pieces</h2>
 <ul>
 <li><strong>The library</strong>, on the <strong>Prompts</strong> page: rows of reusable text, filed on shelves. A shelf is a keyword. The <em>Scene</em> shelf is what <code>[scene]</code> is answered from.</li>
-<li><strong>The rules</strong>, in the <strong>Prompt Replacements</strong> panel at the foot of the Run tab: a list of <em>find → replace</em> pairs applied to the prompt just before a run is queued.</li>
+<li><strong>The rules</strong>, in the <strong>Prompt Replacements</strong> panel, on the Remix page's <strong>Keywords</strong> tab (on the inspect page, at the foot of its Run tab): a list of <em>find → replace</em> pairs applied to the prompt just before a run is queued.</li>
 <li><strong>The collection</strong>, a drop-down at the top of that panel: which set of shelves answers.</li>
 </ul>
 <p>The rules are stored by the app, not in a workflow, so they apply to whatever you run.</p>
@@ -22,7 +22,7 @@ order: 4
 <li><strong>A <code>[keyword]</code></strong> is answered from the library. Its value cell opens a tick list over the shelf the keyword names, so you pick answers, you do not type them.</li>
 </ul>
 <p>Keywords are answered first, and plain-text rules then run over the finished text. So <code>blonde → platinum</code> also catches a “blonde” that arrived inside a library row.</p>
-<p>When you reach the Run tab, any <code>[keyword]</code> your prompt uses and no rule answers gets an empty row of its own, so a keyword is never silently swept out of a run.</p>
+<p>When you reach the panel, any <code>[keyword]</code> your prompt uses and no rule answers gets an empty row of its own, so a keyword is never silently swept out of a run.</p>
 
 <h2 id="variations">Several answers are several jobs</h2>
 <p>Tick three answers for <code>[character]</code> and a run queues three jobs, one per answer. Tick two for <code>[scene]</code> as well and it is six: every combination.</p>
@@ -48,9 +48,9 @@ order: 4
 <p>A <code>[promptN]</code> row can also be built by hand. Its answers are then <em>parts</em> joined into one description (a character, a hair style, an outfit), not alternatives. Only two answers from the same shelf count as variations.</p>
 
 <h2 id="collections">Collections</h2>
-<p>The library is filed in <strong>collections</strong>. A new install has four: General, Fantasy World, Cyberpunk and Futuristic Space. Choosing one in the <strong>Collection</strong> drop-down decides where every keyword is answered from. So one prompt:</p>
+<p>The library is filed in <strong>collections</strong>. A new install has five: General, Fantasy World, Cyberpunk, Futuristic Space and Logo Design. Choosing one in the <strong>Collection</strong> drop-down decides where every keyword is answered from. So one prompt:</p>
 <pre><code>[style], [character], [expression], [action], [scene], [lighting]</code></pre>
-<p>is a robot in a rocket ship in one collection and a wizard in an enchanted forest in the next, with no rule edited. <a href="/examples/collections">The starter collections</a> shows all four.</p>
+<p>is a robot in a rocket ship in one collection and a wizard in an enchanted forest in the next, with no rule edited. <a href="/examples/collections">The starter collections</a> shows all of them, Logo Design among them, whose own Showcase row turns the same <code>[showcase]</code> into a logo.</p>
 <ul>
 <li><strong>The shelves are shared.</strong> <code>[scene]</code> means the Scene shelf whichever collection is answering. What differs is the rows on it.</li>
 <li><strong>General is the fall back.</strong> A keyword the chosen collection has no shelf for is answered from General's, and the row says so with a <em>General</em> tag.</li>
