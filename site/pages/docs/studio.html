@@ -1,0 +1,36 @@
+<!--
+title: H3 Studio
+description: Make short MiniMax H3 videos in WorkflowRemix from characters, stories and scenes, with two example projects to start from.
+section: docs
+order: 6
+-->
+<h1>H3 Studio</h1>
+<p class="lede">A part of the app for making short videos with MiniMax H3 out of characters and stories. Open it from <strong>H3 Studio</strong> in the sidebar, or from <em>Settings → Features</em>.</p>
+
+<h2 id="start">Start from an example</h2>
+<p>Two example projects come with the app: <strong>Neon Tokyo Heist</strong>, a fifteen-second action scene, and <strong>Faux Mario</strong>, a comedy shot like a homemade parody. Press <strong>Enable</strong> on one and the app checks that the two workflows it needs are installed, the same check the Workflows page runs. Then press <strong>Run</strong>: it makes the character pictures, writes the prompt and renders the video, and every step is an ordinary job on the Jobs page.</p>
+<p>Changed an example and want it back? <strong>Put back as shipped</strong> on its page restores it.</p>
+
+<h2 id="characters">Characters</h2>
+<p>A character has a description, a voice and a picture. The voice builder under the voice prompt offers words for pitch, texture, pace and the rest, and shows how far apart two characters sound, so each one's voice stays its own.</p>
+<p>Each character also has <strong>assets</strong>: a face close-up, a full-body picture and any number of named <strong>looks</strong>, such as "in gear" or "in a dress". A look can be drawn from the face close-up, so the face stays theirs while the outfit changes. A picture you pick from your library is copied into the character's own folder.</p>
+
+<h2 id="stories">Stories, scenes and storylines</h2>
+<ul>
+<li><strong>A story</strong> casts its characters as Subject 1, Subject 2 and so on, and is made of scenes.</li>
+<li><strong>A scene</strong> has its own prompt, a length in seconds, an optional line of dialogue, and an optional reference picture: a character, one of their looks, or a picture made for the scene.</li>
+<li><strong>A storyline</strong> puts stories in order, with a visual style, an ambient soundscape and a score.</li>
+</ul>
+<p>The project sets the frame (wide 16:9, tall 9:16 or square) and whether a storyline renders as <strong>one video</strong> or <strong>a clip per story</strong>, joined end to end. A new project, story or scene starts filled in enough to render, with three-second scenes, so you can run it before you have changed much.</p>
+
+<h2 id="templates">Prompt templates</h2>
+<p>How a storyline is written out for the model is a template, on the <strong>Templates</strong> page. Three come built in, including a second-by-second timeline in the style of H3's own examples. You can edit them or write your own with keywords like <code>[stories]</code> and <code>[scenes]</code>, and preview the result on one of your storylines.</p>
+
+<h2 id="takes">Remix and takes</h2>
+<p>Every story and storyline has a <strong>Remix</strong> button. Each render there is a <strong>take</strong> with a new seed. Render a quick <strong>Draft</strong> until a take looks right, press <strong>Lock this seed</strong>, then <strong>Make final</strong> to upscale and refine that same take. A locked seed is the one the whole project's run uses, so the video you liked is the video you get.</p>
+
+<h2 id="needs">What it needs</h2>
+<ul>
+<li>A ComfyUI that can run MiniMax H3, with the nodes and models the bundled <em>APP Minimax H3 Reference</em> workflow names, and <em>APP Krea2</em> for the pictures. <strong>Enable</strong> lists anything missing.</li>
+<li>Prompts are read by the app's built-in safeguard before they are shown or run, like every run (see <a href="/docs/privacy">Privacy and security</a>).</li>
+</ul>

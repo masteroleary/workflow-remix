@@ -382,7 +382,8 @@ td:first-child{font-weight:600}
   .demo-out{min-height:0}
   .howto{grid-template-columns:1fr}
 }
-@media (max-width:1240px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.card.wide{grid-column:span 2}
+@media (max-width:1240px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.card.wide{grid-column:auto}}
 @media (max-width:699px){
   .hero-in{padding:2.25rem 1.1rem 2.75rem}
   .grid{grid-template-columns:1fr}
