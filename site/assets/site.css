@@ -432,5 +432,39 @@ td:first-child{font-weight:600}
 .foot-fine a{color:var(--text3);text-decoration:underline}
 @media (max-width:699px){.foot-in{grid-template-columns:1fr 1fr;padding-left:1.1rem;padding-right:1.1rem}.foot-brand{grid-column:1/-1}}
 
+/* ── Screenshots ────────────────────────────────────────────
+   The desktop app as it looks, in a window of its own: a title bar with the mark, the name
+   and the three window controls (drawn, not an image), over a shot of the window's
+   contents. A phone's shot sits in a rounded frame instead. Cards on the home page open
+   on a crop of the page beside the sidebar. */
+.shot{margin:1.6rem 0 2rem;border:1px solid var(--border2);border-radius:var(--r-lg);overflow:hidden;background:var(--bg2);box-shadow:var(--shadow)}
+.shot img{display:block;width:100%;height:auto}
+.shot-bar{display:flex;align-items:center;justify-content:space-between;height:2.1rem;padding:0 .2rem 0 .8rem;background:var(--bg-bar);border-bottom:1px solid var(--line)}
+.shot-title{display:flex;align-items:center;gap:.45rem;font:600 .78rem var(--font);color:var(--text2)}
+.shot-title .ic{display:grid;place-items:center;width:1.1rem;height:1.1rem;border-radius:4px;background:var(--accent);color:var(--on-accent);font-size:.75rem}
+.shot-ctl{display:flex;height:100%}
+.shot-ctl i{width:2.6rem;height:100%;position:relative}
+.shot-ctl i::before,.shot-ctl i::after{content:"";position:absolute;left:50%;top:50%;background:var(--text3)}
+.shot-ctl i:nth-child(1)::before{width:.6rem;height:1px;transform:translate(-50%,-50%)}
+.shot-ctl i:nth-child(2)::before{width:.5rem;height:.5rem;background:none;border:1px solid var(--text3);transform:translate(-50%,-50%)}
+.shot-ctl i:nth-child(3)::before,.shot-ctl i:nth-child(3)::after{width:.7rem;height:1px;transform:translate(-50%,-50%) rotate(45deg)}
+.shot-ctl i:nth-child(3)::after{transform:translate(-50%,-50%) rotate(-45deg)}
+.shot figcaption{padding:.7rem 1rem .8rem;font-size:.9rem;line-height:1.5;color:var(--text2);border-top:1px solid var(--line);background:var(--surface)}
+.shot.phone{max-width:20rem;margin-left:auto;margin-right:auto;border-radius:2rem;padding:.55rem;background:var(--surface2);border-color:var(--border)}
+.shot.phone img{border-radius:1.5rem}
+.shot.phone figcaption{border:0;background:none;padding:.75rem .5rem .25rem;text-align:center}
+.shots-row{display:grid;gap:1.4rem;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+.shots-row .shot{margin:0}
+.split>.shots-row{grid-column:1/-1}
+.shell .shots-row{grid-template-columns:1fr}
+.card-shot{display:block;width:calc(100% + 2.6rem);max-width:none;height:auto;margin:-1.3rem -1.3rem 1.1rem;border-bottom:1px solid var(--line);border-radius:var(--r-lg) var(--r-lg) 0 0}
+.card.wide .card-shot{aspect-ratio:2.4;object-fit:cover;object-position:50% 30%}
+.usecases{display:grid;gap:1.6rem;grid-template-columns:repeat(2,minmax(0,1fr))}
+.usecase .shot{margin:0 0 1rem}
+.usecase h3{font-size:1.15rem;margin:0 0 .4rem}
+.usecase p{color:var(--text2);margin:0;font-size:.97rem}
+.band .shot.hero-shot{margin:0 0 2.6rem}
+@media (max-width:1140px){.usecases,.shots-row{grid-template-columns:1fr}}
+
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 @media print{.sidebar,.tab-bar,.m-head,.side-menu,.foot,.pager,.skip{display:none}.site-main{padding:0}body{background:#fff;color:#000}}

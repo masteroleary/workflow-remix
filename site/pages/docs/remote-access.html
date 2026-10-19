@@ -7,6 +7,8 @@ order: 9
 <h1>Remote access</h1>
 <p class="lede">Off unless you switch it on. When it is on, your phone reaches the app over your own Tailscale network, and only over it. The app is never on the public internet.</p>
 
+<figure class="shot phone"><img src="/assets/full-phone-browse.webp" alt="The media grid on a phone: fantasy paintings in two columns, with the tab bar along the bottom" width="640" height="1385" loading="lazy"><figcaption>The app on a phone, over your own Tailscale network.</figcaption></figure>
+
 <h2 id="how">How it works</h2>
 <p><a href="https://tailscale.com" rel="noopener noreferrer">Tailscale</a> is a private network between your own devices. WorkflowRemix publishes itself to that network with Tailscale Serve, at an address like <code>https://your-computer.your-tailnet.ts.net</code>. Only devices signed in to your tailnet can connect, the traffic is encrypted between them, and HTTPS runs on top.</p>
 <p>It never uses Tailscale Funnel, the feature that publishes to the internet. If something else on the computer switches Funnel on for that address, the app answers nothing through it.</p>

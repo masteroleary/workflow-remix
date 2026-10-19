@@ -46,23 +46,28 @@ layout: wide
 <h2>What it does</h2>
 <p class="intro">ComfyUI makes the pictures. WorkflowRemix is where you find them again, keep the good ones, and make the next version without rebuilding a graph.</p>
 <ul class="grid">
-<li class="card wide"><p class="card-top"><span class="card-ic">{{icon:movie-open-outline}}</span><span class="tag">H3 Studio</span></p>
+<li class="card wide"><img class="card-shot" src="/assets/card-studio-characters.webp" alt="H3 Studio’s characters page: a collection called Neon Tokyo with two characters, Rei and Kade, each with a full-length picture" width="960" height="600" loading="lazy">
+<p class="card-top"><span class="card-ic">{{icon:movie-open-outline}}</span><span class="tag">H3 Studio</span></p>
 <h3>Characters, stories, a video</h3>
 <p>Make short MiniMax H3 videos: give each character a face, a full body and named looks, write stories in timed scenes with dialogue, and render them as one video. Lock the take you like and the whole project renders it that way. Two example projects come with it.</p>
 <a href="/docs/studio">H3 Studio →</a></li>
-<li class="card"><p class="card-top"><span class="card-ic">{{icon:image-multiple-outline}}</span><span class="tag">Browse</span></p>
+<li class="card"><img class="card-shot" src="/assets/card-browse-mason-fantasy.webp" alt="The media grid in its masonry layout: six fantasy paintings of a wizard, a witch and a faery" width="960" height="600" loading="lazy">
+<p class="card-top"><span class="card-ic">{{icon:image-multiple-outline}}</span><span class="tag">Browse</span></p>
 <h3>Find it by what you asked for</h3>
 <p>A fast grid over your library and ComfyUI's own output folder, right where ComfyUI saves: nothing to import and nothing to file. Search by file name or by the prompt written inside the file, so “ocean” finds the picture even when it is called <code>Final_0042.png</code>.</p>
 <a href="/docs/browse">Browsing your media →</a></li>
-<li class="card"><p class="card-top"><span class="card-ic">{{icon:shuffle-variant}}</span><span class="tag">Remix</span></p>
+<li class="card"><img class="card-shot" src="/assets/card-remix-workflow.webp" alt="The Remix page’s Workflow tab: a prompt, the model, seed, steps and size, and the LoRA slots" width="960" height="600" loading="lazy">
+<p class="card-top"><span class="card-ic">{{icon:shuffle-variant}}</span><span class="tag">Remix</span></p>
 <h3>The workflow becomes a form</h3>
 <p>Open a file and the graph inside it turns into the controls that matter: prompt, seed, steps, models, LoRAs, size. Change one thing and run it again, or send the picture through a different workflow.</p>
 <a href="/docs/remix">Remixing a file →</a></li>
-<li class="card"><p class="card-top"><span class="card-ic">{{icon:check-circle-outline}}</span><span class="tag">Workflows</span></p>
+<li class="card"><img class="card-shot" src="/assets/card-workflows-enable-passed.webp" alt="A workflow’s requirements check: all 14 requirements installed, and what Run will do" width="960" height="600" loading="lazy">
+<p class="card-top"><span class="card-ic">{{icon:check-circle-outline}}</span><span class="tag">Workflows</span></p>
 <h3>Check it, then run it</h3>
 <p>Press <strong>Enable</strong> on a workflow and the app checks that every custom node, model and LoRA it names is installed, ticking them off one by one. Anything missing is listed with the folder it goes in, ready to copy. If nothing is, one button runs the workflow on its own settings.</p>
 <a href="/docs/workflows#check">Checking a workflow →</a></li>
-<li class="card"><p class="card-top"><span class="card-ic">{{icon:text-box-multiple-outline}}</span><span class="tag">Prompts</span></p>
+<li class="card"><img class="card-shot" src="/assets/card-remix-keywords.webp" alt="The Keywords tab: each [keyword] with its ticked answers, and every prompt the run will send, coloured by the keyword that wrote each part" width="960" height="600" loading="lazy">
+<p class="card-top"><span class="card-ic">{{icon:text-box-multiple-outline}}</span><span class="tag">Prompts</span></p>
 <h3>Keywords, answers and collections</h3>
 <p>Write <code>[character]</code> in a prompt and tick the answers from your library. Three answers queue three jobs. Switch the collection and the same prompt is answered from another world.</p>
 <a href="/docs/prompts">The prompt library →</a></li>
@@ -70,7 +75,8 @@ layout: wide
 <h3>Several models, the same seeds</h3>
 <p>Pick more than one checkpoint and a run is queued once per model, model by model, on shared seeds. What differs between the results is the model and not the noise.</p>
 <a href="/docs/remix#models">Running several models →</a></li>
-<li class="card"><p class="card-top"><span class="card-ic">{{icon:lightning-bolt-outline}}</span><span class="tag">Jobs</span></p>
+<li class="card"><img class="card-shot" src="/assets/card-jobs.webp" alt="The Jobs page: six finished jobs, each with its prompt, its input and the picture it made" width="960" height="600" loading="lazy">
+<p class="card-top"><span class="card-ic">{{icon:lightning-bolt-outline}}</span><span class="tag">Jobs</span></p>
 <h3>Runs that outlive the page</h3>
 <p>Every run is tracked with its progress and its outputs as they finish. Open a result in the viewer and come back to the list where you left it. Cancel stops the queue, not only the row.</p>
 <a href="/docs/jobs">The run list →</a></li>
@@ -78,7 +84,8 @@ layout: wide
 <h3>Clips as well as stills</h3>
 <p>Send any picture through an image-to-video workflow. Join clips end to end into one video, or save a clip's last frame so the next clip starts where this one ends. The starter workflows include one that makes video with its own soundtrack.</p>
 <a href="/docs/browse#video">Working with video →</a></li>
-<li class="card"><p class="card-top"><span class="card-ic">{{icon:magnify-plus-outline}}</span><span class="tag">Viewer</span></p>
+<li class="card"><img class="card-shot" src="/assets/card-viewer.webp" alt="The viewer: a painting of a witch beside the prompt, model and seed that made it" width="960" height="600" loading="lazy">
+<p class="card-top"><span class="card-ic">{{icon:magnify-plus-outline}}</span><span class="tag">Viewer</span></p>
 <h3>A closer look</h3>
 <p>Full screen, with swipe, arrows and a slideshow. Expand a picture to pinch or scroll in on the detail and drag it around. Blur, if it is on, stays on while you zoom.</p>
 <a href="/docs/browse#viewer">The viewer →</a></li>
@@ -91,6 +98,25 @@ layout: wide
 </section>
 
 <section class="band alt">
+<div class="band-in">
+<h2>One prompt, every variation</h2>
+<p class="intro">Write the prompt once with <code>[keywords]</code> in it, tick the answers you want, and one press queues every combination. These were made exactly that way.</p>
+<div class="usecases">
+<div class="usecase">
+<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/full-browse-mason-fantasy.webp" alt="Six fantasy paintings in the media grid: an old wizard, a witch and a faery, each in an enchanted forest and in a wizard’s tower" width="1920" height="1200" loading="lazy"></figure>
+<h3>Characters across settings</h3>
+<p>The prompt is <code>[style], [character], [expression], [action], [scene], [lighting]</code>. Three characters and two scenes ticked in the Fantasy World collection made six jobs: each character in each place, in one painterly style.</p>
+</div>
+<div class="usecase">
+<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/full-remix-run-logo.webp" alt="The Remix page’s Run tab with eight fox logos: a flat mark and a mascot, each plain, in a circular badge, in a shield crest and on an app icon tile" width="1920" height="1200" loading="lazy"></figure>
+<h3>One mark, every frame</h3>
+<p>Switch the collection to Logo Design and the same <code>[showcase]</code> prompt asks for a logo. One subject, a fox, two styles and four frames ticked: plain, a circular badge, a shield crest and an app icon. Eight jobs, back side by side, ready to compare and pick.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band">
 <div class="band-in">
 <h2>How it works</h2>
 <p class="intro">WorkflowRemix generates nothing itself and contains no ComfyUI code. It talks to the ComfyUI you already run, with your models and your custom nodes.</p>
@@ -105,7 +131,7 @@ layout: wide
 </div>
 </section>
 
-<section class="band">
+<section class="band alt">
 <div class="band-in split">
 <div>
 <h2>Private by design</h2>
@@ -121,10 +147,14 @@ layout: wide
 <li><strong>A password and a safe mode, if you want them.</strong> Lock the whole app, and hide files whose prompt matches your own word list on a shared screen.</li>
 <li><strong>One background request, and it is named.</strong> The update check tells GitHub your IP address and that a copy is checking. Nothing about your media, prompts or settings. No account, no licence server, no analytics and no crash reports.</li>
 </ul>
+<div class="shots-row">
+<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/full-privacy-blur-grid.webp" alt="The media grid with Blur on: every thumbnail blurred past recognising" width="1920" height="1200" loading="lazy"><figcaption>Blur on: nothing on screen gives a picture away, and it comes back on by itself when you return to the app.</figcaption></figure>
+<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/full-privacy-lock-screen.webp" alt="The lock screen: a padlock and a password box, and nothing else" width="1920" height="1200" loading="lazy"><figcaption>The lock screen says nothing about the app or what is in it until the right password is typed.</figcaption></figure>
+</div>
 </div>
 </section>
 
-<section class="band alt">
+<section class="band">
 <div class="band-in split">
 <div>
 <h2>Yours to erase, on your terms</h2>
@@ -140,7 +170,7 @@ layout: wide
 </div>
 </section>
 
-<section class="band">
+<section class="band alt">
 <div class="band-in split">
 <div>
 <h2>For adults, within the law</h2>

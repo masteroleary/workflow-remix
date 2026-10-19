@@ -7,6 +7,8 @@ order: 5
 <h1>Workflows</h1>
 <p class="lede">The <strong>Workflows</strong> page is the library Remix runs from: every workflow saved in your ComfyUI, with a switch for whether the app offers it.</p>
 
+<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/full-workflows.webp" alt="The Workflows page: six workflows, each tagged with what it makes, such as T2I, I2I or I2V" width="1920" height="1200" loading="lazy"><figcaption>The library: each workflow tagged with what it makes. One still waits for its check.</figcaption></figure>
+
 <h2 id="library">The library</h2>
 <p>WorkflowRemix reads the workflows folder of the ComfyUI you pointed it at. Nothing is copied or renamed. For each workflow you can:</p>
 <ul>
@@ -19,6 +21,11 @@ order: 5
 <p>Each card also says what the workflow makes, read off its graph: <strong>T2I</strong> (text to image), <strong>I2I</strong> (image to image), <strong>T2V</strong>, <strong>I2V</strong> and <strong>V2V</strong> for video, and <strong>…2A</strong> for audio. A workflow whose output the app does not recognise gets a plain graph icon.</p>
 
 <h2 id="check">Checking a workflow, then running it</h2>
+
+<div class="shots-row">
+<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/full-workflows-enable-passed.webp" alt="A requirements check that passed: all 14 requirements installed, the picture Run feeds in and the instruction it sends" width="1920" height="1200" loading="lazy"><figcaption>Everything installed: the check folds away and says what Run will do.</figcaption></figure>
+<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/full-workflows-enable-missing.webp" alt="A requirements check listing two missing models, each with Download and Find manually" width="1920" height="1200" loading="lazy"><figcaption>Something missing: each file is listed with its folder, its size and a way to get it.</figcaption></figure>
+</div>
 <p>A workflow that has not been checked yet wears an <strong>Enable</strong> button over its card. Press it and the app works out everything the workflow needs (every custom node, checkpoint, LoRA, VAE and text encoder) and ticks each one off in turn, ✓ found or ✗ missing.</p>
 <ul>
 <li><strong>Everything found.</strong> The workflow is marked as checked, the button goes, and a big <strong>Run</strong> appears. It runs the workflow once on its own settings and takes you to <a href="/docs/jobs">Jobs</a> to watch. Where a starter workflow takes a picture, Run feeds it one of the sample pictures a new install comes with (two for Krea Image Edit by Reference: the scene and the person).</li>
