@@ -15,9 +15,10 @@ order: 8
 <tr><td>GitHub Releases</td><td>Cloud</td><td>The update check, 10 seconds after launch and every 4 hours, and the download of a new version.</td><td>A request to github.com: your IP address, and the fact that a copy is checking. Nothing about your media, prompts or settings.</td></tr>
 <tr><td>Civitai</td><td>Cloud</td><td>Model downloads that need an account, if you store an API key for them in Settings.</td><td>Only the requests you start yourself.</td></tr>
 <tr><td>Tailscale</td><td>Your own network</td><td><a href="/docs/remote-access">Remote access</a>, if you switch it on.</td><td>Traffic between your own devices, encrypted end to end.</td></tr>
+<tr><td>WorkflowRemix support</td><td>Cloud (hub.workflowremix.com)</td><td><a href="/docs/troubleshooting#report">Report a problem</a>, only when you press <strong>Send</strong>.</td><td>The report you were shown first, and only the parts you left ticked: your computer's basics and software versions, the app's log, ComfyUI's log and what went wrong. Your folders, file names, account and computer names, addresses, keys and prompt text are taken out first. Kept for 30 days.</td></tr>
 </tbody>
 </table></div>
-<p>The update check is the one request the app makes without being asked. There is no account, no licence server, no analytics and no crash reporting.</p>
+<p>The update check is the one request the app makes without being asked. There is no account, no licence server, no analytics and no automatic crash reporting: a problem report goes only when you choose to send one.</p>
 
 <h2 id="window">It runs only in its own window</h2>
 <p>The app is a small server and a window that shows it. The server listens on this computer only and answers nothing but that window: any other program, or a browser pointed at its address, gets a page saying where the app is.</p>
