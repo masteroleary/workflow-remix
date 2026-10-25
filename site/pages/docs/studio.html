@@ -11,19 +11,19 @@ order: 6
 
 <h2 id="start">Start from an example</h2>
 <p>Two example projects come with the app: <strong>Neon Tokyo Heist</strong>, a fifteen-second action scene, and <strong>Faux Mario</strong>, a comedy shot like a homemade parody. Press <strong>Enable</strong> on one and the app checks that the two workflows it needs are installed, the same check the Workflows page runs. Then press <strong>Run</strong>: it makes the character pictures, writes the prompt and renders the video, and every step is an ordinary job on the Jobs page.</p>
-<p>Changed an example and want it back? <strong>Put back as shipped</strong> on its page restores it.</p>
+<p>Changed an example and want it back? <strong>Reset</strong> at the top of its page restores it.</p>
 <h3 id="import">Import a project</h3>
 <p><strong>Projects → Import</strong> turns a written idea into a project: its characters, stories, scenes and a storyline. Paste a prompt and, with an <a href="#assistant">AI assistant</a> set up, the app converts it for you and shows its progress while it works. Anything that would make a poor picture prompt is pointed out before you import, so you can fix it first.</p>
 
 <h2 id="project">The project page</h2>
 <p>A project's page is a timeline, with the form for whatever you pick underneath it.</p>
 <ul>
-<li><strong>What Run makes</strong> is said at the top in one line: which storyline, how many stories, how many seconds, the frame. Below it are warnings: a cut longer than H3's 15 seconds, an empty cut, or stories that are in no storyline.</li>
-<li><strong>The timeline</strong> shows one storyline: its stories, and their scenes under them, each as wide as its seconds, against a line at H3's 15 seconds. A tab for each storyline switches between them. On a phone the timeline scrolls sideways.</li>
+<li><strong>The timeline</strong> shows one storyline: its stories, and their scenes under them, each as wide as its seconds, against a line at H3's 15 seconds. A tab for each storyline sits above it. On a phone the timeline scrolls sideways.</li>
+<li><strong>Run</strong> is at the foot of the timeline, beside one line saying what it makes (how many stories, how many seconds, the frame) and any warnings: an empty cut, or stories that are in no storyline.</li>
 <li><strong>Press a story or a scene</strong> and its form opens underneath, with the timeline still in view. A breadcrumb says where you are (project, storyline, story, scene), with what you can do there: Remix, Watch, Delete, or step to the scene before or after. Stories that are not in the storyline shown are listed under the timeline, to pick as well.</li>
 <li><strong>The address remembers what you picked</strong>, so a reload or going back lands on the same piece.</li>
 </ul>
-<p>A project's storylines are <strong>alternate cuts</strong> of its stories: a full cut, a teaser, an ending on its own. Run renders one of them. <strong>Run renders</strong> at the top chooses which, or press <strong>Run this cut</strong> on a storyline. Looking at another cut never changes what Run makes.</p>
+<p>A project's storylines are <strong>alternate cuts</strong> of its stories: a full cut, a teaser, an ending on its own. Run renders the one whose tab is picked, marked with ▶, so picking a tab is choosing the cut.</p>
 
 <h2 id="characters">Characters</h2>
 
@@ -45,7 +45,7 @@ order: 6
 <h3 id="frames">First and last frame</h3>
 <p>On a story's or a storyline's Remix page you can pick the picture its clip <strong>starts on</strong> and the one it <strong>ends on</strong>. Leave either empty and H3 decides.</p>
 <h3 id="loras">LoRAs</h3>
-<p>A project's <strong>LoRAs</strong> tab is a table: the LoRAs you add across the top, the storylines and stories down the side, and a strength where they meet. An empty cell is that LoRA off there. Each story and storyline renders with its own, on its Remix page and in a run, and the table marks the rows Run uses. On a phone it scrolls sideways.</p>
+<p>A project's <strong>LoRAs</strong> tab is a table: the LoRAs you add across the top, the storylines and stories down the side, and a strength where they meet. An empty cell is that LoRA off there. A LoRA in ComfyUI with H3 as a word of its name is suggested as a column, dim until you give it a strength somewhere, which adds it to the project. Each story and storyline renders with its own, on its Remix page and in a run, and the table marks the rows Run uses. On a phone it scrolls sideways.</p>
 
 <h2 id="templates">Prompt templates</h2>
 
