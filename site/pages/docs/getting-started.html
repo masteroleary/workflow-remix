@@ -5,7 +5,7 @@ section: docs
 order: 1
 -->
 <h1>Getting started</h1>
-<p class="lede">Install the app, answer three questions on its first launch, and your ComfyUI output folder is a library you can search and remix.</p>
+<p class="lede">Install the app, answer a few questions on its first launch, and your ComfyUI output folder is a library you can search and remix.</p>
 
 <h2 id="need">What you need</h2>
 <ul>
@@ -38,15 +38,17 @@ order: 1
 <p>It cannot be moved from inside the app afterwards. A search index keeps its own copy of file names and of the text inside files, and that copy outlives the files. If you accept the default, your data goes in your user profile: <code>%LOCALAPPDATA%\WorkflowRemix</code> on Windows, <code>~/Library/Application Support/WorkflowRemix</code> on macOS, <code>~/.config/WorkflowRemix</code> on Linux.</p>
 </div>
 
+<h2 id="privacy-setup">Privacy setup</h2>
+<p>Until you have answered them, a <strong>Complete setup</strong> row sits above Settings in the sidebar. It walks you through every privacy choice that applies to you, one question to a screen: adult content, a password for the app, caching for browsers and the phone app, blur, safe mode, filtered words, search indexing, and secure wipe with its panic password. Each answer is saved as you give it, you can leave and come back where you left off, and the row goes away once everything is answered. Every choice can be changed later in Settings.</p>
+
 <h2 id="look-round">A first look round</h2>
-<p>The app has five places, in the sidebar on a computer and along the bottom of the screen on a phone. It opens on Media.</p>
+<p>The sidebar holds both studios, each with its pages listed underneath, so any page is one click away. On a phone, the menu button in the bar across the top slides the same sidebar out. The app opens on Media.</p>
 <div class="table-wrap"><table>
 <tbody>
-<tr><td>Media</td><td>The grid over ComfyUI's output and input folders and everything you have kept. <a href="/docs/browse">Browsing your media</a>.</td></tr>
-<tr><td>Jobs</td><td>Running and completed runs. <a href="/docs/jobs">Jobs</a>.</td></tr>
-<tr><td>Workflows</td><td>The library Remix runs from. <a href="/docs/workflows">Workflows</a>.</td></tr>
-<tr><td>Prompts</td><td>Reusable text for <code>[keyword]</code> rules. <a href="/docs/prompts">The prompt library</a>.</td></tr>
-<tr><td>Settings</td><td>Paths, the theme colours, privacy, the password, secure wipe, restore defaults and remote access, and <strong>Log out</strong> when a password is set.</td></tr>
+<tr><td>Remix Studio</td><td><strong>Media</strong>, the grid over ComfyUI's output and input folders and everything you have kept (<a href="/docs/browse">Browsing your media</a>); <strong>Workflows</strong>, the library Remix runs from (<a href="/docs/workflows">Workflows</a>); and <strong>Prompts</strong>, reusable text for <code>[keyword]</code> rules (<a href="/docs/prompts">The prompt library</a>).</td></tr>
+<tr><td>H3 Studio</td><td>Projects, Characters, Templates and Settings, for making short videos with MiniMax H3. <a href="/docs/studio">H3 Studio</a>.</td></tr>
+<tr><td>Jobs</td><td>Running and completed runs, from both studios. <a href="/docs/jobs">Jobs</a>.</td></tr>
+<tr><td>Settings</td><td>At the top, a tag for each part of the app you can switch on: green when it is on and working, grey when it is off, red when it is on but not working, such as ComfyUI not answering. Press one to go to its settings. Below them: paths, the theme colours, features, privacy, the password, secure wipe, Clean, restore defaults, model substitutes and remote access; <strong>Report a problem</strong> and <strong>Your reports</strong>; and <strong>Log out</strong> when a password is set.</td></tr>
 </tbody>
 </table></div>
 
@@ -57,7 +59,7 @@ order: 1
 <li>Press the bar under its thumbnail to open <strong>Remix</strong>. The workflow inside the file is offered as <strong>Inherit (this file)</strong>, alongside the workflows in your library.</li>
 <li>Change the prompt, press <strong>Next</strong> until you reach <strong>Run</strong>, and press it. The job appears in <strong>Jobs</strong>, and its outputs arrive as thumbnails when each one finishes.</li>
 </ol>
-<p>A new install also copies five <a href="/examples/workflows">starter workflows</a> into your ComfyUI workflows folder and switches them on, with a few sample pictures in your Favorites to try them on. They name custom nodes and models you may not have: press <strong>Enable</strong> on one in <strong>Workflows</strong> and the app <a href="/docs/workflows#check">checks it against your ComfyUI</a>, lists anything missing, and once nothing is, runs it in one click.</p>
+<p>A new install also comes with six <a href="/examples/workflows">starter workflows</a>, switched on, with a few sample pictures in your Favorites to try them on. They name custom nodes and models you may not have: press <strong>Enable</strong> on one in <strong>Workflows</strong> and the app <a href="/docs/workflows#check">checks it against your ComfyUI</a>, lists anything missing, and once nothing is, runs it in one click.</p>
 
 <h2 id="where">Finding your data later</h2>
 <p><strong>File → Show Data Folder</strong> opens the folder you chose. Uninstalling the app leaves it in place.</p>

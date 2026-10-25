@@ -12,8 +12,9 @@ order: 7
 <h2 id="list">The list</h2>
 
 <figure class="shot phone"><img src="/assets/full-phone-jobs.webp" alt="The Jobs page on a phone" width="640" height="1385" loading="lazy"><figcaption>The same list on a phone.</figcaption></figure>
-<p>A job shows the workflow it ran, the choices that made it this job and not its neighbour (which model, which answer to which keyword), its runs, a progress line while it works and a thumbnail for each output as it finishes. <strong>Jobs</strong> in the sidebar (the tab bar on a phone) carries a count of what is running and a ring that fills as the job on the GPU progresses, on every page, so you can leave and carry on browsing.</p>
+<p>A job shows the workflow it ran, the choices that made it this job and not its neighbour (which model, which answer to which keyword), its runs, a progress line while it works and a thumbnail for each output as it finishes. <strong>Jobs</strong> has its own row in the sidebar, just above Settings, and holds the runs from Remix Studio and H3 Studio alike. It carries a count of what is running, and on a phone a ring at the right of the top bar fills as the job on the GPU progresses, on every page, so you can leave and carry on browsing.</p>
 <p>Opening an output takes you to the viewer; going back returns you to the list where you left it. <strong>Clear completed / failed</strong> removes every job that is over from the list, however it ended, and leaves the running ones. It does not delete what they made.</p>
+<p>An output you deleted or moved outside the app is marked where its thumbnail was. When every output of a job is gone, <strong>Clear jobs with deleted files</strong> removes those jobs from the list.</p>
 
 <h2 id="order">The order things run in</h2>
 <p>One click can queue many jobs: several models, several files, several prompt variations. They are handed to ComfyUI in a fixed order, model first, then file, then prompt variation, and one job finishes queueing before the next starts. So ComfyUI loads each checkpoint once and works through everything for it, instead of swapping models between every render.</p>

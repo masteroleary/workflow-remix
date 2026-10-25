@@ -19,7 +19,9 @@ order: 11
 
 <h2 id="comfyui">ComfyUI</h2>
 <h3>Runs do not start</h3>
-<p>ComfyUI is not answering at the address in <strong>Settings → Config</strong>. Start it, or correct the address. Where the app can find ComfyUI's launcher it offers to start it for you.</p>
+<p>ComfyUI is not answering at the address in <strong>Settings → Config</strong>. Start it, or correct the address. Where the app can find ComfyUI's launcher it offers to start it for you. The <strong>ComfyUI</strong> tag at the top of Settings turns red while it is not answering.</p>
+<h3>An H3 Studio picture or video "did not finish"</h3>
+<p>The job behind it ended without an output. Open <strong>Jobs</strong> and read that job's log: most often ComfyUI was not running, or was restarted while the job was queued. Start ComfyUI and press <strong>Regenerate</strong> or <strong>Run</strong> again.</p>
 <h3>A job fails as soon as it is queued</h3>
 <p>Read the job's log. ComfyUI's own reason is in it, and it is nearly always a model, LoRA or custom node the workflow names that your install does not have. A model pill shown in <strong>amber</strong> is the app telling you the same thing before you run.</p>
 <h3>The form takes a while to appear</h3>
@@ -43,7 +45,7 @@ order: 11
 <h3>I opened the app's address in a browser and got a notice</h3>
 <p>By design. The app answers only its own window. To use it from another device, switch on <a href="/docs/remote-access">remote access</a>.</p>
 <h3>I forgot the password</h3>
-<p>Close the app, open <code>config.json</code> in your data folder, remove the <code>auth</code> entry and start the app again.</p>
+<p>Close the app, open <code>data\config.json</code> in your data folder, remove the <code>auth</code> entry and start the app again.</p>
 <h3>Where are the logs?</h3>
 <p>In your data folder: <strong>File → Show Data Folder</strong>.</p>
 

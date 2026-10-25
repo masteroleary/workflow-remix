@@ -80,7 +80,7 @@ test('no page needs anything the policy refuses, or loads from anywhere else', a
   const s = await start({ 'latest.yml': WIN });
   try {
     await s.site.refreshReleases();
-    const allowed = /^https:\/\/(github\.com\/masteroleary\/workflow-remix\/releases|tailscale\.com|report\.cybertip\.org|report\.iwf\.org\.uk|www\.inhope\.org)/;
+    const allowed = /^https:\/\/(github\.com\/masteroleary\/workflow-remix\/releases|tailscale\.com|ollama\.com|huggingface\.co\/llmfan46\/Qwen3\.6-27B-uncensored-heretic-v2-Native-MTP-Preserved-GGUF|report\.cybertip\.org|report\.iwf\.org\.uk|www\.inhope\.org)/;
     for (const page of s.site.pages) {
       const html = s.site.routes.get(page.route).buf.toString('utf8');
       assert.ok(!/<script/i.test(html), `${page.route} has a script`);

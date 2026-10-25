@@ -1,12 +1,12 @@
 <!--
 title: Starter workflows
-description: The five ComfyUI workflows WorkflowRemix copies into a new install: text to image, edits by instruction, and image to video with and without sound, and what each one needs.
+description: The six ComfyUI workflows that come with WorkflowRemix: text to image, edits by instruction, and image to video with and without sound, what each one makes and what it needs.
 section: examples
 order: 1
 nav: Starter workflows
 -->
 <h1>Starter workflows</h1>
-<p class="lede">On first run WorkflowRemix copies five example workflows into your ComfyUI workflows folder and switches them on, so Remix has something to run. A few sample pictures come with them, in your Favorites.</p>
+<p class="lede">WorkflowRemix comes with six workflows, switched on from the first run so Remix has something to run. They are read from the app itself, so an update brings their newest versions, and nothing is copied into your ComfyUI. A few sample pictures come with them, in your Favorites. Every picture and clip below was made by these workflows, on their own settings unless the caption says otherwise.</p>
 
 <div class="callout warn">
 <p class="callout-title">Expect to install or swap the models</p>
@@ -19,6 +19,8 @@ nav: Starter workflows
 <h3>Krea2</h3>
 <p class="kind">Text to image · the simplest one</p>
 <p>A prompt in, a picture out, in eight steps. Thirteen nodes: a model, its text encoder and VAE, a LoRA stack and a sampler. The one to start with, and the easiest to read in ComfyUI.</p>
+<figure class="ba"><div class="ba-row one"><div class="ba-cell"><img src="/assets/ex-krea2-after.webp" alt="A painterly fantasy picture: a smiling witch in a purple cloak and wide-brimmed hat opening a glowing treasure chest in a wizard’s tower" width="640" height="640" loading="lazy"><span class="ba-tag after">Made</span></div></div>
+<figcaption>Prompt: <q>painterly fantasy concept art, rich brushwork… a witch in her forties with a knowing smile and long dark curls, wearing a wide-brimmed pointed hat and a deep purple cloak… leaning over an open treasure chest that spills golden light, inside a cluttered wizard’s tower</q>, written with <a href="/examples/collections">keywords</a>.</figcaption></figure>
 <dl>
 <dt>File</dt><dd><code>APP Krea2.json</code></dd>
 <dt>Form</dt><dd>Prompt, seed, steps, guidance, size, model, LoRAs</dd>
@@ -31,7 +33,9 @@ nav: Starter workflows
 <div class="wf">
 <h3>Krea Image Edit</h3>
 <p class="kind">Image edit · by instruction</p>
-<p>You give it a picture and say what to change: “make the jacket red”, “relight the scene with warm golden-hour sun”. Its prompt is an instruction and not a description, so WorkflowRemix keeps the workflow's own instruction when you switch to it, where it would otherwise carry the picture's prompt over. The picture you remix is the one it edits, and <em>Match Input Image</em> sizes the result to it. Its sample run turns the cartoon portrait in your Favorites into a photograph.</p>
+<p>You give it a picture and say what to change: “make the jacket red”, “relight the scene with warm golden-hour sun”. Its prompt is an instruction and not a description, so WorkflowRemix keeps the workflow's own instruction when you switch to it, where it would otherwise carry the picture's prompt over. The picture you remix is the one it edits, and <em>Match Input Image</em> sizes the result to it. It is made to keep a picture’s look and identity, so it is best at changing what is in the picture, its clothes, its setting and its light, rather than its style.</p>
+<figure class="ba"><div class="ba-row"><div class="ba-cell"><img src="/assets/ex-edit-before.webp" alt="The cartoon portrait in your Favorites: a woman with long black hair and gold earrings on a pink background" width="640" height="640" loading="lazy"><span class="ba-tag">Before</span></div><div class="ba-cell"><img src="/assets/ex-edit-after.webp" alt="The same cartoon woman, now in a red raincoat on a rainy city street at night lit by neon signs" width="640" height="640" loading="lazy"><span class="ba-tag after">After</span></div></div>
+<figcaption>Instruction: <q>Change her outfit to a red raincoat and change the background to a rainy city street at night with glowing neon signs. Keep her face, hair and gold earrings.</q></figcaption></figure>
 <dl>
 <dt>File</dt><dd><code>APP Krea Image Edit.json</code></dd>
 <dt>Form</dt><dd>Picture to edit, instruction, seed, steps, guidance, size, model</dd>
@@ -43,6 +47,8 @@ nav: Starter workflows
 <h3>Krea Image Edit by Reference</h3>
 <p class="kind">Image edit · a person into a scene</p>
 <p>Two pictures: a scene, and a person to place into it (“place this person at the café table, holding a coffee”). The main image is the scene and the second reference is the person. Like Krea Image Edit, it keeps its own instruction when you switch to it. Its sample run gives the woman holding flowers at a flower stall the face of the laughing woman, both pictures in your Favorites.</p>
+<figure class="ba"><div class="ba-row three"><div class="ba-cell"><img src="/assets/ex-ref-scene.webp" alt="The scene: a woman holding a bunch of flowers at a street flower stall" width="640" height="640" loading="lazy"><span class="ba-tag">Scene</span></div><div class="ba-cell"><img src="/assets/ex-ref-person.webp" alt="The person: a laughing woman with long brown hair" width="640" height="640" loading="lazy"><span class="ba-tag">Person</span></div><div class="ba-cell"><img src="/assets/ex-ref-after.webp" alt="The flower stall scene with the laughing woman’s face, holding the flowers" width="640" height="640" loading="lazy"><span class="ba-tag after">After</span></div></div>
+<figcaption>Its own instruction, run with one click: <q>maintain the background, womans clothes and flowers in hand. Replace the face with the reference woman from the reference image.</q></figcaption></figure>
 <dl>
 <dt>File</dt><dd><code>APP Krea Image Edit by Reference.json</code></dd>
 <dt>Form</dt><dd>Scene, the person's picture, instruction, seed, steps, guidance, size, model</dd>
@@ -55,7 +61,9 @@ nav: Starter workflows
 <div class="wf">
 <h3>Minimax H3 Video</h3>
 <p class="kind">Image to video · with sound</p>
-<p>MiniMax H3 makes the picture move and writes its soundtrack in the same pass: voices, sound effects and music together, in stereo, for clips of up to about fifteen seconds. Describe the motion and the sound in the prompt. Its sample run animates the cyberpunk portrait in your Favorites to a 1980s synthwave score.</p>
+<p>MiniMax H3 makes the picture move and writes its soundtrack in the same pass: voices, sound effects and music together, in stereo, for clips of up to about fifteen seconds. Describe the motion and the sound in the prompt. Its sample run animates the cyberpunk portrait in your Favorites: a rooftop over a neon city, a flying car pointed at and followed.</p>
+<figure class="ba"><div class="ba-row"><div class="ba-cell"><img src="/assets/ex-h3-before.webp" alt="The cyberpunk picture in your Favorites: a girl in a yellow raincoat on a rooftop above a neon city at night" width="640" height="640" loading="lazy"><span class="ba-tag">Before</span></div><div class="ba-cell"><img src="/assets/ex-h3-after.webp" alt="The clip it made, playing: she points at a flying car streaking past and follows it with her eyes" width="480" height="480" loading="lazy"><span class="ba-tag after">After · 5 s</span></div></div>
+<figcaption>Its own prompt, run with one click. The clip has a soundtrack, which a picture on this page cannot play.</figcaption></figure>
 <dl>
 <dt>File</dt><dd><code>APP Minimax H3 Video.json</code></dd>
 <dt>Form</dt><dd>Input picture, prompt, seed, duration, model</dd>
@@ -64,9 +72,24 @@ nav: Starter workflows
 </div>
 
 <div class="wf">
+<h3>Minimax H3 Reference</h3>
+<p class="kind">Pictures to video · with sound · what H3 Studio renders with</p>
+<p>The same model, given up to nine pictures as references rather than a first frame: the people and places in them are kept, and the prompt says what they do. The prompt names each picture as <code>&lt;Picture 1&gt;</code>, <code>&lt;Picture 2&gt;</code> and so on. It renders in two stages: a quick draft, then a final that upscales the same take. Its sample run has the two people in your Favorites meet on a rainy neon rooftop.</p>
+<figure class="ba"><div class="ba-row three"><div class="ba-cell"><img src="/assets/ex-h3-before.webp" alt="Picture 1: a girl in a yellow raincoat with pink and teal streaks in her black hair" width="640" height="640" loading="lazy"><span class="ba-tag">Picture 1</span></div><div class="ba-cell"><img src="/assets/ex-ref-person.webp" alt="Picture 2: a laughing woman with long brown hair" width="640" height="640" loading="lazy"><span class="ba-tag">Picture 2</span></div><div class="ba-cell"><img src="/assets/ex-h3ref-after.webp" alt="A frame from the clip: the two face each other on a rooftop at night, the woman smiling" width="800" height="450" loading="lazy"><span class="ba-tag after">After</span></div></div>
+<figcaption>Its own prompt, run with one click: <q>&lt;Subject 1&gt; and &lt;Subject 2&gt; meet on a rain-soaked neon rooftop at night.</q> The last frame of the clip.</figcaption></figure>
+<dl>
+<dt>File</dt><dd><code>APP Minimax H3 Reference.json</code></dd>
+<dt>Form</dt><dd>Reference pictures, prompt, seed, duration, model</dd>
+<dt>Needs</dt><dd>What Minimax H3 Video needs, and for the final stage the MiniMax H3 latent upscaler model and its node pack</dd>
+</dl>
+</div>
+
+<div class="wf">
 <h3>Wan High Low</h3>
 <p class="kind">Image to video · WAN 2.2</p>
 <p>A still in, a short clip out. WAN 2.2 uses a pair of models, one for the high-noise steps and one for the low-noise steps, each with a LoRA stack of its own. Remix treats a high and low LoRA pair as one: add it to one stack and its partner is added to the other. Frame interpolation smooths the motion, and the clip's last frame is saved beside it as a picture, so the next clip can start where this one ends.</p>
+<figure class="ba"><div class="ba-row"><div class="ba-cell"><img src="/assets/ex-wan-before.webp" alt="The tennis picture in your Favorites: a professional player mid-swing in front of a crowd" width="640" height="640" loading="lazy"><span class="ba-tag">Before</span></div><div class="ba-cell"><img src="/assets/ex-wan-after.webp" alt="The clip it made, playing: she swings through a forehand and follows through as the crowd watches" width="400" height="400" loading="lazy"><span class="ba-tag after">After · 7 s</span></div></div>
+<figcaption>Prompt: <q>the tennis player swings her racket through a powerful forehand and hits the ball, the ball flies away across the court, she follows through and watches it go, the crowd in the stands claps and cheers</q>. Run with the official WAN 2.2 image-to-video models in place of the two the workflow names.</figcaption></figure>
 <dl>
 <dt>File</dt><dd><code>APP Wan High Low.json</code></dd>
 <dt>Form</dt><dd>Input picture, prompt, seed, total and high-noise steps, guidance, frames, size, the high and low models and their LoRAs</dd>
@@ -75,4 +98,4 @@ nav: Starter workflows
 </div>
 
 <h2 id="your-own">Using your own</h2>
-<p>Nothing about these five is special. Any workflow you save in ComfyUI appears on the <a href="/docs/workflows">Workflows</a> page, where one tick offers it in Remix. The form is worked out from the graph, so there is nothing to convert. Changed one of these and want the original back? <a href="/docs/workflows#restore">Restore defaults</a> puts it back and keeps your version beside it.</p>
+<p>Nothing about these six is special. Any workflow you save in ComfyUI appears on the <a href="/docs/workflows">Workflows</a> page, where one tick offers it in Remix. The form is worked out from the graph, so there is nothing to convert. Changed one of these and want the original back? <a href="/docs/workflows#restore">Restore defaults</a> puts it back and keeps your version beside it.</p>

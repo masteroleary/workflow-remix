@@ -1,17 +1,29 @@
 <!--
 title: H3 Studio
-description: Make short MiniMax H3 videos in WorkflowRemix from characters, stories and scenes, with two example projects to start from.
+description: Make short MiniMax H3 videos in WorkflowRemix from characters, stories and scenes, on a timeline, with an AI assistant that runs on your own computer.
 section: docs
 order: 6
 -->
 <h1>H3 Studio</h1>
-<p class="lede">A part of the app for making short videos with MiniMax H3 out of characters and stories. Open it from <strong>H3 Studio</strong> in the sidebar, or from <em>Settings → Features</em>.</p>
+<p class="lede">A part of the app for making short videos with MiniMax H3 out of characters and stories. Its pages are under <strong>H3 Studio</strong> in the sidebar: Projects, Characters, Templates and Settings. Switch it on or off in <em>Settings → Features</em>.</p>
 
-<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/full-studio-project.webp" alt="H3 Studio’s example project, Neon Tokyo Heist: its characters, stories and storylines" width="1920" height="1200" loading="lazy"><figcaption>The example project: its cast, three stories and three storylines.</figcaption></figure>
+<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/full-studio-project.webp" alt="H3 Studio’s example project, Faux Mario: what Run renders, the timeline of its stories and scenes, and the form of the story picked under it" width="1920" height="1200" loading="lazy"><figcaption>Faux Mario: what Run renders, the timeline of its cut, and a story picked under it.</figcaption></figure>
 
 <h2 id="start">Start from an example</h2>
 <p>Two example projects come with the app: <strong>Neon Tokyo Heist</strong>, a fifteen-second action scene, and <strong>Faux Mario</strong>, a comedy shot like a homemade parody. Press <strong>Enable</strong> on one and the app checks that the two workflows it needs are installed, the same check the Workflows page runs. Then press <strong>Run</strong>: it makes the character pictures, writes the prompt and renders the video, and every step is an ordinary job on the Jobs page.</p>
 <p>Changed an example and want it back? <strong>Put back as shipped</strong> on its page restores it.</p>
+<h3 id="import">Import a project</h3>
+<p><strong>Projects → Import</strong> turns a written idea into a project: its characters, stories, scenes and a storyline. Paste a prompt and, with an <a href="#assistant">AI assistant</a> set up, the app converts it for you and shows its progress while it works. Anything that would make a poor picture prompt is pointed out before you import, so you can fix it first.</p>
+
+<h2 id="project">The project page</h2>
+<p>A project's page is a timeline, with the form for whatever you pick underneath it.</p>
+<ul>
+<li><strong>What Run makes</strong> is said at the top in one line: which storyline, how many stories, how many seconds, the frame. Below it are warnings: a cut longer than H3's 15 seconds, an empty cut, or stories that are in no storyline.</li>
+<li><strong>The timeline</strong> shows one storyline: its stories, and their scenes under them, each as wide as its seconds, against a line at H3's 15 seconds. A tab for each storyline switches between them. On a phone the timeline scrolls sideways.</li>
+<li><strong>Press a story or a scene</strong> and its form opens underneath, with the timeline still in view. A breadcrumb says where you are (project, storyline, story, scene), with what you can do there: Remix, Watch, Delete, or step to the scene before or after. Stories that are not in the storyline shown are listed under the timeline, to pick as well.</li>
+<li><strong>The address remembers what you picked</strong>, so a reload or going back lands on the same piece.</li>
+</ul>
+<p>A project's storylines are <strong>alternate cuts</strong> of its stories: a full cut, a teaser, an ending on its own. Run renders one of them. <strong>Run renders</strong> at the top chooses which, or press <strong>Run this cut</strong> on a storyline. Looking at another cut never changes what Run makes.</p>
 
 <h2 id="characters">Characters</h2>
 
@@ -24,11 +36,16 @@ order: 6
 <figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/full-studio-storyline.webp" alt="A storyline page: its stories laid out against a timeline of seconds" width="1920" height="1200" loading="lazy"><figcaption>A storyline: its stories in order, against a timeline of the clip’s seconds.</figcaption></figure>
 <figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/full-studio-compose-prompt.webp" alt="The composed prompt for a storyline, with the cast, the scenes and the reference pictures in order" width="1920" height="1200" loading="lazy"><figcaption>Compose prompt: the whole storyline as one prompt, with each reference picture numbered.</figcaption></figure>
 <ul>
-<li><strong>A story</strong> casts its characters as Subject 1, Subject 2 and so on, and is made of scenes.</li>
-<li><strong>A scene</strong> has its own prompt, a length in seconds, an optional line of dialogue, and an optional reference picture: a character, one of their looks, or a picture made for the scene.</li>
-<li><strong>A storyline</strong> puts stories in order, with a visual style, an ambient soundscape and a score.</li>
+<li><strong>A story</strong> casts its characters as Subject 1, Subject 2 and so on, and is made of scenes. Its own prompt is its setting: the place, the light, the weather, written once for all its scenes.</li>
+<li><strong>A scene</strong> is one shot, with its own prompt, a length in seconds, an optional line of dialogue, and an optional reference picture: a character, one of their looks, or a picture made for the scene.</li>
+<li><strong>A storyline</strong> puts stories in order, with a visual style, an ambient soundscape and a score. One story can sit in several storylines; it is still one story, and an edit to it changes it everywhere.</li>
 </ul>
-<p>The project sets the frame (wide 16:9, tall 9:16 or square) and whether a storyline renders as <strong>one video</strong> or <strong>a clip per story</strong>, joined end to end. A new project, story or scene starts filled in enough to render, with three-second scenes, so you can run it before you have changed much.</p>
+<p>The project sets the frame (wide 16:9, tall 9:16 or square) and whether a storyline renders as <strong>one video</strong> or <strong>a clip per story</strong>, joined end to end. With a clip per story, <strong>Carry on from clip to clip</strong> starts each clip on the last frame of the one before it, so the joined video flows instead of restarting at every seam. A new project, story or scene starts filled in enough to render, with three-second scenes, so you can run it before you have changed much.</p>
+<p>The prompt is written the way H3 reads it: shots timed by their seconds, a stable tag for each speaker, how strongly each reference picture is kept, and the clip's length. Studio warns when a prompt grows past the length H3's hosted service accepts.</p>
+<h3 id="frames">First and last frame</h3>
+<p>On a story's or a storyline's Remix page you can pick the picture its clip <strong>starts on</strong> and the one it <strong>ends on</strong>. Leave either empty and H3 decides.</p>
+<h3 id="loras">LoRAs</h3>
+<p>A project's <strong>LoRAs</strong> tab is a table: the LoRAs you add across the top, the storylines and stories down the side, and a strength where they meet. An empty cell is that LoRA off there. Each story and storyline renders with its own, on its Remix page and in a run, and the table marks the rows Run uses. On a phone it scrolls sideways.</p>
 
 <h2 id="templates">Prompt templates</h2>
 
@@ -38,8 +55,30 @@ order: 6
 <h2 id="takes">Remix and takes</h2>
 <p>Every story and storyline has a <strong>Remix</strong> button. Each render there is a <strong>take</strong> with a new seed. Render a quick <strong>Draft</strong> until a take looks right, press <strong>Lock this seed</strong>, then <strong>Make final</strong> to upscale and refine that same take. A locked seed is the one the whole project's run uses, so the video you liked is the video you get.</p>
 
+<h2 id="assistant">The AI assistant</h2>
+<p>An assistant that runs on <strong>your own computer</strong>: install <a href="https://ollama.com" rel="noopener noreferrer">Ollama</a>, point the app at a model under <strong>Settings → Config</strong>, and the page shows whether it is answering. Nothing you say to it is logged or kept, and it is reached only at the address you saved.</p>
+<p>Models that are strong at tool use make the best assistants. The one we recommend is <a href="https://huggingface.co/llmfan46/Qwen3.6-27B-uncensored-heretic-v2-Native-MTP-Preserved-GGUF" rel="noopener noreferrer">Qwen 3.6 27B (heretic v2, Q4_K_M)</a>: in our tests it proposed every change asked of it. Get it with <code>ollama pull hf.co/llmfan46/Qwen3.6-27B-uncensored-heretic-v2-Native-MTP-Preserved-GGUF:Q4_K_M</code>. It needs about 18 GB of graphics memory at a 16K context.</p>
+<p>Press <strong>AI</strong> on a project to open a chat about it. Each scene has an AI button too, and so does a story's prompt, which opens the chat with a message about exactly that scene or story, ready to finish and send.</p>
+<ul>
+<li><strong>Nothing changes until you apply it.</strong> Every change comes back as a card, before and after, with <strong>Apply</strong> and <strong>Reject</strong>, or <strong>Apply all</strong>. The latest change you applied can be undone.</li>
+<li><strong>It edits and it builds.</strong> Ask for new prompts, camera moves, lines of dialogue, voices, timing or a new look; or for new characters, looks, stories, scenes and storylines, a different cast for a story, scenes in another order, or LoRA strengths. A whole small project can come back in one answer. A card that needs another one first, such as a scene for a new story, waits until that one is applied, and rejecting one rejects what needed it.</li>
+<li><strong>Your character library.</strong> It can look through your characters and cast one you already have rather than making a copy. A character used in other projects is shared: it casts them but never changes them. It never touches another project.</li>
+<li><strong>New pictures on your say-so.</strong> When it changes a picture's prompt, it offers a new picture as a card with a <strong>Regenerate</strong> button. Nothing is made until you press it.</li>
+<li><strong>It remembers your preferences.</strong> Tell it how you like things done, or ask it to remember something ("keep every line under eight words"), and it keeps that for every chat in every project. It will not remember a project's own details; those are in the project already. See and forget what it remembers in <strong>Studio → Settings</strong>.</li>
+</ul>
+<p>The chat itself is forgotten when you close it.</p>
+
+<h2 id="settings">Studio's settings</h2>
+<p><strong>Studio → Settings</strong>, or <strong>Settings → H3 Studio</strong>:</p>
+<ul>
+<li><strong>The models</strong> every Krea picture and every H3 render is made with, in place of the model each workflow was saved with. Leave one on the workflow's own to keep it.</li>
+<li><strong>Keep models loaded.</strong> Off, the default: once nothing of the app's is running, ComfyUI is asked to free the memory its models hold, so the rest of the computer stays responsive. On: the next picture or video starts sooner.</li>
+<li><strong>What the AI chat remembers</strong>, each to read and forget.</li>
+</ul>
+
 <h2 id="needs">What it needs</h2>
 <ul>
 <li>A ComfyUI that can run MiniMax H3, with the nodes and models the bundled <em>APP Minimax H3 Reference</em> workflow names, and <em>APP Krea2</em> for the pictures. <strong>Enable</strong> lists anything missing.</li>
+<li>For the AI assistant, optionally: <a href="https://ollama.com" rel="noopener noreferrer">Ollama</a> with a model good at tool use, such as <a href="#assistant">the one we recommend</a>, on your own computer.</li>
 <li>Prompts are read by the app's built-in safeguard before they are shown or run, like every run (see <a href="/docs/privacy">Privacy and security</a>).</li>
 </ul>

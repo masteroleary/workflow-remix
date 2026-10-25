@@ -14,6 +14,7 @@ order: 8
 <tr><td>ComfyUI</td><td>On your computer</td><td>Runs the workflows. The app queues runs, follows progress and uploads input images.</td><td>Nothing leaves the machine.</td></tr>
 <tr><td>GitHub Releases</td><td>Cloud</td><td>The update check, 10 seconds after launch and every 4 hours, and the download of a new version.</td><td>A request to github.com: your IP address, and the fact that a copy is checking. Nothing about your media, prompts or settings.</td></tr>
 <tr><td>Civitai</td><td>Cloud</td><td>Model downloads that need an account, if you store an API key for them in Settings.</td><td>Only the requests you start yourself.</td></tr>
+<tr><td><a href="https://ollama.com" rel="noopener noreferrer">Ollama</a> (the AI assistant)</td><td>The address you set: your own computer, unless you point it elsewhere</td><td>H3 Studio's <a href="/docs/studio#assistant">AI assistant</a>, if you set one up in <strong>Settings → Config</strong>, and Import's conversion of a pasted prompt.</td><td>Your project's words, what you type in the chat, and the preferences you asked it to remember, to that address only. The app logs and keeps nothing of a chat. Run Ollama on your own computer and nothing leaves it.</td></tr>
 <tr><td>Tailscale</td><td>Your own network</td><td><a href="/docs/remote-access">Remote access</a>, if you switch it on.</td><td>Traffic between your own devices, encrypted end to end.</td></tr>
 <tr><td>WorkflowRemix support</td><td>Cloud (hub.workflowremix.com)</td><td><a href="/docs/troubleshooting#report">Report a problem</a>, only when you press <strong>Send</strong>; and <a href="/docs/troubleshooting#your-reports">Your reports</a>, only when you open it or press <strong>Check again</strong>.</td><td>The report you were shown first, and only the parts you left ticked: your computer's basics and software versions, the app's log, ComfyUI's log and what went wrong. Your folders, file names, account and computer names, addresses, keys and prompt text are taken out first. Kept for 30 days. Your reports sends a key made on your computer, which only matches the reports you sent, and gets back their status and support's replies.</td></tr>
 </tbody>
@@ -27,8 +28,9 @@ order: 8
 <h2 id="data">Where your data lives</h2>
 <p>In the one folder you chose on the first launch: settings, prompts, rules, the job list with every prompt it ran, logs and, unless you put it elsewhere, the media library. <strong>File → Show Data Folder</strong> opens it.</p>
 <ul>
+<li>What your choices change — your settings, safe mode's word list, the workflow and prompt libraries, the keyword rules, H3 Studio's characters and projects, the AI assistant's memories and the problem reports you have sent — lives together in a folder named <code>data</code> inside it, so a backup takes it whole and a restore puts it back the same way.</li>
 <li>A folder the app creates is made private to your account.</li>
-<li>To back it up, copy the folder while the app is closed. The settings file in it holds your API keys and your password's hash, so treat a backup as you would the original.</li>
+<li>To back it up, use the backup in <strong>Settings → Clean</strong>, or copy the folder while the app is closed. The settings file in it holds your API keys and your password's hash, so treat a backup as you would the original.</li>
 <li>Uninstalling leaves the folder in place. Deleting it is how you remove everything.</li>
 </ul>
 <h3 id="search-index">System search</h3>
@@ -44,7 +46,8 @@ order: 8
 <li>Changing it, removing it or switching protection off needs the current password. Being signed in is not enough.</li>
 <li><strong>Sign out every device</strong> ends every session at once without a new password. It is the button for a lost phone, and can be pressed only at the computer.</li>
 </ul>
-<p>Forgotten it? Close the app, open <code>config.json</code> in your data folder, remove the <code>auth</code> entry and start the app again.</p>
+<p>Forgotten it? Close the app, open <code>data\config.json</code> in your data folder, remove the <code>auth</code> entry and start the app again.</p>
+<p><a href="/docs/getting-started#privacy-setup">Privacy setup</a> asks whether you want a password, and sets it there and then.</p>
 
 <h2 id="secure-wipe">Secure wipe and the panic password</h2>
 <p><strong>Settings → Secure wipe</strong>. A private library should be yours to remove without a backup utility or a command line. Secure wipe empties the app's own folders — the media library, ComfyUI's input, output and cache, and the app's prompts, rules, saved workflows and index — in the app itself, with no admin rights and no scheduled task. It is off until you turn it on.</p>
@@ -53,7 +56,7 @@ order: 8
 <li><strong>It refuses to reach past its own data.</strong> It empties only the folders you configured, and will not empty a system folder or a drive root even if one is pointed there by mistake — every folder is re-checked at the moment of deletion.</li>
 <li><strong>Windows' own trail, if you ask.</strong> A tick clears the Recent-files list and the jump lists Windows keeps. Cached thumbnails are left to Windows' own <strong>Disk Cleanup</strong> (tick <em>Thumbnails</em>): the app will not close Explorer to get at them, on purpose.</li>
 </ul>
-<p>The <strong>panic password</strong> is the same wipe, armed on the lock screen. Set a second password under <strong>Settings → Security</strong> and typing it does not unlock the app — it erases everything, instantly, with no confirmation and no backup. If you are ever made to open the app, it opens onto nothing. It fires only once secure wipe is on, and the lock screen cannot tell it apart from a wrong password.</p>
+<p>The <strong>panic password</strong> is the same wipe, armed on the lock screen. Set a second password under <strong>Settings → Security</strong> and typing it does not unlock the app — it erases everything, instantly, with no confirmation and no backup. If you are ever made to open the app, it opens onto nothing. It fires only once secure wipe is on, and the lock screen cannot tell it apart from a wrong password. <a href="/docs/getting-started#privacy-setup">Privacy setup</a> offers both: turn secure wipe on, and if you use an app password, set the panic password on the next step. Nothing is erased while you answer.</p>
 <h3 id="sell-pc">Before you sell or hand on the computer</h3>
 <p>Wiping the app's data clears what WorkflowRemix made. For the whole machine, let the operating system do the rest — the app never reaches that far itself:</p>
 <ul>

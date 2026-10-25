@@ -465,6 +465,21 @@ td:first-child{font-weight:600}
 .usecase p{color:var(--text2);margin:0;font-size:.97rem}
 .band .shot.hero-shot{margin:0 0 2.6rem}
 @media (max-width:1140px){.usecases,.shots-row{grid-template-columns:1fr}}
+/* Before and after, on the example workflows: what went in and what came out, side by
+   side, each labelled, with what was asked under them. A video's "after" is an animated
+   WebP, since the page loads no media but images. */
+.ba{margin:1.1rem 0 1.4rem;border:1px solid var(--border2);border-radius:var(--r-lg);overflow:hidden;background:var(--bg2)}
+.ba-row{display:grid;gap:1px;grid-template-columns:repeat(2,minmax(0,1fr));background:var(--line)}
+.ba-row.three{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.6fr)}
+.ba-row.one{grid-template-columns:minmax(0,1fr)}
+.ba-cell{position:relative;display:flex;align-items:center;justify-content:center;background:var(--bg2)}
+.ba-cell img{display:block;width:100%;height:auto}
+.ba-row.one .ba-cell img{max-width:28rem}
+.ba-tag{position:absolute;left:.55rem;top:.55rem;font:600 .66rem var(--mono);letter-spacing:.09em;text-transform:uppercase;padding:.22rem .45rem;border-radius:6px;background:rgba(14,13,11,.78);color:var(--text)}
+.ba-tag.after{background:var(--accent);color:var(--on-accent)}
+.ba figcaption{padding:.65rem 1rem .75rem;font-size:.9rem;line-height:1.5;color:var(--text2);border-top:1px solid var(--line);background:var(--surface)}
+.ba figcaption q{color:var(--text)}
+@media (max-width:560px){.ba-row.three{grid-template-columns:1fr 1fr}.ba-row.three .ba-cell:last-child{grid-column:1/-1}}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 @media print{.sidebar,.tab-bar,.m-head,.side-menu,.foot,.pager,.skip{display:none}.site-main{padding:0}body{background:#fff;color:#000}}

@@ -50,6 +50,7 @@ order: 3
 
 <h3 id="images">Image inputs</h3>
 <p>A workflow's main image (its loader titled <em>MAIN IMAGE</em>) is the file you are remixing, and the image box says so: it shows that file, not the picture the workflow was saved with. An image field has <strong>Browse</strong>, which opens your library to pick something else; pick several and each becomes a job of its own. Some workflows have an optional second image, a reference say. It arrives empty, and choosing an image is what switches that branch of the workflow on for the run.</p>
+<p>An image field that still names the workflow's own example picture, one you have not picked, is checked before the run. If ComfyUI's input folder does not have that picture, Run stops and says which image to choose, instead of the whole job failing in ComfyUI. <em>Krea Image Edit by Reference</em>'s second picture, the person, is the usual case. <a href="/docs/browse#upload">Upload</a> can put a picture straight into the input folder.</p>
 
 <h3 id="keyword-or-remix">Keyword Prompt or Remix Prompt</h3>
 <p>If the file was made from a prompt with <code>[keywords]</code> in it, the file holds that prompt twice: as you typed it, and as it ran once the keywords were answered. A switch above the prompt field offers both. <strong>Keyword Prompt</strong> gives you the template, to be answered afresh; <strong>Remix Prompt</strong> gives you the finished text, to edit by hand.</p>
