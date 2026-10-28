@@ -1,0 +1,144 @@
+<!--
+title: How it works
+description: The pieces behind WorkflowRemix and what each one is built on: the app, your ComfyUI, Tailscale for your phone, and the few times anything reaches the internet.
+section: docs
+order: 12
+-->
+<h1>How it works</h1>
+<p class="lede">WorkflowRemix generates nothing itself. It is a library and a remote control for your own ComfyUI, and everything else here exists to keep that private and reachable from your phone.</p>
+
+<figure class="sysmap">
+<div class="sysmap-scroll">
+<svg viewBox="0 0 720 470" role="img" aria-label="Diagram. On your computer, the WorkflowRemix window talks to the WorkflowRemix server, which reads and writes your data folder, sends runs to ComfyUI and asks the optional Ollama assistant. Tailscale publishes the app to your phone over your own tailnet. The only lines to the internet are the update check to GitHub Releases, model downloads you start, and problem reports you send.">
+<defs>
+<marker id="sm-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="sm-mk" d="M0 0L10 5L0 10z"/></marker>
+<marker id="sm-ar-t" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="sm-mk-t" d="M0 0L10 5L0 10z"/></marker>
+<marker id="sm-ar-n" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="sm-mk-n" d="M0 0L10 5L0 10z"/></marker>
+</defs>
+<rect class="sm-zone pc" x="10" y="10" width="440" height="300" rx="14"/>
+<text class="sm-zl pc" x="26" y="32">YOUR COMPUTER</text>
+<rect class="sm-zone ph" x="500" y="10" width="210" height="150" rx="14"/>
+<text class="sm-zl ph" x="516" y="32">YOUR PHONE</text>
+<rect class="sm-zone net" x="10" y="350" width="700" height="110" rx="14"/>
+<text class="sm-zl net" x="26" y="372">THE INTERNET</text>
+
+<line class="sm-w" x1="120" y1="104" x2="120" y2="138" marker-start="url(#sm-ar)" marker-end="url(#sm-ar)"/>
+<text class="sm-wl" x="128" y="125">its window only</text>
+<line class="sm-w" x1="120" y1="208" x2="120" y2="234" marker-start="url(#sm-ar)" marker-end="url(#sm-ar)"/>
+<line class="sm-w" x1="212" y1="172" x2="248" y2="172" marker-start="url(#sm-ar)" marker-end="url(#sm-ar)"/>
+<line class="sm-w" x1="212" y1="200" x2="248" y2="250" marker-end="url(#sm-ar)"/>
+<line class="sm-w" x1="250" y1="98" x2="212" y2="146" marker-end="url(#sm-ar)"/>
+
+<line class="sm-w tun" x1="432" y1="73" x2="514" y2="73" marker-start="url(#sm-ar-t)" marker-end="url(#sm-ar-t)"/>
+<text class="sm-wl tun" x="474" y="62" text-anchor="middle">tailnet</text>
+<text class="sm-wl tun" x="474" y="94" text-anchor="middle">encrypted</text>
+
+<line class="sm-w net" x1="80" y1="310" x2="132" y2="382" marker-end="url(#sm-ar-n)"/>
+<text class="sm-wl net halo" x="106" y="334" text-anchor="middle">update check</text>
+<line class="sm-w net" x1="230" y1="310" x2="358" y2="382" marker-end="url(#sm-ar-n)"/>
+<text class="sm-wl net halo" x="294" y="334" text-anchor="middle">downloads you start</text>
+<line class="sm-w net" x1="380" y1="310" x2="583" y2="382" marker-start="url(#sm-ar-n)" marker-end="url(#sm-ar-n)"/>
+<text class="sm-wl net halo" x="482" y="334" text-anchor="middle">reports you send</text>
+
+<a class="sm-box" href="#pieces"><rect x="30" y="46" width="182" height="58" rx="8"/><text class="t" x="44" y="70">WorkflowRemix window</text><text class="s" x="44" y="89">the desktop app</text></a>
+<a class="sm-box" href="#pieces"><rect x="30" y="140" width="182" height="68" rx="8"/><text class="t" x="44" y="164">WorkflowRemix server</text><text class="s" x="44" y="183">library · forms · jobs</text><text class="s" x="44" y="199">built-in safeguard</text></a>
+<a class="sm-box" href="#pieces"><rect x="30" y="236" width="182" height="58" rx="8"/><text class="t" x="44" y="260">Your data folder</text><text class="s" x="44" y="279">settings · prompts · media</text></a>
+<a class="sm-box" href="#phone"><rect x="250" y="46" width="182" height="58" rx="8"/><text class="t" x="264" y="70">Tailscale</text><text class="s" x="264" y="89">optional · your devices</text></a>
+<a class="sm-box" href="#comfyui"><rect x="250" y="140" width="182" height="68" rx="8"/><text class="t" x="264" y="164">Your ComfyUI</text><text class="s" x="264" y="183">runs the models</text><text class="s" x="264" y="199">on your graphics card</text></a>
+<a class="sm-box" href="#pieces"><rect x="250" y="236" width="182" height="58" rx="8"/><text class="t" x="264" y="260">Ollama</text><text class="s" x="264" y="279">optional · AI assistant</text></a>
+
+<a class="sm-box" href="#phone"><rect x="516" y="46" width="178" height="58" rx="8"/><text class="t" x="530" y="70">Phone browser</text><text class="s" x="530" y="89">+ the Tailscale app</text></a>
+<text class="sm-wl" x="516" y="132">The phone app comes later,</text>
+<text class="sm-wl" x="516" y="146">with Tailscale built in.</text>
+
+<a class="sm-box" href="#internet"><rect x="30" y="384" width="210" height="58" rx="8"/><text class="t" x="44" y="408">GitHub Releases</text><text class="s" x="44" y="427">new versions</text></a>
+<a class="sm-box" href="#internet"><rect x="255" y="384" width="210" height="58" rx="8"/><text class="t" x="269" y="408">Model sites</text><text class="s" x="269" y="427">Civitai · Hugging Face</text></a>
+<a class="sm-box" href="#internet"><rect x="480" y="384" width="210" height="58" rx="8"/><text class="t" x="494" y="408">WorkflowRemix support</text><text class="s" x="494" y="427">only when you press Send</text></a>
+</svg>
+</div>
+<figcaption>Everything inside <em>your computer</em> stays there. Select a box to read about it.</figcaption>
+</figure>
+
+<h2 id="pieces">The pieces on your computer</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Piece</th><th>What it does</th><th>Built with</th></tr></thead>
+<tbody>
+<tr><td>The window</td><td>What you see and click. It is held to its own server: every image, script and font comes from the app, and a link to anywhere else opens in your system browser.</td><td>Electron, the same base as VS Code and Slack</td></tr>
+<tr><td>The server</td><td>Browses and searches your library, reads the workflow out of a file and turns it into a form, checks every run with the <a href="/docs/privacy">built-in safeguard</a>, and sends it to ComfyUI. It answers only its own window: each launch makes a secret the window adds to every request.</td><td>Node.js, with no third-party packages; pages drawn with Vue</td></tr>
+<tr><td>Your data folder</td><td>Settings, workflows, prompts, rules, H3 Studio and, unless you put it elsewhere, your media. You choose where it lives on the first launch.</td><td>Plain JSON files. A password is stored only as a hash</td></tr>
+<tr><td>ComfyUI</td><td>Loads the models and renders the images, video and audio. Yours, installed separately.</td><td>Python and PyTorch on your graphics card</td></tr>
+<tr><td>Ollama, if you set it up</td><td>H3 Studio's <a href="/docs/studio#assistant">AI assistant</a>: a language model on your own computer that writes and edits prompts by calling tools the app gives it.</td><td>Any Ollama model that supports tool calls</td></tr>
+<tr><td>Tailscale, if you switch it on</td><td>Lets your phone reach the app over your own private network. See <a href="#phone">below</a>.</td><td>Tailscale, built on WireGuard</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="comfyui">ComfyUI, the engine underneath</h2>
+<p>ComfyUI is a free, open-source program for running image, video and audio models. In it you build a <strong>workflow</strong>: a graph of nodes such as <em>load model</em>, <em>prompt</em>, <em>sample</em> and <em>save</em>. Around it sit your <strong>models folder</strong> (checkpoints, LoRAs and the rest), any <strong>custom nodes</strong> you installed, and its input and output folders. WorkflowRemix contains no ComfyUI code. It talks to ComfyUI's local address, <code>http://127.0.0.1:8188</code> unless you set another, and a Docker install works as well as a native one.</p>
+<p><strong>Where "remix" comes from.</strong> ComfyUI saves the whole workflow inside every file it makes. WorkflowRemix reads it back out, shows the prompt, seed, steps, models, LoRAs and size as a form, and sends ComfyUI the copy with whatever you changed.</p>
+<p>These are the parts of ComfyUI's API the app uses:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Address</th><th>What the app uses it for</th></tr></thead>
+<tbody>
+<tr><td><code>/prompt</code></td><td>Queues a run: the edited workflow, after the safeguard has read it.</td></tr>
+<tr><td><code>/ws</code></td><td>A live connection that streams progress, which is what <a href="/docs/jobs">Jobs</a> shows as it happens.</td></tr>
+<tr><td><code>/history</code></td><td>Finds the files a finished run wrote.</td></tr>
+<tr><td><code>/queue</code>, <code>/interrupt</code></td><td>What is waiting; cancelling a run or stopping the current one.</td></tr>
+<tr><td><code>/upload/image</code></td><td>Sends a picture in, for an edit or an image-to-video run.</td></tr>
+<tr><td><code>/object_info</code></td><td>Every node type and model your ComfyUI has. <a href="/docs/workflows">Enable</a> uses it to check that a workflow's custom nodes and models are installed. A large install can take half a minute to answer, so the app keeps a copy for ten minutes.</td></tr>
+<tr><td><code>/system_stats</code>, <code>/free</code></td><td>Whether ComfyUI is up and what graphics card it has; freeing graphics memory when you ask.</td></tr>
+</tbody>
+</table></div>
+<p>A phone never talks to ComfyUI directly. Every call goes through the WorkflowRemix server, so its password and safeguard stand in front of ComfyUI, and ComfyUI only ever needs to listen on the computer itself.</p>
+
+<h2 id="phone">From your phone</h2>
+<p>With <a href="/docs/remote-access">Remote access</a> on, this is the path a tap on your phone takes:</p>
+<ol class="steps">
+<li><strong>The phone's browser asks for the app's address</strong>, a name like <code>your-computer.your-tailnet.ts.net</code>. The Tailscale app on the phone carries the request into your tailnet instead of out to the internet.</li>
+<li><strong>Tailscale encrypts it with WireGuard</strong> and sends it straight to your computer. Only devices signed in to your tailnet can get this far.</li>
+<li><strong>Tailscale Serve on the computer</strong> handles the HTTPS and hands the request to the app. Serve shares the app with your tailnet only. Funnel, which would share it with the whole internet, is never used.</li>
+<li><strong>The app checks the request</strong>: the right name, not through Funnel, from your own Tailscale account unless you allowed others, and a signed-in session behind a password of at least 12 characters.</li>
+<li><strong>Then it works as at the computer.</strong> The run is checked, sent to ComfyUI, and the result comes back the same way. Your media never leaves your own devices.</li>
+</ol>
+<div class="callout soon">
+<p class="callout-title">The phone app, later</p>
+<p>The WorkflowRemix phone app is not released yet. It will pair from a code on the computer's screen and carry Tailscale inside itself, so the phone needs no Tailscale app: it joins your tailnet as a device of its own, which you can remove from the app's settings.</p>
+</div>
+
+<h2 id="internet">The few times anything reaches the internet</h2>
+<p>Three lines on the diagram leave your computer. Everything else stays on it.</p>
+<ul>
+<li><strong>The update check.</strong> GitHub Releases, 10 seconds after launch and every 4 hours. It sends your IP address and the fact that a copy is checking, nothing about your media, prompts or settings. See <a href="/docs/updates">Updates</a>.</li>
+<li><strong>Model downloads you start.</strong> From Civitai or Hugging Face, with your Civitai key if you stored one.</li>
+<li><strong>Problem reports you send.</strong> Only after you have seen the report and pressed <strong>Send</strong>, with your folders, names, addresses, keys and prompts taken out first. See <a href="/docs/troubleshooting#report">Report a problem</a>.</li>
+</ul>
+<p>The full list, with what each one sends, is under <a href="/docs/privacy#leaves">What leaves the computer</a>.</p>
+
+<h2 id="glossary">The technology, in plain words</h2>
+<h3 id="g-network">Network and privacy</h3>
+<dl class="gloss">
+<dt>Tailscale</dt><dd>An app that joins your devices into one private network, so they can reach each other from anywhere as if they were on the same Wi-Fi.</dd>
+<dt>Tailnet</dt><dd>Your own Tailscale network: only the devices signed in with your account.</dd>
+<dt>WireGuard</dt><dd>The encryption Tailscale is built on. Traffic between two of your devices is encrypted end to end.</dd>
+<dt>MagicDNS</dt><dd>Tailscale's names for your devices, such as <code>your-computer.your-tailnet.ts.net</code>, so you never type a number address.</dd>
+<dt>Tailscale Serve and Funnel</dt><dd>Serve shares one program with your tailnet only, over HTTPS. Funnel shares it with the whole internet. WorkflowRemix uses Serve and refuses anything that comes through Funnel.</dd>
+<dt>HTTPS</dt><dd>Encryption between a browser and a server, with proof that the server is the one it claims to be.</dd>
+<dt>Password hash</dt><dd>A one-way scramble of your password. The app keeps only the hash, never the password itself.</dd>
+<dt>Built-in safeguard</dt><dd>WorkflowRemix's own check that reads every run before ComfyUI sees it and refuses one that describes a minor sexually. It has no off switch.</dd>
+</dl>
+<h3 id="g-app">The app</h3>
+<dl class="gloss">
+<dt>Electron</dt><dd>A way to ship a web app as a desktop program with its own window. VS Code and Slack are built on it.</dd>
+<dt>Node.js</dt><dd>JavaScript that runs outside a browser. The app's server is a Node program with no third-party packages.</dd>
+<dt>Vue</dt><dd>The framework that draws the app's pages. It ships inside the app, so nothing loads from the internet.</dd>
+<dt>WebSocket</dt><dd>A connection that stays open so updates arrive the moment they happen, such as a run's progress.</dd>
+<dt>Code signing</dt><dd>A signature proving who made an installer. WorkflowRemix's installers are not signed yet, which is why Windows asks you to confirm the first install.</dd>
+</dl>
+<h3 id="g-ai">The AI side</h3>
+<dl class="gloss">
+<dt>Workflow</dt><dd>A ComfyUI graph, saved as JSON and also written inside every file ComfyUI makes.</dd>
+<dt>Checkpoint and LoRA</dt><dd>A checkpoint is the main model. A LoRA is a small add-on that teaches it a style, a character or an idea.</dd>
+<dt>Custom node</dt><dd>An add-on for ComfyUI that adds new kinds of node. Each is someone else's code running on your computer, so install the ones you trust.</dd>
+<dt>Krea, Wan and MiniMax H3</dt><dd>The models the included workflows are built for: Krea for editing pictures, Wan for turning a picture into video, and MiniMax H3 for video with sound, which <a href="/docs/studio">H3 Studio</a> is made around.</dd>
+<dt>Ollama</dt><dd>A program that runs language models on your own computer. H3 Studio's assistant talks to it.</dd>
+<dt>Tool calls</dt><dd>A language model asking the app to do a specific thing, such as changing a scene, rather than only writing text back.</dd>
+</dl>

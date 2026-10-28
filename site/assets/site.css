@@ -481,5 +481,35 @@ td:first-child{font-weight:600}
 .ba figcaption q{color:var(--text)}
 @media (max-width:560px){.ba-row.three{grid-template-columns:1fr 1fr}.ba-row.three .ba-cell:last-child{grid-column:1/-1}}
 
+/* ── How it works: the diagram and the glossary ─────────── */
+/* The diagram is inline SVG drawn at about the column's width, so its text is near its
+   real size; on a phone it keeps that size and scrolls sideways inside its frame. Each
+   zone is edged in its own colour: the computer orange, the phone cyan, the internet
+   purple. */
+.sysmap{margin:1.6rem 0 2rem;border:1px solid var(--border2);border-radius:var(--r-lg);overflow:hidden;background:var(--bg2)}
+.sysmap-scroll{overflow-x:auto;padding:.75rem}
+.sysmap svg{display:block;width:100%;min-width:640px;height:auto}
+.sysmap figcaption{padding:.7rem 1rem .8rem;font-size:.9rem;line-height:1.5;color:var(--text2);border-top:1px solid var(--line);background:var(--surface)}
+.sm-zone{fill:var(--bg);stroke-width:1.4}
+.sm-zone.pc{stroke:var(--accent-line)}.sm-zone.ph{stroke:var(--cyan)}.sm-zone.net{stroke:var(--border-hi)}
+.sm-zl{font:500 10.5px var(--mono);letter-spacing:.12em}
+.sm-zl.pc{fill:var(--accent-text)}.sm-zl.ph{fill:var(--cyan)}.sm-zl.net{fill:var(--purple)}
+.sm-box rect{fill:var(--surface2);stroke:var(--border2);stroke-width:1.2}
+.sm-box .t{font:650 13px var(--font);fill:var(--text)}
+.sm-box .s{font:400 10.5px var(--mono);fill:var(--text3)}
+.sm-box:hover rect,.sm-box:focus-visible rect{stroke:var(--accent);stroke-width:2}
+.sm-box:focus-visible{outline:none}
+.sm-w{stroke:var(--text3);stroke-width:1.4;fill:none}
+.sm-w.tun{stroke:var(--cyan);stroke-width:2.2;stroke-dasharray:7 5}
+.sm-w.net{stroke:var(--purple)}
+.sm-wl{font:400 10.5px var(--mono);fill:var(--text3)}
+.sm-wl.tun{fill:var(--cyan)}.sm-wl.net{fill:var(--purple)}
+.sm-wl.halo{paint-order:stroke;stroke:var(--bg2);stroke-width:5px;stroke-linejoin:round}
+.sm-mk{fill:var(--text3)}.sm-mk-t{fill:var(--cyan)}.sm-mk-n{fill:var(--purple)}
+.gloss{display:grid;grid-template-columns:minmax(9rem,13rem) minmax(0,1fr);gap:.55rem 1.4rem;margin:0 0 1.6rem;font-size:.97rem}
+.gloss dt{font-weight:650}
+.gloss dd{margin:0;color:var(--text2)}
+@media (max-width:560px){.gloss{grid-template-columns:1fr;gap:.1rem}.gloss dd{margin-bottom:.7rem}}
+
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 @media print{.sidebar,.tab-bar,.m-head,.side-menu,.foot,.pager,.skip{display:none}.site-main{padding:0}body{background:#fff;color:#000}}
