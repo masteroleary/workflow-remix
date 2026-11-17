@@ -1,0 +1,20 @@
+<!--
+title: Turn a picture into a video, then cut it
+description: A two-minute video: a photo turned into a five-second clip with its own sound by Minimax H3 Video and a camera-motion LoRA, then trimmed, split, merged and laid out as a frame sheet.
+-->
+<h1>Turn a picture into a video, then cut it</h1>
+<p class="lede">A still picture becomes the first frame of a short clip, with its own sound. Then the viewer and Media cut it up: trim, split, save its last frame, join clips and lay its frames out on one picture.</p>
+
+<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><video src="/assets/tutorial-picture-to-video.mp4" poster="/assets/tutorial-picture-to-video.jpg" width="1920" height="1080" controls playsinline preload="metadata"></video><figcaption>A photo of a tennis player, turned into a clip whose camera circles her and moves in to her face, with the Camera Motion LoRA.</figcaption></figure>
+
+<h2 id="steps">The steps</h2>
+<ol class="steps">
+<li><strong>On the Workflows page, press Enable on Minimax H3 Video.</strong> It checks that every model and node it needs is installed.</li>
+<li><strong>In Media, open Remix on a picture and pick Minimax H3 Video</strong> in the Workflow menu. The picture becomes the video's first frame.</li>
+<li><strong>Write what happens</strong>: how the people move, how the camera moves, and what we hear. Say "No one speaks" when nobody should, or the model may make up words.</li>
+<li><strong>Add a LoRA</strong> by searching for it under the LoRAs list, and put its trigger words in the prompt. The video uses Camera Motion, whose prompt starts with <em>camera motion</em>.</li>
+<li><strong>Press Run.</strong> With Turbo on, a five-second clip takes about a minute. Open it from the Run tab to watch it with its sound.</li>
+<li><strong>The viewer's ⋯ menu has Trim video, Split video and Last frame.</strong> The new clips are saved beside the one they came from, and Last frame saves a picture to start the next clip from.</li>
+<li><strong>In Media, press Select and pick clips</strong>: Merge clips joins them in the order you set, and Frame sheet makes one picture of a clip's frames.</li>
+</ol>
+<p>More on the viewer and the media grid is in <a href="/docs/browse">Browsing your media</a>.</p>

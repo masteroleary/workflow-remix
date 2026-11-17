@@ -1,0 +1,19 @@
+<!--
+title: Compare models side by side
+description: A one-and-a-half-minute video: one prompt run on two models at once in Remix, on the same seeds, with the results side by side.
+-->
+<h1>Compare models side by side</h1>
+<p class="lede">Run one prompt on several models at once and see what each one makes. Every model gets the same seeds, so what changes from one picture to the next is the model, not the noise.</p>
+
+<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><video src="/assets/tutorial-compare-models.mp4" poster="/assets/tutorial-compare-models.jpg" width="1920" height="1080" controls playsinline preload="metadata"></video><figcaption>A tennis player made with Krea, run again on two anime models, HarmoniQ Mix and Anima's base model, two pictures each.</figcaption></figure>
+
+<h2 id="steps">The steps</h2>
+<ol class="steps">
+<li><strong>In Media, open Remix on a picture and pick a workflow</strong> in the Workflow menu. The picture's prompt comes with it. The video uses Anima Turbo, which you add from the + on the Workflows page.</li>
+<li><strong>The Model box shows the model the workflow loads</strong>, marked <em>in workflow</em>. Search for another and pick it: the first pick replaces it.</li>
+<li><strong>Every pick after that adds a model</strong>, and each job runs once on each of them. Pick the in-workflow model back to keep it beside the rest.</li>
+<li><strong>Models from different families get a warning</strong>, such as Anima and WAN: the LoRAs, VAE and text encoder are set up for one family, and fail or do nothing on another.</li>
+<li><strong>Pick a size from the Resolution list</strong>, which offers the sizes the first picked model works well at, then choose how many runs each job makes on the Run tab.</li>
+<li><strong>Press Run.</strong> The models are queued one after another, so each loads once, and the pictures appear side by side.</li>
+</ol>
+<p>More on the model box, seeds and how many jobs a run queues is in <a href="/docs/remix">Remixing a file</a>.</p>

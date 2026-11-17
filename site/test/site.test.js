@@ -175,7 +175,7 @@ test('a tutorial video plays from the site itself, a piece at a time', async () 
     assert.match(page.headers['content-security-policy'], /media-src 'self'/);
     assert.ok(s.site.routes.get('/docs/prompts').buf.toString('utf8').includes('href="/tutorials/keywords"'), 'the prompt library links it');
     // Each tutorial the app links to (app/tutorials.js `video.url`) is a page here with its video and still.
-    for (const [id, from] of [['keywords', '/docs/prompts'], ['ai-project', '/docs/studio'], ['character-swap', '/docs/remix']]) {
+    for (const [id, from] of [['keywords', '/docs/prompts'], ['compare-models', '/docs/remix'], ['picture-to-video', '/docs/browse'], ['ai-project', '/docs/studio'], ['character-swap', '/docs/remix']]) {
       const html = (await s.get('/tutorials/' + id)).body.toString('utf8');
       assert.match(html, new RegExp('<video src="/assets/tutorial-' + id + '\\.mp4" poster="/assets/tutorial-' + id + '\\.jpg"[^>]* controls playsinline'), id);
       for (const ext of ['mp4', 'jpg']) assert.equal((await s.get('/assets/tutorial-' + id + '.' + ext)).status, 200, id + '.' + ext);
