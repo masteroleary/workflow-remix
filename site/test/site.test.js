@@ -164,6 +164,61 @@ test('every answer carries the page policy and its companions', async () => {
   } finally { await s.close(); }
 });
 
+test('a tutorial video plays from the site itself, a piece at a time', async () => {
+  const s = await start();
+  try {
+    const file = fs.readFileSync(path.join(__dirname, '..', 'assets', 'tutorial-keywords.mp4'));
+    const page = await s.get('/tutorials/keywords');
+    assert.equal(page.status, 200);
+    const html = page.body.toString('utf8');
+    assert.match(html, /<video src="\/assets\/tutorial-keywords\.mp4" poster="\/assets\/tutorial-keywords\.jpg"[^>]* controls playsinline/);
+    assert.match(page.headers['content-security-policy'], /media-src 'self'/);
+    assert.ok(s.site.routes.get('/docs/prompts').buf.toString('utf8').includes('href="/tutorials/keywords"'), 'the prompt library links it');
+    // Each tutorial the app links to (app/tutorials.js `video.url`) is a page here with its video and still.
+    for (const [id, from] of [['keywords', '/docs/prompts'], ['ai-project', '/docs/studio'], ['character-swap', '/docs/remix']]) {
+      const html = (await s.get('/tutorials/' + id)).body.toString('utf8');
+      assert.match(html, new RegExp('<video src="/assets/tutorial-' + id + '\\.mp4" poster="/assets/tutorial-' + id + '\\.jpg"[^>]* controls playsinline'), id);
+      for (const ext of ['mp4', 'jpg']) assert.equal((await s.get('/assets/tutorial-' + id + '.' + ext)).status, 200, id + '.' + ext);
+      assert.ok(s.site.routes.get(from).buf.toString('utf8').includes('href="/tutorials/' + id + '"'), from + ' links ' + id);
+    }
+
+    const whole = await s.get('/assets/tutorial-keywords.mp4');
+    assert.equal(whole.status, 200);
+    assert.equal(whole.headers['content-type'], 'video/mp4');
+    assert.equal(whole.headers['accept-ranges'], 'bytes');
+    assert.equal(whole.headers['content-encoding'], undefined, 'a video is sent as it is');
+    assert.equal(Number(whole.headers['content-length']), file.length);
+
+    const ask = async (range, extra = {}) => s.get('/assets/tutorial-keywords.mp4', { headers: { range, ...extra } });
+    const first = await ask('bytes=0-1');
+    assert.equal(first.status, 206);
+    assert.equal(first.headers['content-range'], `bytes 0-1/${file.length}`);
+    assert.deepEqual(first.body, file.subarray(0, 2));
+    const tail = await ask('bytes=-100');
+    assert.equal(tail.headers['content-range'], `bytes ${file.length - 100}-${file.length - 1}/${file.length}`);
+    assert.deepEqual(tail.body, file.subarray(file.length - 100));
+    const open = await ask(`bytes=${file.length - 10}-`);
+    assert.equal(open.status, 206);
+    assert.equal(open.body.length, 10);
+    const past = await ask(`bytes=0-${file.length * 2}`);
+    assert.equal(past.status, 206, 'an end past the file is the file\'s end');
+    assert.equal(past.body.length, file.length);
+    for (const bad of [`bytes=${file.length}-`, 'bytes=-0', 'bytes=5-2']) {
+      const r = await ask(bad);
+      assert.equal(r.status, 416, bad);
+      assert.equal(r.headers['content-range'], `bytes */${file.length}`, bad);
+    }
+    for (const ignored of ['bytes=0-1,4-5', 'items=0-1', 'bytes=-']) {
+      assert.equal((await ask(ignored)).status, 200, ignored);
+    }
+    assert.equal((await ask('bytes=0-1', { 'if-range': '"another"' })).status, 200, 'a range on another copy is the whole file');
+    assert.equal((await ask('bytes=0-1', { 'if-range': whole.headers.etag })).status, 206);
+    const poster = await s.get('/assets/tutorial-keywords.jpg');
+    assert.equal(poster.headers['content-type'], 'image/jpeg');
+    assert.equal(poster.headers['accept-ranges'], undefined, 'only a video takes ranges');
+  } finally { await s.close(); }
+});
+
 test('addresses are tidied by redirect', async () => {
   const s = await start();
   try {

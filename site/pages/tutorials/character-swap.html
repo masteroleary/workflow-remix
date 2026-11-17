@@ -1,0 +1,19 @@
+<!--
+title: Swap a character into a video
+description: A two-minute video: the woman from one video put into another person's place, with the scene, camera, motion and sound kept, by Remix and Character Swap.
+-->
+<h1>Swap a character into a video</h1>
+<p class="lede">Keep a video's scene, camera, motion and sound, and put someone else in it. Open the video in Remix, switch the workflow to Character Swap, pick a picture of who goes in, and describe them.</p>
+
+<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><video src="/assets/tutorial-character-swap.mp4" poster="/assets/tutorial-character-swap.jpg" width="1920" height="1080" controls playsinline preload="metadata"></video><figcaption>The video from <a href="/tutorials/ai-project">the AI project tutorial</a>, with someone else in it: the same room, the same gestures and the same words.</figcaption></figure>
+
+<h2 id="steps">The steps</h2>
+<ol class="steps">
+<li><strong>On the Workflows page, press Enable on Minimax H3 Character Swap.</strong> It checks that every model and node it needs is installed, and offers Download for any that are missing.</li>
+<li><strong>In Media, find the video to use as the guide</strong>: the clip whose scene, camera and movement you want to keep. Press the bar under it to open Remix.</li>
+<li><strong>Pick Minimax H3 Character Swap in the Workflow menu.</strong> Its video box holds the clip you opened; Browse picks another.</li>
+<li><strong>In its picture box, Browse to a picture of who goes in</strong>, and in the prompt describe them head to toe, starting with whether they are a man or a woman.</li>
+<li><strong>Keep the guide to 30 seconds or less</strong>, and shorter if your machine has less memory. Its length is taken from the video; untick <em>Use reference video length</em> to type a shorter one.</li>
+<li><strong>Press Run</strong>, and follow the job on Jobs. The new video lands in ComfyUI's output.</li>
+</ol>
+<p>More on the form, its boxes and its runs is in <a href="/docs/remix">Remixing a file</a>.</p>

@@ -33,14 +33,16 @@ const RELEASE_REFRESH_MS = 10 * 60 * 1000;
 const FEED_MAX = 64 * 1024;
 const FEED_TIMEOUT_MS = 8000;
 
-const CSP = "default-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; "
+const CSP = "default-src 'none'; style-src 'self'; img-src 'self'; media-src 'self'; font-src 'self'; "
   + "base-uri 'none'; form-action 'none'; frame-ancestors 'none'";
 const TYPES = {
   '.css': 'text/css; charset=utf-8',
   '.svg': 'image/svg+xml',
   '.ico': 'image/x-icon',
   '.png': 'image/png',
+  '.jpg': 'image/jpeg',
   '.webp': 'image/webp',
+  '.mp4': 'video/mp4',
   '.txt': 'text/plain; charset=utf-8',
   '.woff2': 'font/woff2',
 };
@@ -412,6 +414,28 @@ ${side.pager}
     if (status === 200) {
       res.setHeader('ETag', e.etag);
       if (req.headers['if-none-match'] === e.etag) { res.statusCode = 304; return res.end(); }
+    }
+    // A video is asked for in pieces: Safari will not play one whose server answers a range
+    // with the whole file. One range only (`bytes=a-b`, `a-` or `-n`); a range that names no
+    // byte of the file is a 416, and one that will not read, or a list of them, the whole file.
+    if (status === 200 && /^video\//.test(e.type)) {
+      res.setHeader('Accept-Ranges', 'bytes');
+      const range = /^bytes=(\d*)-(\d*)$/.exec(String(req.headers.range || '').trim());
+      const ifRange = req.headers['if-range'];
+      if (range && (range[1] || range[2]) && (!ifRange || ifRange === e.etag)) {
+        const size = body.length;
+        let start = range[1] ? Number(range[1]) : Math.max(0, size - Number(range[2]));
+        const end = range[1] && range[2] ? Math.min(Number(range[2]), size - 1) : size - 1;
+        if (!range[1] && !Number(range[2])) start = size;
+        if (start >= size || end < start) {
+          res.statusCode = 416;
+          res.setHeader('Content-Range', `bytes */${size}`);
+          return res.end();
+        }
+        res.statusCode = 206;
+        res.setHeader('Content-Range', `bytes ${start}-${end}/${size}`);
+        body = body.subarray(start, end + 1);
+      }
     }
     res.setHeader('Content-Length', body.length);
     res.end(req.method === 'HEAD' ? undefined : body);

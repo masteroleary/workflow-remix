@@ -1,0 +1,19 @@
+<!--
+title: Build a video project from one sentence
+description: A two-minute video: the AI agent writes a two-clip project from a short request, a picture made earlier starts it, and H3 Studio renders and joins it.
+-->
+<h1>Build a video project from one sentence</h1>
+<p class="lede">Describe a short video, and the AI agent writes the project: its character, her voice, two clips and the lines she says. A picture you already made starts it, and H3 Studio renders the clips and joins them into one video.</p>
+
+<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><video src="/assets/tutorial-ai-project.mp4" poster="/assets/tutorial-ai-project.jpg" width="1920" height="1080" controls playsinline preload="metadata"></video><figcaption>Mika, a picture from the keywords video, made into a two-clip video in which she says how it was made. Every step runs on your own computer: the agent on a local Ollama, the renders on your ComfyUI.</figcaption></figure>
+
+<h2 id="steps">The steps</h2>
+<ol class="steps">
+<li><strong>Set up the AI agent</strong> in Settings → Ollama Toolcall Agent. It finds a running Ollama by itself and picks a model that can use tools.</li>
+<li><strong>In H3 Studio, open Projects and choose + → Build from Prompt.</strong> Pick the frame, the resolution and Turbo, and what the agent does about pictures: storyboards, picture prompts, or none.</li>
+<li><strong>Say what to build</strong>, as you would to a person: who is in it, where it happens, and what they say. Press <strong>Build it</strong>.</li>
+<li><strong>The agent works in a panel beside the page</strong>, step by step, and its changes apply as it goes. A voice sample keeps a character's voice the same from clip to clip.</li>
+<li><strong>To start a clip from a picture you already have</strong>, open the project's Images tab, switch on that clip's first frame, and pick the picture from the library.</li>
+<li><strong>Enable the project and press Run.</strong> Every clip renders in full, and they are joined into one video in the project's folder.</li>
+</ol>
+<p>More on projects, clips, shots and the agent is in <a href="/docs/studio">H3 Studio</a>.</p>
