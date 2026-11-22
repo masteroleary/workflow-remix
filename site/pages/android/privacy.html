@@ -1,0 +1,63 @@
+<!--
+title: Android app privacy policy
+description: What the WorkflowRemix app for Android phones and tablets keeps, what it sends and to whom, and how to remove it.
+-->
+<h1>Android app privacy policy</h1>
+<p class="lede">This is the privacy policy of the WorkflowRemix app for Android phones and tablets. In short: <strong>We don’t collect anything about you.</strong> The app has no analytics, no advertising, no tracking and no crash reporter of its own, and there is no WorkflowRemix account. What you see and do in the app travels between your device and your own computer, and never through a server of ours.</p>
+<p><em>Effective 22 November 2026.</em> The app is made by 247.DEV LLC. Below, “the app” is the Android app, and “WorkflowRemix on your computer” is the desktop app it connects to.</p>
+
+<h2 id="what">What the app is</h2>
+<p>The app shows you WorkflowRemix, running on your own computer, on your Android phone or tablet. It displays the pages your computer serves, and nothing else: links that lead anywhere else do not open in it.</p>
+
+<h2 id="where">Where your information goes</h2>
+<p><strong>Your computer.</strong> Everything you do in the app (browsing and viewing your images and videos, the prompts you type, the runs you start, the files you upload, favourite or delete) goes to your own computer and stays there, under WorkflowRemix’s settings on it. It is yours; we never see it.</p>
+<p><strong>Tailscale.</strong> To reach your computer, the app runs its own connection to your Tailscale network (your “tailnet”) and signs it in with your Tailscale account, on Tailscale’s own sign-in page in your browser. That gives Tailscale Inc., which runs the service, what any device on a tailnet gives it: the account you signed in with (usually your email address and name, from the sign-in provider you chose), the app’s device name on your tailnet, its keys, its network addresses, its operating system and when it is online. Tailscale uses this to run your tailnet, under its own <a href="https://tailscale.com/privacy-policy" rel="noopener noreferrer">privacy policy</a>. Traffic between your device and your computer is end-to-end encrypted; Tailscale cannot read it, including when it passes through Tailscale’s relay servers. The app is built with Tailscale’s log upload switched off, so it sends Tailscale no logs. The app does not need the Tailscale app, and does not use it if it is installed.</p>
+<p><strong>Google.</strong> Google Play delivers the app and its updates. If you have chosen to share usage and diagnostics data in your device’s settings, Google may send us crash reports and statistics about how the app is used, as that setting describes. We use them only to fix problems.</p>
+<p><strong>Nothing else.</strong> The app connects to your computer and to Tailscale’s servers; while you sign in to Tailscale, your browser opens Tailscale’s page and the sign-in provider you choose there; and, if you pair with it, the app connects to the demo server described below. It connects to nothing else.</p>
+
+<h2 id="on-your-device">What stays on your device</h2>
+<ul>
+<li><strong>Your pairing</strong>, in the app’s own storage on this device. The app pairs with one computer at a time. It is never backed up or carried to a new device.</li>
+<li><strong>The computer’s storage</strong>: your sign-in to that computer, its job list and its settings. It is never backed up or carried to a new device. Images and videos are not kept: the app’s cache is emptied every time you leave the app.</li>
+<li><strong>The app’s Tailscale keys</strong>, in the app’s own storage on this device. They are never backed up or carried to a new device.</li>
+</ul>
+<p>What removes what:</p>
+<ul>
+<li><strong>Signing out of your computer</strong> removes its storage. The pairing stays. Being signed out after a time away removes only your sign-in and the cache, so a run you started still shows its progress.</li>
+<li><strong>Forget this computer</strong> removes the pairing and the computer’s storage.</li>
+<li><strong>Wipe now</strong> removes the computer’s storage and the app’s Tailscale keys, which signs the app out of Tailscale. The pairing stays, and you sign in again.</li>
+<li><strong>Sign out of Tailscale and remove this device</strong> removes the app’s Tailscale keys. The pairing and the computer’s storage stay.</li>
+<li><strong>Removing your device’s screen lock</strong> removes a pairing with your own computer and the app’s Tailscale keys.</li>
+<li><strong>Uninstalling the app</strong> removes everything it keeps.</li>
+</ul>
+
+<h2 id="permissions">Permissions</h2>
+<ul>
+<li><strong>Fingerprint or your screen lock</strong>, to lock the app. Android checks it; the app never sees your fingerprint, your PIN or your password.</li>
+<li><strong>Network access and network state</strong>, to reach your computer and to tell you when the device is offline.</li>
+<li>The app does <strong>not</strong> ask for your photos, camera, microphone, contacts or location. When you choose a file to upload, Android’s own picker hands the app only the file you picked. To pair, you point your device’s own Camera app or Google Lens at the code on your computer, or paste the link.</li>
+</ul>
+
+<h2 id="shown">What the app shows</h2>
+<p>The app shows what your own computer holds. By default WorkflowRemix on your computer hides from phones and tablets the files its own word filter flags, and only a setting on the computer can show them. The filter matches the words you list against each file’s prompt, and it decides only what is shown: it does not look at the images themselves, and it does not stop a device that is signed in from running workflows of its own on your computer.</p>
+
+<h2 id="demo">The demo server</h2>
+<p>For app review, we run a demo server that holds only sample content. It is not open to the public, keeps no record of visitors’ addresses, and is reset to its sample content regularly.</p>
+
+<h2 id="remove">Removing your information</h2>
+<ul>
+<li><strong>From this device:</strong> in <strong>Pairing &amp; privacy</strong>, use Wipe now, Forget this computer, or Sign out of Tailscale and remove this device; or uninstall the app. <a href="#on-your-device">What stays on your device</a>, above, says what each one removes.</li>
+<li><strong>From your computer:</strong> everything there is under your control in WorkflowRemix. <strong>Sign out every device</strong>, on the computer, ends every device’s sign-in at once.</li>
+<li><strong>From Tailscale:</strong> remove the app’s device in Tailscale’s admin console, or delete your tailnet altogether (<strong>Delete your Tailscale account…</strong> in Pairing &amp; privacy opens Tailscale’s own page for it).</li>
+</ul>
+<p>We hold nothing about you, so there is nothing for us to export or delete. If you think we do, contact us and we will check.</p>
+
+<h2 id="age">Age</h2>
+<p>The app is for adults (18+), like WorkflowRemix itself, and is not directed to children.</p>
+
+<h2 id="changes">Changes</h2>
+<p>If this policy changes, the new version will be posted here with a new date. A change in what the app sends anywhere would also be described in the app’s update notes.</p>
+
+<h2 id="contact">Contact</h2>
+<p>See <a href="/android/support#contact">Android app support</a> for how to reach us.</p>
+<p>The app and WorkflowRemix are independent, and are not affiliated with or endorsed by Tailscale Inc. or Comfy Org.</p>

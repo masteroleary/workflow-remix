@@ -1,0 +1,87 @@
+<!--
+title: Android app support
+description: How to set up the WorkflowRemix app for Android phones and tablets, what its messages mean, and how to reach us.
+-->
+<h1>Android app support</h1>
+<p class="lede">The WorkflowRemix app puts WorkflowRemix, running on your own computer, on your Android phone or tablet, privately: it reaches your computer through your own Tailscale network, and keeps what it shows behind your device’s lock.</p>
+
+<h2 id="need">What you need</h2>
+<ul>
+<li><strong>An Android phone or tablet with Android 12 or later, with a screen lock set.</strong> The app keeps its pairing behind your screen lock, so it cannot pair without one.</li>
+<li><strong>WorkflowRemix on your computer</strong>, from <a href="/downloads">Downloads</a>, kept up to date. It works with the ComfyUI you already run.</li>
+<li><strong>A Tailscale account.</strong> A free personal account is enough. You do not need the Tailscale app on your device: the app has its own connection.</li>
+<li><strong>Remote access switched on in WorkflowRemix</strong>, with a password of at least 12 characters.</li>
+</ul>
+
+<h2 id="start">Getting started</h2>
+<ol>
+<li>On your computer, in WorkflowRemix, open <strong>Settings → Remote access</strong> and switch it on. Press <strong>Show pairing code</strong>.</li>
+<li>Point your device’s <strong>Camera</strong> app or <strong>Google Lens</strong> at the code and tap the link that appears. Or copy the link shown under the code and paste it on the app’s Pair screen.</li>
+<li>Check your computer’s name on the confirmation and tap <strong>Pair</strong>.</li>
+<li>The first time, the app asks you to <strong>sign in to Tailscale</strong>: tap <strong>Sign in</strong>, and Tailscale’s page opens in your browser. Use the same account as your computer, then come back to the app. If your tailnet approves new devices by hand, approve the one whose name starts <code>workflowremix-</code> in Tailscale’s admin console.</li>
+<li>Sign in with your WorkflowRemix password.</li>
+</ol>
+<p>The code on your computer’s screen is only an address. It holds no password and no key, so a photo of it lets nobody in.</p>
+
+<h2 id="messages">What the messages mean</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>You see</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>Sign in to Tailscale to reach your computer.</td><td>Tap <strong>Sign in</strong> and sign in on Tailscale’s page, with the same account as your computer.</td></tr>
+<tr><td>Your computer is offline or asleep.</td><td>Wake the computer. The message clears by itself.</td></tr>
+<tr><td>WorkflowRemix isn’t open on your computer.</td><td>Open WorkflowRemix.</td></tr>
+<tr><td>Can’t reach WorkflowRemix. It may be closed, or remote access may be off.</td><td>Open WorkflowRemix and check that Remote access is on.</td></tr>
+<tr><td>Remote access is off on your computer.</td><td>Switch it on in WorkflowRemix’s settings.</td></tr>
+<tr><td>Remote access needs a password of at least 12 characters.</td><td>Set a longer password in WorkflowRemix’s settings.</td></tr>
+<tr><td>Your computer only accepts one Tailscale account…</td><td>Sign in to Tailscale in the app with that account, or change “Only my account” on the computer.</td></tr>
+<tr><td>Your computer refused this connection because it came through Tailscale Funnel…</td><td>WorkflowRemix never answers through Funnel; reach it through your tailnet.</td></tr>
+<tr><td>Your computer is now published under a different name.</td><td>Show the pairing code on your computer again and scan it.</td></tr>
+<tr><td>Sign in to Tailscale again.</td><td>The app’s Tailscale sign-in expired. Sign in again.</td></tr>
+<tr><td>Waiting for your tailnet admin to approve this device.</td><td>Approve the <code>workflowremix-</code> device in Tailscale’s admin console.</td></tr>
+<tr><td>This computer isn’t on your tailnet any more.</td><td>Add the computer back to your tailnet, or forget it and pair again.</td></tr>
+<tr><td>A different WorkflowRemix is answering at this address.</td><td>The computer was reinstalled or replaced. Pair again.</td></tr>
+<tr><td>Already paired with a computer. Forget it first.</td><td>The Android app pairs with one computer at a time. Forget the one there in Pairing &amp; privacy, then pair again.</td></tr>
+<tr><td>Update WorkflowRemix on your computer to use it from this device.</td><td>Install the newest WorkflowRemix.</td></tr>
+<tr><td>Your computer needs a newer version of this app.</td><td>Update the app from Google Play.</td></tr>
+<tr><td>Set a passcode on this device first.</td><td>Set a screen lock (a PIN, pattern or password) in the device’s Settings, then pair again.</td></tr>
+<tr><td>This device is offline.</td><td>Connect to Wi-Fi or mobile data.</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="greyed-out">Why some things are greyed out on the device</h2>
+<p>From a phone or tablet, WorkflowRemix lets you browse, view, upload, favourite and delete your media, start and cancel runs, and use your prompts. It does not let a device change any setting, start ComfyUI, restart, restore a backup or look through the computer’s folders: those say <em>Change this on the computer</em>. That is on purpose. Anyone who learned your remote password should not be able to change your computer, only use the app.</p>
+<p><strong>Some images may be hidden.</strong> WorkflowRemix hides from phones and tablets the files its own word filter flags, and only a setting on the computer can show them. The filter matches the words you list against each file’s prompt; it does not look at the images.</p>
+
+<h2 id="privacy">Privacy</h2>
+<ul>
+<li><strong>Lock:</strong> the app locks when you leave it (after a minute, by default) and opens with your fingerprint or your screen lock.</li>
+<li><strong>Screenshots blocked:</strong> screenshots, screen recordings, casting and the recent-apps preview show nothing of your library, and other apps cannot record the sound of a video playing in it.</li>
+<li><strong>Sign out after idle:</strong> after 8 hours away, by default, the app signs you out and empties its cache.</li>
+<li><strong>Wipe now:</strong> on the lock screen and in Pairing &amp; privacy, removes everything the app keeps and signs it out of Tailscale. Your pairing stays, and you sign in again.</li>
+<li><strong>Typing:</strong> the keyboard is asked not to learn from what you type, and autofill stays out.</li>
+<li><strong>Copying:</strong> what you copy is marked sensitive, so the clipboard preview hides it. The app clears it after two minutes, or as soon as you come back to the app if you left it: Android lets only the app in front clear the clipboard.</li>
+<li><strong>Backups:</strong> nothing the app keeps is backed up or carried to a new device.</li>
+<li><strong>Nothing else:</strong> no analytics, no ads, no tracking. See the <a href="/android/privacy">privacy policy</a>.</li>
+</ul>
+
+<h2 id="remove">Removing a device</h2>
+<ul>
+<li><strong>On the device:</strong> in Pairing &amp; privacy, <strong>Forget this computer</strong>, then <strong>Sign out of Tailscale and remove this device</strong>, then uninstall the app. Uninstalling alone also removes everything the app keeps, but leaves the app’s device signed in to your tailnet until you remove it there.</li>
+<li><strong>If the device is lost:</strong> on your computer, use <strong>Sign out every device</strong> (Settings → Security), and remove the app’s <code>workflowremix-</code> device in Tailscale’s admin console.</li>
+</ul>
+
+<h2 id="questions">Questions</h2>
+<p><strong>Do I need the Tailscale app?</strong> No. The app has its own connection, which nothing else on your device can use. If the Tailscale app is installed, the app does not use it.</p>
+<p><strong>Does it work away from home?</strong> Yes, anywhere your device has a connection.</p>
+<p><strong>Is my computer’s name public?</strong> When you switch on HTTPS in Tailscale, your computer’s Tailscale name is written into public certificate logs, permanently. Rename the computer in Tailscale first if its name says anything about you.</p>
+<p><strong>Why doesn’t the app remember my password?</strong> On purpose: it never stores or fills a password.</p>
+<p><strong>Can Tailscale’s support help with the app?</strong> Not with the app itself: it is built with Tailscale’s logging switched off, so Tailscale’s support cannot see its logs. Ask us instead.</p>
+<p><strong>How do I delete my Tailscale account?</strong> <strong>Pairing &amp; privacy → Delete your Tailscale account…</strong> opens Tailscale’s own page for it.</p>
+
+<h2 id="contact">Contact</h2>
+<ul>
+<li><strong>Privately:</strong> in WorkflowRemix on your computer, open <strong>Support → Report a problem</strong>, and say in the note that it is about the Android app. You see the whole report before it is sent, and our answer appears under <strong>Your reports</strong>.</li>
+<li><strong>In public:</strong> open an issue at <a href="https://github.com/masteroleary/workflow-remix/issues" rel="noopener noreferrer">github.com/masteroleary/workflow-remix</a>. Issues are public, so leave out anything private.</li>
+</ul>
+<p>The app is for adults (18+). <a href="/android/privacy">Privacy policy</a></p>
+<p>The app and WorkflowRemix are independent, and are not affiliated with or endorsed by Comfy Org or Tailscale Inc.</p>
