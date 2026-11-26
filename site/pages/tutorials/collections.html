@@ -1,20 +1,33 @@
 <!--
-title: One prompt, four worlds
-description: A short video: a single [showcase] keyword answered by four collections in turn, Fantasy World, Cyberpunk, Futuristic Space and Logo Design, with nothing retyped.
+title: Keyword collections
+description: Two short videos: a single [showcase] keyword answered by four collections in turn, and WaiSnackMix's style presets, each with its own negative prompt, styling one picture three ways on Anima Turbo.
 section: tutorials
 order: 2
-nav: One prompt, four worlds
+nav: Keyword collections
 -->
-<h1>One prompt, four worlds</h1>
-<p class="lede">A collection answers every keyword in a prompt at once. Switch it, and the same prompt is a different world.</p>
+<h1>Keyword collections</h1>
+<p class="lede">A collection answers every keyword in a prompt at once. It can be a whole world, or a model's own style presets.</p>
 
+<h2 id="worlds">One prompt, four worlds</h2>
+<p>Switch the collection between Fantasy World, Cyberpunk, Futuristic Space and Logo Design, and the same prompt is a different world each time, with nothing retyped.</p>
 <figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><video src="/assets/tutorial-collections.mp4" poster="/assets/tutorial-collections.jpg" width="1920" height="1080" controls playsinline preload="metadata"></video><figcaption>One keyword, <code>[showcase]</code>, run in four collections: a storybook wizard, a netrunner in a neon city, a robot at the controls of a rocket, and a fox logo in three styles.</figcaption></figure>
 
-<h2 id="steps">The steps</h2>
 <ol class="steps">
 <li><strong>Open the Prompts page</strong> to see the collections. Each category is a keyword, each row an answer; a keyword a collection has no shelf for is answered from General.</li>
 <li><strong>Open Remix on any picture</strong> and replace its prompt with <code>[showcase]</code>. In General, showcase holds six more keywords: a style, a character, an expression, an action, a scene and the lighting.</li>
 <li><strong>On the Keywords tab, pick a collection.</strong> The preview shows every prompt the run will send, each part in the colour of the keyword that wrote it. Untick any you do not want.</li>
 <li><strong>Run it</strong>, then switch the collection and run again. The Run tab keeps every picture of the visit, newest first, side by side.</li>
+</ol>
+
+<h2 id="style-presets">A model's style presets</h2>
+<p>WaiSnackMix is a different kind of collection: one shelf, Quality, holding an anime model's style presets. Each is a line of quality words with a negative prompt of its own, and Anima Turbo, the anime workflow that ships with the app, starts its prompt with the keyword they answer.</p>
+<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><video src="/assets/tutorial-anime-styles.mp4" poster="/assets/tutorial-anime-styles.jpg" width="1920" height="1080" controls playsinline preload="metadata"></video><figcaption>One subject on one locked seed, styled three ways by the Realism, Anime and Illustrij presets, each sending its own negative prompt.</figcaption></figure>
+
+<ol class="steps">
+<li><strong>Open the Prompts page and pick WaiSnackMix.</strong> Each preset shows its quality words and, beside them, its negative prompt.</li>
+<li><strong>Open Remix on any picture and switch the workflow to Anima Turbo</strong> (add it from the Workflows page's + first). Write the prompt with <code>[quality]</code> at the start, then the subject.</li>
+<li><strong>Lock a seed</strong>, so every style starts from the same noise and only the style changes.</li>
+<li><strong>On the Keywords tab, pick WaiSnackMix.</strong> Quality is answered with Realism, as it ships, and the preview shows its negative under the prompt. Tick more presets on the quality row: each one is a job of its own, with its own negative written into the workflow's negative prompt.</li>
+<li><strong>Run them</strong>, and lay the pictures side by side with View → Mason.</li>
 </ol>
 <p>More on keywords, negatives and collections is in <a href="/docs/prompts">Keywords and collections</a>.</p>
