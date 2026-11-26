@@ -1,74 +1,54 @@
 <!--
-title: Workflows
-description: Which of your ComfyUI workflows WorkflowRemix offers, how it builds a form from a graph, and how to correct what it detected.
+title: Workflows and models
+description: The workflows that come with WorkflowRemix, the requirements check that tells you what your ComfyUI is missing, model downloads, substitutes and your own notes on models.
 section: docs
 order: 5
+nav: Workflows and models
 -->
-<h1>Workflows</h1>
-<p class="lede">The <strong>Workflows</strong> page is the library Remix runs from: every workflow saved in your ComfyUI, with a switch for whether the app offers it.</p>
+<h1>Workflows and models</h1>
+<p class="lede">The <strong>Workflows</strong> page is what Remix runs from: the workflows that come with the app, and any in your ComfyUI's own folder, each checked against your install before it is offered.</p>
+<p>Watch <a href="/tutorials/check-workflow">a workflow checked and run in one click</a>.</p>
 
-<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/full-workflows.webp" alt="The Workflows page: six workflows, each tagged with what it makes, such as T2I, I2I or I2V" width="1920" height="1200" loading="lazy"><figcaption>The library: each workflow tagged with what it makes. One still waits for its check.</figcaption></figure>
+<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/shot-workflows.webp" alt="The Workflows page: workflow cards, each tagged with what it makes, such as T2I, I2I or I2V" width="1920" height="1080" loading="lazy"><figcaption>The library: each workflow tagged with what it makes: T2I, I2I, I2V and so on.</figcaption></figure>
 
-<h2 id="library">The library</h2>
-<p>WorkflowRemix reads the workflows folder of the ComfyUI you pointed it at. Nothing is copied or renamed. For each workflow you can:</p>
+<h2 id="check">Check it, then run it</h2>
+<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/shot-workflows-check.webp" alt="A requirements check that passed: every requirement installed, the pictures Run feeds in and the instruction it sends" width="1920" height="1080" loading="lazy"><figcaption>Everything installed: the check says what Run will do, and runs it in one press.</figcaption></figure>
+<p>A workflow that has not been checked wears an <strong>Enable</strong> button. Press it and the app works out everything the workflow needs, every custom node, checkpoint, LoRA, VAE and text encoder, and ticks each one off against your ComfyUI. Adding a workflow with <strong>+</strong> starts the same check.</p>
 <ul>
-<li><strong>Switch it on</strong>, so it appears in Remix's drop-down.</li>
-<li><strong>Give it a label</strong>, the name it goes by in the app.</li>
-<li><strong>Open it</strong> on the inspect page with no file behind it, to see and edit its form.</li>
-<li><strong>Correct its roles</strong> with <strong>Roles</strong> (below).</li>
-</ul>
-<p>Those choices are kept by the app, beside your other settings. Your workflow files are left as they are.</p>
-<p>Saved a new workflow in ComfyUI while the page was open? Press <strong>Refresh</strong> beside <strong>+</strong> to look again; the <strong>+</strong> picker always reads the folder as it is when it opens.</p>
-<p>Each card also says what the workflow makes, read off its graph: <strong>T2I</strong> (text to image), <strong>I2I</strong> (image to image), <strong>T2V</strong>, <strong>I2V</strong> and <strong>V2V</strong> for video, and <strong>…2A</strong> for audio. A workflow whose output the app does not recognise gets a plain graph icon.</p>
-
-<h2 id="check">Checking a workflow, then running it</h2>
-
-<div class="shots-row">
-<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/full-workflows-enable-passed.webp" alt="A requirements check that passed: all 14 requirements installed, the picture Run feeds in and the instruction it sends" width="1920" height="1200" loading="lazy"><figcaption>Everything installed: the check folds away and says what Run will do.</figcaption></figure>
-<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/full-workflows-enable-missing.webp" alt="A requirements check listing two missing models, each with Download and Find manually" width="1920" height="1200" loading="lazy"><figcaption>Something missing: each file is listed with its folder, its size and a way to get it.</figcaption></figure>
-</div>
-<p>A workflow that has not been checked yet wears an <strong>Enable</strong> button over its card. Press it and the app works out everything the workflow needs (every custom node, checkpoint, LoRA, VAE and text encoder) and ticks each one off in turn, ✓ found or ✗ missing.</p>
-<ul>
-<li><strong>Everything found.</strong> The workflow is marked as checked, the button goes, and a big <strong>Run</strong> appears. It runs the workflow once on its own settings and takes you to <a href="/docs/jobs">Jobs</a> to watch. Where a starter workflow takes a picture, Run feeds it one of the sample pictures a new install comes with (two for Krea Image Edit by Reference: the scene and the person).</li>
-<li><strong>Something missing.</strong> The sheet lists the missing custom nodes, and the missing files grouped by the folder each belongs in under <code>ComfyUI/models</code>. <strong>Copy details</strong> copies that list as plain text with what to do about it: install the nodes through ComfyUI-Manager, put the files in those folders, restart ComfyUI and check again.</li>
-<li><strong>ComfyUI not running.</strong> Which nodes exist can only be asked of ComfyUI, so the sheet says to start it rather than reporting everything as missing.</li>
-</ul>
-<p>A file counts as installed if ComfyUI lists it or if it is on disk in your ComfyUI's <code>models</code> folder, so a Docker install with models mounted elsewhere and a local one with files not yet loaded both come out right. The check reads only; it installs and downloads nothing.</p>
-<div class="callout">
-<p class="callout-title">The app runs ComfyUI's copy</p>
-<p>A run always uses the workflow file in your ComfyUI folder as it is now. Edit a workflow in ComfyUI and save it, and the next remix uses the new version.</p>
-</div>
-
-<h2 id="detection">How a form is made</h2>
-<p>There is nothing to map by hand. The app reads the graph, asks ComfyUI what each node's settings are, and decides which are worth a control and what kind: a prompt box, a seed, a slider, a model picker, a LoRA stack, an image picker. It follows the wiring, so it knows which settings can reach the output and offers only those.</p>
-<p>Three things it also works out:</p>
-<ul>
-<li><strong>Muted and bypassed nodes.</strong> Their settings are listed as asleep in the hidden fields, and stay available: a style preset may wake them.</li>
-<li><strong>Optional image inputs.</strong> A bypassed image loader that feeds the render is offered as an empty picker. Choosing an image switches its branch on for that run.</li>
-<li><strong>Edit-instruction workflows.</strong> A workflow can declare that its prompt is an instruction for the image going in (“make the jacket red”) and not a description. Such a workflow keeps its own prompt when you switch to it.</li>
+<li><strong>Everything found:</strong> it is offered in Remix, and a big <strong>Run</strong> runs it once on its own settings, with the sample pictures that ship with the app where it takes one. The sheet says first what Run will do.</li>
+<li><strong>Something missing:</strong> the sheet lists the missing nodes, and the missing files under the folder each belongs in. Beside each file, <strong>Download</strong> where the app knows where it comes from, and <strong>Find manually</strong> to pick a file you already have. <strong>Copy Agent ToolCall</strong> copies exact install steps, node packs, versions, file paths and links, for you or an AI coding agent to follow.</li>
+<li><strong>Checked against your ComfyUI as it is now.</strong> Move or update ComfyUI and <strong>Recheck all workflows</strong> in Settings goes through them again. A node pack that failed to load is told apart from one that is missing.</li>
 </ul>
 
-<h2 id="correct">Correcting it</h2>
-<p>Detection is usually right, and when it is not, three controls change the answer for good.</p>
+<h2 id="download">Downloads, substitutes and notes</h2>
+<ul>
+<li><strong>Download</strong> fetches a model straight into the right folder, from Hugging Face or Civitai only, checked by its size and fingerprint. A gated model needs your free Hugging Face token, and Civitai your API key, both kept in Settings and sent nowhere else.</li>
+<li><strong>Find manually</strong> takes a file you already have under another name: it becomes a <strong>substitute</strong>, used for that model in every workflow from then on (Settings → Model substitutes).</li>
+<li><strong>Your models and LoRAs</strong> (Settings) is where you describe your own files: what each is for, its tags, its recommended strength and settings, notes for the AI. Studios and the AI agent choose and set LoRAs by them.</li>
+<li><strong>Recommended models</strong>, under Settings → NSFW and only if you switch it on, lists models we recommend for adult work, with their notes and tags, and copies a request to fetch the ones you tick.</li>
+</ul>
+
+<h2 id="bundled">What comes with the app</h2>
+<p>These are read from the app itself, so an update brings their newest versions, and nothing is copied into your ComfyUI. They name the models their authors used; Enable says what you lack.</p>
 <div class="table-wrap"><table>
-<thead><tr><th>Control</th><th>Use it when</th><th>Writes</th></tr></thead>
+<thead><tr><th>Workflow</th><th>Makes</th></tr></thead>
 <tbody>
-<tr><td>Roles</td><td>The wrong field was taken for the prompt, seed, steps or guidance.</td><td>The app's settings.</td></tr>
-<tr><td>Save field setup</td><td>You want different fields shown, or different names on them.</td><td>The app's settings.</td></tr>
-<tr><td>Update workflow</td><td>You want the values on screen to be the workflow's new defaults.</td><td>The workflow's own <code>.json</code>, after a one-time <code>.bak</code>.</td></tr>
+<tr><td>Krea2</td><td>A picture from a prompt: the simplest one.</td></tr>
+<tr><td>Krea Image Edit</td><td>An edit by instruction: “change the jacket to red”. <a href="/tutorials/edit-picture">Watch it</a>.</td></tr>
+<tr><td>Krea Image Edit by Reference</td><td>A person from one picture placed into another.</td></tr>
+<tr><td>Krea Character Frame</td><td>A character restaged in a new scene, pose and outfit, at video frame size.</td></tr>
+<tr><td>Krea Continue Frame</td><td>The next picture of a storyboard, drawn from the one before.</td></tr>
+<tr><td>Minimax H3 Video</td><td>A picture into a video with its own sound, the shape of the picture.</td></tr>
+<tr><td>Minimax H3 Reference</td><td>A video from up to nine reference pictures, with sound, draft and final. What Studios renders H3 clips with.</td></tr>
+<tr><td>Minimax H3 Character Swap</td><td>The character from a picture put into a guide video, its motion and lips kept.</td></tr>
+<tr><td>Wan High Low</td><td>A picture into a WAN 2.2 clip, with its last frame saved for the next.</td></tr>
+<tr><td>LTX 2.5 Keyframes</td><td>A video with sound from text, or through up to five pictures pinned in time. Core nodes only.</td></tr>
 </tbody>
 </table></div>
-<p>Only the values a run would have set are written. The rest of the graph is left exactly as it was.</p>
+<p>Six more wait under <strong>+</strong> until you add them: <strong>LTX 2.5 Low VRAM</strong> (for cards of about 8 GB), <strong>Anima Turbo</strong> (anime pictures), and four <strong>MOSS-Image</strong> workflows, which Studios can draw its pictures with in place of Krea.</p>
 
-<h2 id="from-a-file">A workflow from a file</h2>
-<p>Any file that carries a workflow can give it back: the workflow inside it can be saved into your ComfyUI workflows folder as a new one, and then switched on like any other. If the app recognises a file's workflow as one that is in your ComfyUI but not switched on, it says so and offers to add it.</p>
+<h2 id="detection">How a form is made</h2>
+<p>There is nothing to map by hand. The app reads the graph, asks ComfyUI what each node's settings are, and offers the ones that can reach the output: a prompt box, a seed, a model picker, a LoRA stack, a picture box. It knows a muted branch from a live one, an optional second picture from a required one, and an edit instruction from a description. When it gets a role wrong, <strong>Remix fields</strong> on the Workflows page corrects it, with Undo.</p>
 
-<h2 id="starter">Starter workflows</h2>
-<p>Six workflows come with the app and are switched on from the first run. They are read from the app itself, not copied into your ComfyUI. They are a starting point: they name custom nodes and models you may need to install or swap for your own, which is what <a href="#check">Enable</a> is for. <a href="/examples/workflows">The starter workflows</a> lists what each one does and needs.</p>
-<h3 id="restore">Putting the starters back</h3>
-<p><strong>Settings → Restore defaults</strong> puts back what a new install starts with, part by part: <strong>Overwrite keywords</strong>, <strong>Overwrite prompts</strong> and <strong>Overwrite workflows</strong>, none ticked to begin with, and the app asks before it writes anything.</p>
-<ul>
-<li>A starter workflow you changed is kept beside itself as <code>&lt;name&gt;.bak</code> before the shipped one goes back. Your own workflows and shortcuts are left alone.</li>
-<li>The keywords and the prompt library are replaced as shipped, and no copy is kept, so that part cannot be undone.</li>
-<li>Only from the computer the app runs on, not from a phone.</li>
-</ul>
+<h2 id="restore">Putting the starters back</h2>
+<p><strong>Settings → Restore defaults</strong> puts back what a new install starts with, part by part: the keywords, the prompt library, the bundled workflows. A bundled workflow you changed is kept beside itself as <code>.bak</code>. The app asks before it writes anything, and only from the computer it runs on.</p>

@@ -53,10 +53,21 @@ const NAV = [
   { href: '/', label: 'Home', icon: 'home-outline' },
   { href: '/docs', label: 'Docs', icon: 'book-open-page-variant-outline', section: 'docs' },
   { href: '/downloads', label: 'Downloads', tab: 'Get it', icon: 'tray-arrow-down', main: true },
-  { href: '/examples', label: 'Examples', icon: 'lightbulb-on-outline', section: 'examples' },
+  { href: '/tutorials', label: 'Tutorials', icon: 'play-circle-outline', section: 'tutorials' },
   { href: '/acceptable-use', label: 'Acceptable Use', tab: 'Policy', icon: 'scale-balance' },
 ];
-const SECTIONS = { docs: 'Documentation', examples: 'Examples' };
+const SECTIONS = { docs: 'Documentation', tutorials: 'Tutorials' };
+// Pages that were folded into others (2026-11): their old addresses go to where the
+// content is now, so a link or a bookmark to one still lands somewhere.
+const MOVED = {
+  '/examples': '/tutorials',
+  '/examples/collections': '/tutorials/collections',
+  '/examples/recipes': '/tutorials/keywords',
+  '/examples/workflows': '/docs/workflows#bundled',
+  '/docs/jobs': '/docs/browse#jobs',
+  '/docs/updates': '/docs/getting-started#updates',
+  '/docs/how-it-works': '/docs#how-it-works',
+};
 
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => (
   { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -479,6 +490,11 @@ ${side.pager}
     if (clean !== p && routes.has(clean) && !routes.get(clean).hidden) {
       res.statusCode = 308;
       res.setHeader('Location', clean + url.search);
+      return res.end();
+    }
+    if (Object.prototype.hasOwnProperty.call(MOVED, clean)) {
+      res.statusCode = 301;
+      res.setHeader('Location', MOVED[clean]);
       return res.end();
     }
     const e = routes.get(p);

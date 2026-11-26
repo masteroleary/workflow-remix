@@ -1,72 +1,57 @@
 <!--
-title: Browsing your media
-description: The media grid in WorkflowRemix: folders, search by file name or by prompt, the word directory, favourites, the viewer, blur and safe mode.
+title: Media and jobs
+description: Browse your images, video and audio, search them by the prompt inside, look closer in the viewer, cut and join video, and follow every run on the Jobs page.
 section: docs
 order: 2
+nav: Media and jobs
 -->
-<h1>Browsing your media</h1>
-<p class="lede"><strong>Media</strong> opens a grid over everything you have: images, video and audio, by folder.</p>
-<p>To see a picture turned into a video and then trimmed, split and merged, watch <a href="/tutorials/picture-to-video">the two-minute video</a>.</p>
+<h1>Media and jobs</h1>
+<p class="lede"><strong>Media</strong> opens a grid over everything you have made: images, video and audio, by folder, right where ComfyUI saves them. Nothing to import and nothing to file.</p>
+<p>Watch <a href="/tutorials/picture-to-video">a picture turned into a video and then trimmed, split and joined</a>.</p>
 
-<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/full-browse-grid.webp" alt="The media grid on Favorites: three folders, then six pictures as tiles, with the bar of chips above them" width="1920" height="1200" loading="lazy"><figcaption>Media on Favorites: folders first, then the pictures. The chips above set Blur, Safe mode, the sort, the layout and the filters.</figcaption></figure>
+<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/shot-browse-grid.webp" alt="The media grid in its Mason layout: a folder of new pictures, each tile as wide as its picture" width="1920" height="1080" loading="lazy"><figcaption>Media in the Mason layout: every tile the shape of its picture, every row one height.</figcaption></figure>
 
 <h2 id="roots">Where it looks</h2>
-<p>The folder name at the top opens <strong>Library</strong>, which moves between the places the app knows about:</p>
-<ul>
-<li><strong>Output</strong>, fresh from the queue: ComfyUI's own output folder, so a render shows up without being copied anywhere.</li>
-<li><strong>Input</strong>, what runs are fed from: ComfyUI's input folder.</li>
-<li><strong>Favorites</strong>, everything you kept: the media library you chose at setup.</li>
-</ul>
-<p>The chips under the search box sort by date or name (<strong>Sort</strong>), choose the layout, the tile size and how many items a page holds (<strong>View</strong>), and filter by type or flatten every subfolder into one grid (<strong>Filters</strong>). Folders are cards above the pictures. The page comes back to where you were when you return from the viewer.</p>
+<p>The folder name at the top opens <strong>Library</strong>: <strong>Output</strong>, ComfyUI's own output folder, so a render shows up without being copied anywhere; <strong>Input</strong>, what runs are fed from; and <strong>Favorites</strong>, everything you kept. The chips under the search box set the sort, the layout (Grid or Mason) and tile size, the page size, and filter by type or flatten every subfolder into one grid. Tiles are small copies made for the grid, so a library of full-size renders loads quickly, a phone included.</p>
 
 <h2 id="search">Search by name, or by prompt</h2>
-<p>A background index reads the prompt written inside each generated file. So a search for “ocean” finds every picture whose prompt mentioned it, whatever the file is called. Search can also go down into every subfolder, and groups what it finds under the folders they are in.</p>
-<p>The index is built shortly after the app starts and refreshed every ten minutes. A file rendered a moment ago is found by name at once, and by prompt after the next refresh.</p>
-<h3>The word directory</h3>
-<p>Every word and phrase used across your prompts, sorted by how often it appears or from A to Z. Pick one to see every file that used it.</p>
-
-<h2 id="tiles">What a tile tells you</h2>
-<p>Each tile is a square thumbnail with a bar under it.</p>
-<ul>
-<li><strong>The thumbnail</strong> opens the viewer.</li>
-<li><strong>The bar</strong> raises <a href="/docs/remix">Remix</a> for that file.</li>
-<li>A <strong>wf</strong> tag means the file carries a workflow.</li>
-<li>A <strong>kw</strong> tag means the file is still a template: the prompt it was written from holds <code>[keywords]</code> you have rules for, so remixing it will answer them again. Hover the tag to see which.</li>
-</ul>
-<p>A video and the still image saved beside it under the same name are one item. They are listed, moved and deleted together.</p>
+<p>The app reads the prompt written inside each generated file, the moment a run finishes. So a search for “ocean” finds every picture whose prompt mentioned it, whatever the file is called. Search can go down into every subfolder, and <strong>Tags</strong> lists every word and phrase across your prompts, to pick one and see every file that used it.</p>
+<p>A tile's <strong>wf</strong> tag means the file carries a workflow; its picture opens the viewer, and its bar opens <a href="/docs/remix">Remix</a>. A video and the still saved beside it under the same name are one item, listed, moved and deleted together.</p>
 
 <h2 id="viewer">The viewer</h2>
-
-<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/full-viewer.webp" alt="The viewer showing a painting of a witch, with its prompt, model, seed and size beside it" width="1920" height="1200" loading="lazy"><figcaption>The viewer: the picture, and beside it the prompt, model and seed it was made with. Remix starts from here.</figcaption></figure>
-<p>Full screen, with swipe or the arrows to move through the folder, and a slideshow whose speed you set. Video plays in the page. From here you can open the file's <strong>inspect</strong> page, which shows everything written into it and has the same Remix form in tabs: <strong>Workflow</strong>, <strong>Run</strong> and <strong>Preview</strong>.</p>
-<h3 id="zoom">A closer look</h3>
-<p>The expand button at the top right of a picture opens it alone, over everything else. Pinch or scroll to zoom, drag to move around, and double-tap or double-click to jump to a readable zoom and back. <strong>Esc</strong> or ✕ returns you to the viewer where you were. If <strong>Blur</strong> is on, the picture stays blurred here too. A video goes full screen through its own controls instead.</p>
-
-<h2 id="upload">Adding pictures</h2>
-<p><strong>Upload</strong> on the bar puts pictures from the device you are using into the folder on screen: your library, or ComfyUI's input folder, where a workflow can pick them up. It takes PNG, JPEG, WebP and GIF, and never replaces a file already there: a name that is taken gets a number. From a phone over <a href="/docs/remote-access">remote access</a> it works the same way, and the picture is given a name of its own.</p>
-
-<h2 id="keep">Keeping and removing</h2>
+<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/shot-viewer.webp" alt="The viewer: a picture beside the prompt, model and seed that made it" width="1920" height="1080" loading="lazy"><figcaption>The viewer: the picture, and beside it how it was made. Remix starts from here.</figcaption></figure>
+<p>Full screen, with swipe or the arrows to move through the folder, and a slideshow. The expand button opens a picture alone to pinch, scroll and drag around in, and Blur stays on there if it is on. The <strong>⋯</strong> menu has the tools:</p>
 <ul>
-<li><strong>Favorite</strong> moves a file into your library, which is how a render becomes a kept file. A file that is already in the library goes into its <code>_Favorites</code> folder.</li>
-<li><strong>Delete</strong> removes the file from disk, with its thumbnail.</li>
-<li><strong>Selecting</strong> turns the bar into the selection's: pick all, only files or only folders on the page, then <strong>Move</strong>, <strong>Favorite</strong> or <strong>Delete</strong> them together. <strong>Merge folders</strong> moves the contents of the selected folders into one and removes the empty ones.</li>
+<li><strong>Split video</strong> and <strong>Trim video</strong>: two parts at the position you choose, or one part from a start and a length. Each part keeps the clip's prompt and workflow, so it remixes like the clip.</li>
+<li><strong>Last frame</strong>: a video's final frame as a picture, so the next clip can start where this one ends.</li>
+<li><strong>Duplicate</strong>, and <strong>Remove Workflow</strong>, which takes the embedded workflow and prompt out of a picture or video before you share it.</li>
+<li><strong>Save to phone</strong>, on another device: the share sheet, after a question saying a saved copy is outside the app's privacy settings.</li>
+</ul>
+
+<h2 id="video">Joining and comparing clips</h2>
+<p>Select two or more videos and choose <strong>Merge clips</strong> to join them end to end into a new one; <strong>Frame sheet</strong> makes one picture of a clip's frames in order. The clips you picked are left as they are.</p>
+
+<h2 id="keep">Keeping, renaming, removing</h2>
+<ul>
+<li><strong>Favorite</strong> moves a file into your library, which is how a render becomes a kept file.</li>
+<li><strong>Upload</strong> puts pictures from the device you are using into the folder on screen, never over a file already there.</li>
+<li><strong>Selecting</strong> (or a long press on a folder) turns the bar into the selection's: <strong>Rename</strong> many files at once, <strong>Move</strong>, <strong>Favorite</strong>, <strong>Tag NSFW</strong> or <strong>Delete</strong> them together, and <strong>Merge folders</strong> into the first one you picked.</li>
 </ul>
 <div class="callout warn">
 <p class="callout-title">Delete means delete</p>
-<p>The file is removed from the folder it is in, not hidden. The app's delete buttons reach every folder listed above, ComfyUI's own included.</p>
+<p>The file is removed from the folder it is in, not hidden. The app's delete buttons reach every folder above, ComfyUI's own included.</p>
 </div>
 
-<h2 id="video">Working with video</h2>
+<h2 id="jobs">Jobs</h2>
+<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/shot-jobs.webp" alt="The Jobs page: finished jobs, each with its prompt, the pictures it used and the pictures it made" width="1920" height="1080" loading="lazy"><figcaption>Every run is a job, with its progress and what it made.</figcaption></figure>
+<p>Every run you start is a job on the <strong>Jobs</strong> page: the workflow it ran, what made it this job and not its neighbour, the pictures it used, its progress and a thumbnail for each output as it finishes. The sidebar's Jobs row counts what is running and fills a ring with the job on the graphics card, on every page.</p>
 <ul>
-<li><strong>From a still to a clip.</strong> Raise <a href="/docs/remix">Remix</a> on a picture and choose an image-to-video workflow: the picture is its input. The <a href="/examples/workflows#image-to-video">starter workflows</a> include one that adds its own soundtrack.</li>
-<li><strong>Merge clips.</strong> Select two or more videos and choose <strong>Merge clips</strong> to join them end to end into one new video. The clips you picked are left as they are.</li>
-<li><strong>Last frame.</strong> In the viewer's tools, <strong>Last frame → clips</strong> saves a video's final frame as a picture in ComfyUI's clips folder. Remix that picture through an image-to-video workflow and the next clip starts where this one ended.</li>
+<li><strong>One list for every device.</strong> A job started on the computer is on your phone's list too, and the other way round. The newest 50 are kept.</li>
+<li><strong>Remix any job</strong>, however it ended, with its workflow and prompt, even one that never finished. A Studios job has <strong>Go to project</strong>.</li>
+<li><strong>Cancel stops it in ComfyUI</strong>, not only in the list, and keeps at it until ComfyUI lets go. A job that has gone quiet for five minutes says so.</li>
+<li><strong>A failed job says why</strong>: ComfyUI's own reason, usually a node or model your install lacks, and <strong>Report</strong> under the log sends it to support if you want.</li>
 </ul>
+<p>One press can queue many jobs: several models, several files, several prompt variations. They go to ComfyUI model by model, so each checkpoint loads once, and several models share their seeds, so a side-by-side comparison is a comparison of models. Watch it in <a href="/tutorials/compare-models">Compare models side by side</a>.</p>
 
 <h2 id="shared-screen">On a shared screen</h2>
-
-<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/full-privacy-blur-grid.webp" alt="The media grid with Blur on, every thumbnail blurred" width="1920" height="1200" loading="lazy"><figcaption>Blur on: a glance at the screen shows nothing.</figcaption></figure>
-<ul>
-<li><strong>Blur</strong> (a button in the sidebar, and one in the viewer) blurs every thumbnail and the picture open in the viewer, so the library can be browsed without showing what is in it. It comes back on by itself whenever the app goes out of sight, so returning to it shows nothing at a glance; each device can switch that off under <strong>Settings → NSFW</strong>.</li>
-<li><strong>Safe mode</strong> (the shield in the sidebar) leaves out any file whose prompt matches a word on your own filter list. It is on when you first open the app. The list is yours to fill in under <strong>Settings → NSFW</strong>. <a href="/docs/privacy#safe-mode">More about safe mode</a>.</li>
-</ul>
+<p><strong>Blur</strong> in the sidebar blurs every thumbnail and the picture in the viewer, and comes back on by itself whenever the app goes out of sight. The <strong>shield</strong> leaves out every file your word list or an NSFW tag flags, and its demo mode hides the models, LoRAs and workflows tagged NSFW too. More in <a href="/docs/privacy#safe-mode">Privacy and security</a>, and in <a href="/tutorials/privacy">the privacy video</a>.</p>

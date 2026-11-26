@@ -1,6 +1,6 @@
 <!--
 title: Getting started
-description: Install WorkflowRemix on Windows, choose where your data lives and connect it to your ComfyUI.
+description: Install WorkflowRemix, choose where your data lives, connect it to ComfyUI, run privacy setup, and keep it up to date.
 section: docs
 order: 1
 -->
@@ -9,57 +9,65 @@ order: 1
 
 <h2 id="need">What you need</h2>
 <ul>
-<li><strong>A 64-bit Windows 10 or 11 computer.</strong> Versions for macOS and Linux are on the way; the notes for them below are for when they arrive.</li>
-<li><strong>Your own ComfyUI</strong>, with the models and custom nodes you use. A Docker install works as well as a native one. WorkflowRemix talks to it over its local address, by default <code>http://127.0.0.1:8188</code>.</li>
+<li><strong>A 64-bit Windows 10 or 11 computer.</strong> Versions for macOS and Linux are on the way.</li>
+<li><strong>Your own ComfyUI</strong>, with the models and custom nodes you use. A Docker install works as well as a native one, and so does a ComfyUI on another computer on your network.</li>
 <li><strong>To be 18 or older</strong>, and to agree to the <a href="/acceptable-use">Acceptable Use Policy</a>.</li>
 </ul>
 
 <h2 id="install">Install it</h2>
-<p>Get the installer for your system from <a href="/downloads">Downloads</a>.</p>
-<div class="table-wrap"><table>
-<thead><tr><th>System</th><th>File</th><th>What to expect</th></tr></thead>
-<tbody>
-<tr><td>Windows</td><td><code>WorkflowRemix-Setup-&lt;version&gt;.exe</code></td><td>A short wizard asks who it is for and where the program goes. <em>Only for me</em>, the default, needs no administrator rights and keeps updates silent. Until the installer is code-signed, Windows shows <em>Windows protected your PC</em>: choose <strong>More info</strong>, then <strong>Run anyway</strong>.</td></tr>
-<tr><td>macOS <em>(coming soon)</em></td><td><code>WorkflowRemix-&lt;version&gt;-arm64.dmg</code> for Apple silicon, <code>-x64.dmg</code> for Intel</td><td>Until the app is signed and notarized, right-click it and choose <strong>Open</strong> the first time.</td></tr>
-<tr><td>Linux <em>(coming soon)</em></td><td><code>WorkflowRemix-&lt;version&gt;.AppImage</code></td><td>Make it executable with <code>chmod +x</code>, then run it. Some distributions need <code>libfuse2</code>.</td></tr>
-</tbody>
-</table></div>
+<p>Get the installer from <a href="/downloads">Downloads</a>: <code>WorkflowRemix-Setup-&lt;version&gt;.exe</code>. A short wizard asks who it is for and where the program goes. <em>Only for me</em>, the default, needs no administrator rights and keeps updates silent. Until the installer is code-signed, Windows shows <em>Windows protected your PC</em>: choose <strong>More info</strong>, then <strong>Run anyway</strong>.</p>
 
 <h2 id="first-launch">The first launch</h2>
-<p>The app asks its questions itself, the first time it opens, on every system. No server starts until you press <strong>Start WorkflowRemix</strong>.</p>
+<p>The app asks its questions itself, the first time it opens. Nothing runs until you press <strong>Start WorkflowRemix</strong>.</p>
 <ol class="steps">
-<li><strong>Where your data lives.</strong> This folder holds your settings, prompts and replacement rules, the job list with the full text of every prompt you run, the logs and, unless you choose otherwise, your media library. For the most privacy, pick a drive your operating system does not index for search, ideally an encrypted one (BitLocker, FileVault or LUKS). The screen says, for each folder you pick, whether it is probably indexed, and warns about a folder that syncs to a cloud service.</li>
-<li><strong>Media library</strong> (optional). Where favourites and archived media go. Leave it empty to keep the library inside the data folder.</li>
-<li><strong>ComfyUI.</strong> The address ComfyUI answers on; it does not need to be running yet, and <strong>Test</strong> checks it if it is. Then, optionally, the ComfyUI folder: the one holding its <code>input</code>, <code>output</code> and <code>user</code> folders (for Docker, the host side of those mounts). That is what lets the app list your workflows and outputs. If your output folder is somewhere else, name it too.</li>
+<li><strong>Where your data lives.</strong> This folder holds your settings, prompts and rules, Studios' projects, the job list with the full text of every prompt you run, the logs and, unless you choose otherwise, your media library. For the most privacy, pick a drive your operating system does not index for search, ideally an encrypted one. The screen says, for each folder you pick, whether it is probably indexed, and warns about a folder that syncs to a cloud service.</li>
+<li><strong>Media library</strong> (optional). Where favourites go. Leave it empty to keep it inside the data folder.</li>
+<li><strong>ComfyUI.</strong> The address ComfyUI answers on, and optionally its folder: the one holding its <code>input</code>, <code>output</code> and <code>user</code> folders (for Docker, the host side of those mounts). That is what lets the app list your workflows and outputs.</li>
 <li><strong>The Acceptable Use Policy.</strong> Read it, tick <em>I am 18 or older, and I agree</em>, and press Start.</li>
 </ol>
 <div class="callout">
 <p class="callout-title">The data folder is a real decision</p>
-<p>It cannot be moved from inside the app afterwards. A search index keeps its own copy of file names and of the text inside files, and that copy outlives the files. If you accept the default, your data goes in your user profile: <code>%LOCALAPPDATA%\WorkflowRemix</code> on Windows, <code>~/Library/Application Support/WorkflowRemix</code> on macOS, <code>~/.config/WorkflowRemix</code> on Linux.</p>
+<p>It cannot be moved from inside the app afterwards. A search index keeps its own copy of file names and of the text inside files, and that copy outlives the files. Accept the default and your data goes in your user profile, in <code>%LOCALAPPDATA%\WorkflowRemix</code>.</p>
 </div>
 
+<h2 id="comfyui">Connect ComfyUI</h2>
+<p>Until the app knows where ComfyUI is, it opens on a page asking for its address and folder. Once ComfyUI answers, the same page checks that <strong>ComfyUI-Manager</strong> is on and that GGUF models can load, and says how to put either right. It installs nothing itself. Instead, two buttons on every screen:</p>
+<ul>
+<li><strong>Copy agent request</strong> copies a short, exact request for an AI coding agent you already use (Claude Code, Codex, Cursor and the like): what is missing, where your ComfyUI keeps its models, and the node packs and versions the bundled workflows are tested with.</li>
+<li><strong>Show instructions</strong> gives the same steps to follow yourself.</li>
+</ul>
+<p>No ComfyUI yet? <strong>I don't have ComfyUI</strong> writes the request for installing the Windows portable build for your graphics card.</p>
+<p>From then on the sidebar's ComfyUI row shows its memory use, opens ComfyUI's own page, and restarts it. If ComfyUI stops answering, a red row says so, with <strong>Start</strong> when it runs on this computer.</p>
+
 <h2 id="privacy-setup">Privacy setup</h2>
-<p>Until you have answered them, a <strong>Complete setup</strong> row sits above Settings in the sidebar. It walks you through every privacy choice that applies to you, one question to a screen: adult content, a password for the app, caching for browsers and the phone app, blur, safe mode, filtered words, search indexing, and secure wipe with its panic password. Each answer is saved as you give it, you can leave and come back where you left off, and the row goes away once everything is answered. Every choice can be changed later in Settings.</p>
+<p>Until you have answered them, a <strong>Complete setup</strong> row sits above Settings in the sidebar. It walks you through every privacy choice that applies to you, one question to a screen: adult content, a password, caching, blur, safe mode, filtered words, search indexing, and secure wipe with its panic password. Each answer is saved as you give it, and you can leave and come back where you left off. Every choice can be changed later in Settings.</p>
 
 <h2 id="look-round">A first look round</h2>
-<p>The sidebar holds both studios, each with its pages listed underneath, so any page is one click away. On a phone, the menu button in the bar across the top slides the same sidebar out. The app opens on Media.</p>
+<p>The app opens on <strong>Home</strong>: the tutorials, and what is new in every version. The sidebar holds every page, one click away. On a phone, the menu button at the top slides the same sidebar out.</p>
 <div class="table-wrap"><table>
 <tbody>
-<tr><td>Remix Studio</td><td><strong>Media</strong>, the grid over ComfyUI's output and input folders and everything you have kept (<a href="/docs/browse">Browsing your media</a>); <strong>Workflows</strong>, the library Remix runs from (<a href="/docs/workflows">Workflows</a>); and <strong>Prompts</strong>, reusable text for <code>[keyword]</code> rules (<a href="/docs/prompts">The prompt library</a>).</td></tr>
-<tr><td>H3 Studio</td><td>Projects, Characters, Templates and Settings, for making short videos with MiniMax H3. <a href="/docs/studio">H3 Studio</a>.</td></tr>
-<tr><td>Jobs</td><td>Running and completed runs, from both studios. <a href="/docs/jobs">Jobs</a>.</td></tr>
-<tr><td>Settings</td><td>At the top, a tag for each part of the app you can switch on: green when it is on and working, grey when it is off, red when it is on but not working, such as ComfyUI not answering. Press one to go to its settings. Below them: paths, the theme colours, features, privacy, the password, secure wipe, Clean, restore defaults, model substitutes and remote access; <strong>Report a problem</strong> and <strong>Your reports</strong>; and <strong>Log out</strong> when a password is set.</td></tr>
+<tr><td>Remixer</td><td><strong>Media</strong>, the library over ComfyUI's output and input folders and everything you keep (<a href="/docs/browse">Media and jobs</a>); <strong>Workflows</strong>, what Remix runs (<a href="/docs/workflows">Workflows and models</a>); and <strong>Prompts</strong>, the answers your keywords pick from (<a href="/docs/prompts">Keywords and collections</a>).</td></tr>
+<tr><td>Studios</td><td>Projects, Characters, Templates and Preferences, for making videos with MiniMax H3 or LTX-2.5 (<a href="/docs/studio">Studios</a>).</td></tr>
+<tr><td>Jobs</td><td>Every run, from both, on every device (<a href="/docs/browse#jobs">Jobs</a>).</td></tr>
+<tr><td>Settings</td><td>Grouped under tabs: General (ComfyUI, the AI agent, the theme, studios, remote access, an AI client), Models, NSFW, Privacy and security, and Maintenance. <strong>Log out</strong> is at the foot when a password is set.</td></tr>
+<tr><td>Support</td><td>Report a problem, and read support's answers (<a href="/docs/troubleshooting#report">Report a problem</a>).</td></tr>
 </tbody>
 </table></div>
 
 <h2 id="first-remix">Your first remix</h2>
 <ol class="steps">
-<li>Start ComfyUI, if it is not running.</li>
 <li>Open <strong>Media</strong>, press the folder name at the top and choose <strong>Output</strong>. Pick a picture ComfyUI made.</li>
-<li>Press the bar under its thumbnail to open <strong>Remix</strong>. The workflow inside the file is offered as <strong>Inherit (this file)</strong>, alongside the workflows in your library.</li>
-<li>Change the prompt, press <strong>Next</strong> until you reach <strong>Run</strong>, and press it. The job appears in <strong>Jobs</strong>, and its outputs arrive as thumbnails when each one finishes.</li>
+<li>Press the bar under its thumbnail to open <strong>Remix</strong>. The workflow inside the file is offered as <strong>Inherit</strong>, alongside the workflows in your library.</li>
+<li>Change the prompt, press <strong>Next</strong> until you reach <strong>Run</strong>, and press it. Its outputs appear as thumbnails as each one finishes, and the job is on the Jobs page.</li>
 </ol>
-<p>A new install also comes with six <a href="/examples/workflows">starter workflows</a>, switched on, with a few sample pictures in your Favorites to try them on. They name custom nodes and models you may not have: press <strong>Enable</strong> on one in <strong>Workflows</strong> and the app <a href="/docs/workflows#check">checks it against your ComfyUI</a>, lists anything missing, and once nothing is, runs it in one click.</p>
+<p>A new install comes with ten <a href="/docs/workflows#bundled">workflows</a> switched on, and sample pictures in your Favorites to try them on. Press <strong>Enable</strong> on one and the app <a href="/tutorials/check-workflow">checks it against your ComfyUI</a>, lists anything missing, and once nothing is, runs it in one click.</p>
+
+<h2 id="updates">Updates</h2>
+<p>The app checks 10 seconds after it opens and every 4 hours, downloads a new version in the background, and asks before it restarts: <strong>Restart now</strong> or <strong>Later</strong>, which installs it the next time you quit. It never offers to restart while jobs are running. The card at the top of Home checks, installs and restarts on a press, from the computer or from your phone. Installed <em>only for me</em>, updates are silent; installed for everyone on the computer, each asks for administrator approval.</p>
+<p>An update replaces the program and nothing else: your data folder, your ComfyUI and its models are left alone. When the Acceptable Use Policy changes, the app asks you to agree to the new version once. The check sends GitHub your IP address and the fact that a copy is checking, nothing about your media, prompts or settings.</p>
+
+<h2 id="ai-client">Let an AI client drive it</h2>
+<p><strong>Settings → Connect an AI client</strong> lets a program on this computer, such as Claude Code or Grok Build, use WorkflowRemix through the Model Context Protocol: change ComfyUI's settings, check and enable workflows, and build and run Studios projects. It is local only, behind a token shown once, and nothing reaches it from the internet: an app's hosted connector cannot connect. Every client is told to leave your media alone. Off until you switch it on.</p>
 
 <h2 id="where">Finding your data later</h2>
 <p><strong>File → Show Data Folder</strong> opens the folder you chose. Uninstalling the app leaves it in place.</p>

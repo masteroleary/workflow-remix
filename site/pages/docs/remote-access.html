@@ -1,13 +1,17 @@
 <!--
-title: Remote access
-description: Use WorkflowRemix from your phone over your own Tailscale network: how to switch it on, what a phone may do, and how to lock it down.
+title: From your phone
+nav: From your phone
+description: Use WorkflowRemix from your phone over your own Tailscale network: how to switch it on, what a phone may do, how to lock it down, and the phone app on its way.
 section: docs
-order: 9
+order: 8
 -->
-<h1>Remote access</h1>
-<p class="lede">Off unless you switch it on. When it is on, your phone reaches the app over your own Tailscale network, and only over it. The app is never on the public internet.</p>
+<h1>From your phone</h1>
+<p class="lede">Browse, remix, run and watch your jobs from your phone, over your own Tailscale network and only over it. The app is never on the public internet. Off unless you switch it on in <strong>Settings → Remote access</strong>.</p>
 
-<figure class="shot phone"><img src="/assets/full-phone-browse.webp" alt="The media grid on a phone: fantasy paintings in two columns, with the tab bar along the bottom" width="640" height="1385" loading="lazy"><figcaption>The app on a phone, over your own Tailscale network.</figcaption></figure>
+<div class="callout soon">
+<p class="callout-title">The phone app is coming</p>
+<p>A WorkflowRemix app for iPhone is on its way, with Android after it. It pairs from a code on your computer's screen and carries Tailscale inside itself, so the phone needs no Tailscale app. Until then, your phone's browser does everything below.</p>
+</div>
 
 <h2 id="how">How it works</h2>
 <p><a href="https://tailscale.com" rel="noopener noreferrer">Tailscale</a> is a private network between your own devices. WorkflowRemix publishes itself to that network with Tailscale Serve, at an address like <code>https://your-computer.your-tailnet.ts.net</code>. Only devices signed in to your tailnet can connect, the traffic is encrypted between them, and HTTPS runs on top.</p>
@@ -23,7 +27,7 @@ order: 9
 <li><strong>Switch it on.</strong> A tailnet's first use of Serve asks for approval in the Tailscale admin console; the page shows the link.</li>
 <li><strong>On your phone.</strong> The page lists the ways in, below.</li>
 </ol>
-<p>Remote access works while the desktop app is open. Closing the app switches the address off, and opening it again switches it back on.</p>
+<p>Remote access works while the app is running. Closing its window leaves it running in the tray, so your phone can still reach it; <strong>Quit</strong> switches the address off, and opening the app again switches it back on. <em>Start with Windows</em>, in the tray menu, keeps it there after a restart.</p>
 
 <h2 id="who">Who gets in</h2>
 <p>A request reaches the password screen only if all of this holds:</p>
@@ -38,13 +42,13 @@ order: 9
 <div class="table-wrap"><table>
 <thead><tr><th>Way in</th><th>Needs</th><th>Keeps on the phone</th></tr></thead>
 <tbody>
-<tr><td>The phone app</td><td>Not released yet. It will pair from a code on the computer's screen and needs no Tailscale app: it joins your tailnet itself, as a device of its own.</td><td>Nothing in backups or the app switcher.</td></tr>
+<tr><td>The phone app <em>(coming soon)</em></td><td>A pairing code on the computer's screen. No Tailscale app: it joins your tailnet itself, as a device of its own.</td><td>Nothing in backups or the app switcher.</td></tr>
 <tr><td>A home-screen web app</td><td>The Tailscale app on the phone, signed in with your account.</td><td>Its data goes into the phone's backups.</td></tr>
 <tr><td>A private browser tab</td><td>The Tailscale app on the phone, signed in with your account.</td><td>Nothing, the job list included.</td></tr>
 </tbody>
 </table></div>
 <p>For the last two, open the address shown on the Remote access page in the phone's browser and sign in with the app password.</p>
-<p>On a phone the app has a bar across the top: its menu button slides the whole sidebar out, both studios and every page, and a ring at its right shows a job's progress while one runs.</p>
+<p>On a phone the app has a bar across the top: its menu button slides the whole sidebar out, and a ring at its right shows a job's progress while one runs. Thumbnails are small copies, so a big library loads quickly over the phone's connection. <strong>Save to phone</strong> in the viewer's menu is the one way a file leaves the app for the phone, and it asks first.</p>
 
 <h2 id="limits">What a phone may do</h2>
 <p>A phone uses the app. It does not change the computer.</p>
@@ -52,9 +56,9 @@ order: 9
 <thead><tr><th>A phone can</th><th>Only the computer can</th></tr></thead>
 <tbody>
 <tr><td>Browse, view, favourite, move and delete media</td><td>Change any setting: paths, the ComfyUI address, API keys, media caching, the safe-mode list</td></tr>
-<tr><td>Run and cancel remixes</td><td>Set or change the password, or switch remote access on or off</td></tr>
-<tr><td>Use the prompt library, the rules and the workflows</td><td>Start ComfyUI, restart the app's server, restore a backup</td></tr>
-<tr><td>Read Settings</td><td>Sign out every device</td></tr>
+<tr><td>Run and cancel remixes and Studios projects, with videos and sounds from the library as inputs</td><td>Set or change the password, or switch remote access on or off</td></tr>
+<tr><td>Use the prompt library, the rules and the workflows</td><td>Start or restart ComfyUI, restart the app, restore a backup</td></tr>
+<tr><td>Read Settings, and install an update from the Home page</td><td>Sign out every device</td></tr>
 </tbody>
 </table></div>
 <p>Settings on a phone are shown read-only, with a line saying where to change them. Of ComfyUI itself a phone reaches only the handful of calls the app makes: queue a run, read the queue, cancel, upload an input image. The rest of ComfyUI's own interface is not reachable through the app.</p>
@@ -69,4 +73,4 @@ order: 9
 </ul>
 
 <h2 id="if">If the app did not close normally</h2>
-<p>Closing the app switches the address off. If the app was ended outright, by a power cut say, Tailscale goes on publishing an address that nothing answers until you open the app again. The page shows the one command that turns the address off by hand.</p>
+<p>Quitting the app switches the address off. If the app was ended outright, by a power cut say, Tailscale goes on publishing an address that nothing answers until you open the app again. The page shows the one command that turns the address off by hand.</p>

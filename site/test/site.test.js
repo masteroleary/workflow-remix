@@ -237,6 +237,15 @@ test('addresses are tidied by redirect', async () => {
     assert.equal(insecure.headers.location, `${ORIGIN}/downloads`);
     const evil = await s.get('/docs', { headers: { host: 'www.evil.example', 'x-forwarded-proto': 'https' } });
     assert.equal(evil.status, 200, 'another name is served, never redirected to');
+    // Pages folded into others: their old addresses lead to where the content is now.
+    for (const [from, to] of [['/examples', '/tutorials'], ['/examples/collections', '/tutorials/collections'],
+      ['/examples/workflows', '/docs/workflows#bundled'], ['/examples/recipes', '/tutorials/keywords'],
+      ['/docs/jobs', '/docs/browse#jobs'], ['/docs/updates', '/docs/getting-started#updates'], ['/docs/how-it-works', '/docs#how-it-works'],
+      ['/docs/jobs/', '/docs/browse#jobs']]) {
+      const r = await s.get(from);
+      assert.equal(r.status, 301, from);
+      assert.equal(r.headers.location, to, from);
+    }
   } finally { await s.close(); }
 });
 
@@ -412,19 +421,21 @@ test('sections list their pages in order, with the way on', async () => {
   const s = await start();
   try {
     const html = (await s.get('/docs/remix')).body.toString('utf8');
-    assert.match(html, /<a href="\/docs\/remix" aria-current="page">Remixing a file<\/a>/);
+    assert.match(html, /<a href="\/docs\/remix" aria-current="page">Remix<\/a>/);
     assert.match(html, /class="prev" href="\/docs\/browse"/);
     assert.match(html, /class="next" href="\/docs\/prompts"/);
     // The sidebar marks the place the page belongs to, and lists its section's pages
     // under it, the page itself marked; the phone's tab bar marks the same place.
     assert.match(html, /<a class="sb-item on" href="\/docs" aria-current="page"><svg [^>]+>.*?<\/svg><span>Docs<\/span><\/a>\n<ul class="sb-sub">/);
-    assert.match(/<ul class="sb-sub">([\s\S]*?)<\/ul>/.exec(html)[1], /<a href="\/docs\/remix" aria-current="page">Remixing a file<\/a>/);
+    assert.match(/<ul class="sb-sub">([\s\S]*?)<\/ul>/.exec(html)[1], /<a href="\/docs\/remix" aria-current="page">Remix<\/a>/);
     assert.match(html, /<a class="tab-item on" href="\/docs" aria-current="page">/);
     assert.equal((html.match(/<ul class="sb-sub">/g) || []).length, 1, 'only the section the page is in is opened');
     const docs = s.site.pages.filter((p) => p.meta.section === 'docs').map((p) => Number(p.meta.order)).sort((a, b) => a - b);
     assert.deepEqual(docs, docs.map((_, i) => i), 'docs pages are numbered without a gap');
-    const ex = (await s.get('/examples/collections')).body.toString('utf8');
-    assert.match(ex, /<a class="sb-item on" href="\/examples" aria-current="page">/);
+    const ex = (await s.get('/tutorials/collections')).body.toString('utf8');
+    assert.match(ex, /<a class="sb-item on" href="\/tutorials" aria-current="page">/);
+    const tuts = s.site.pages.filter((p) => p.meta.section === 'tutorials').map((p) => Number(p.meta.order)).sort((a, b) => a - b);
+    assert.deepEqual(tuts, tuts.map((_, i) => i), 'tutorial pages are numbered without a gap');
     const home = (await s.get('/')).body.toString('utf8');
     assert.match(home, /<a class="sb-item on" href="\/" aria-current="page">/);
     assert.ok(!home.includes('class="sb-sub"'), 'a page outside the sections opens none');

@@ -2,10 +2,11 @@
 title: Privacy and security
 description: What WorkflowRemix sends off your computer and what it never does, where your data is kept, the password, safe mode, media caching and the built-in safeguard.
 section: docs
-order: 8
+order: 7
 -->
 <h1>Privacy and security</h1>
 <p class="lede">WorkflowRemix is local first. Your media is served straight off your disk and never leaves the computer, and nothing phones home in the background.</p>
+<p>Watch <a href="/tutorials/privacy">blur, the shield, secure wipe and the lock screen</a> in a two-minute video.</p>
 
 <h2 id="leaves">What leaves the computer</h2>
 <div class="table-wrap"><table>
@@ -13,8 +14,9 @@ order: 8
 <tbody>
 <tr><td>ComfyUI</td><td>On your computer</td><td>Runs the workflows. The app queues runs, follows progress and uploads input images.</td><td>Nothing leaves the machine.</td></tr>
 <tr><td>GitHub Releases</td><td>Cloud</td><td>The update check, 10 seconds after launch and every 4 hours, and the download of a new version.</td><td>A request to github.com: your IP address, and the fact that a copy is checking. Nothing about your media, prompts or settings.</td></tr>
-<tr><td>Civitai</td><td>Cloud</td><td>Model downloads that need an account, if you store an API key for them in Settings.</td><td>Only the requests you start yourself.</td></tr>
-<tr><td><a href="https://ollama.com" rel="noopener noreferrer">Ollama</a> (the AI assistant)</td><td>The address you set: your own computer, unless you point it elsewhere</td><td>H3 Studio's <a href="/docs/studio#assistant">AI assistant</a>, if you set one up in <strong>Settings → Config</strong>, and Import's conversion of a pasted prompt.</td><td>Your project's words, what you type in the chat, and the preferences you asked it to remember, to that address only. The app logs and keeps nothing of a chat. Run Ollama on your own computer and nothing leaves it.</td></tr>
+<tr><td>Hugging Face and Civitai</td><td>Cloud</td><td>Model <a href="/docs/workflows#download">downloads</a> you start from a requirements check, with your Hugging Face token or Civitai key if a model needs one.</td><td>Only the requests you start yourself. Each key goes only to its own site.</td></tr>
+<tr><td>WorkflowRemix hub</td><td>Cloud (hub.workflowremix.com)</td><td>The list of <a href="/docs/workflows#download">recommended models</a>, only if you switch it on under Settings → NSFW.</td><td>A request for the list: your IP address. Nothing about your library.</td></tr>
+<tr><td><a href="https://ollama.com" rel="noopener noreferrer">Ollama</a> (the AI agent)</td><td>The address you set: your own computer, unless you point it elsewhere</td><td>The <a href="/docs/studio#agent">AI agent</a> in Studios, Remix and Settings, if you set one up in <strong>Settings → Ollama Toolcall Agent</strong>.</td><td>Your project's words, what you type in the chat, and the preferences you asked it to remember, to that address only. The app logs and keeps nothing of a chat. Run Ollama on your own computer and nothing leaves it.</td></tr>
 <tr><td>Tailscale</td><td>Your own network</td><td><a href="/docs/remote-access">Remote access</a>, if you switch it on.</td><td>Traffic between your own devices, encrypted end to end.</td></tr>
 <tr><td>WorkflowRemix support</td><td>Cloud (hub.workflowremix.com)</td><td><a href="/docs/troubleshooting#report">Report a problem</a>, only when you press <strong>Send</strong>; and <a href="/docs/troubleshooting#your-reports">Your reports</a>, only when you open it or press <strong>Check again</strong>.</td><td>The report you were shown first, and only the parts you left ticked: your computer's basics and software versions, the app's log, ComfyUI's log and what went wrong. Your folders, file names, account and computer names, addresses, keys and prompt text are taken out first. Kept for 30 days. Your reports sends a key made on your computer, which only matches the reports you sent, and gets back their status and support's replies.</td></tr>
 </tbody>
@@ -28,17 +30,17 @@ order: 8
 <h2 id="data">Where your data lives</h2>
 <p>In the one folder you chose on the first launch: settings, prompts, rules, the job list with every prompt it ran, logs and, unless you put it elsewhere, the media library. <strong>File → Show Data Folder</strong> opens it.</p>
 <ul>
-<li>What your choices change — your settings, safe mode's word list, the workflow and prompt libraries, the keyword rules, H3 Studio's characters and projects, the AI assistant's memories and the problem reports you have sent — lives together in a folder named <code>data</code> inside it, so a backup takes it whole and a restore puts it back the same way.</li>
+<li>What your choices change — your settings, safe mode's word list, the workflow and prompt libraries, the keyword rules, Studios' characters and projects, the job list, the AI agent's memories and the problem reports you have sent — lives together in a folder named <code>data</code> inside it, so a backup takes it whole and a restore puts it back the same way.</li>
 <li>A folder the app creates is made private to your account.</li>
-<li>To back it up, use the backup in <strong>Settings → Clean</strong>, or copy the folder while the app is closed. The settings file in it holds your API keys and your password's hash, so treat a backup as you would the original.</li>
+<li>To back it up, copy the folder while the app is closed; <strong>Settings → Restore from backup</strong> puts a backup back. The settings file in it holds your API keys and your password's hash, so treat a backup as you would the original.</li>
 <li>Uninstalling leaves the folder in place. Deleting it is how you remove everything.</li>
 </ul>
 <h3 id="search-index">System search</h3>
-<p>A library that Windows Search or Spotlight indexes is one whose file names can turn up in the Start menu or in Spotlight for anyone at the desk. Under <strong>Settings → Config → Paths</strong> the app says, for each folder it keeps things in, whether the system indexes it, and names the system setting that excludes it. It only reads; it changes nothing about what is indexed.</p>
+<p>A library that Windows Search or Spotlight indexes is one whose file names can turn up in the Start menu or in Spotlight for anyone at the desk. Under <strong>Settings → Privacy</strong> the app says, for each folder it keeps things in, whether the system indexes it, and names the system setting that excludes it. It only reads; it changes nothing about what is indexed.</p>
 
 <h2 id="password">A password for the app</h2>
 
-<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/full-privacy-lock-screen.webp" alt="The lock screen: a padlock and a password box" width="1920" height="1200" loading="lazy"><figcaption>The lock screen gives nothing away.</figcaption></figure>
+<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/shot-lock-screen.webp" alt="The lock screen: a padlock and a password box" width="1920" height="1080" loading="lazy"><figcaption>The lock screen gives nothing away.</figcaption></figure>
 <p><strong>Settings → Security</strong>. With a password set and <em>Require a password</em> ticked, the whole app sits behind a lock screen: pages, files, thumbnails and the live connection to ComfyUI alike.</p>
 <ul>
 <li>At least 7 characters; 12 if you use remote access.</li>
@@ -50,9 +52,11 @@ order: 8
 <p><a href="/docs/getting-started#privacy-setup">Privacy setup</a> asks whether you want a password, and sets it there and then.</p>
 
 <h2 id="secure-wipe">Secure wipe and the panic password</h2>
-<p><strong>Settings → Secure wipe</strong>. A private library should be yours to remove without a backup utility or a command line. Secure wipe empties the app's own folders — the media library, ComfyUI's input, output and cache, and the app's prompts, rules, saved workflows and index — in the app itself, with no admin rights and no scheduled task. It is off until you turn it on.</p>
+<p><strong>Settings → Secure wipe</strong>. A private library should be yours to remove without a backup utility or a command line. Secure wipe empties the app's own folders and data, in the app itself, with no admin rights and no scheduled task. It is off until you turn it on.</p>
 <ul>
-<li><strong>You choose what goes.</strong> Tick the folders to empty. Add the app's own data, and your settings with it if you want the app to forget how it was set up. Leave a backup folder and the app copies everything into a dated folder first; leave it empty to erase with no backup.</li>
+<li><strong>You choose what goes, part by part.</strong> The media library and ComfyUI's input, output and cache; and each part of the app's own data on its own tick: the prompt library and keywords, Studios' projects and characters, the job list with every prompt it ran, the search index, saved workflows, your model notes, NSFW tags, the problem reports you sent, thumbnails and logs. Your settings, and each browser's sign-in and storage, only if you tick them too. Leave a backup folder and everything is copied first; leave it empty to erase with no backup.</li>
+<li><strong>A page left open cannot write it back.</strong> A window or a phone still showing what was wiped is refused when it next tries to save, and reloads.</li>
+<li><strong>Your own script afterwards</strong>, if you pick one: a notification, a sync, anything you like, run once the wipe is done.</li>
 <li><strong>It refuses to reach past its own data.</strong> It empties only the folders you configured, and will not empty a system folder or a drive root even if one is pointed there by mistake — every folder is re-checked at the moment of deletion.</li>
 <li><strong>Windows' own trail, if you ask.</strong> A tick clears the Recent-files list and the jump lists Windows keeps. Cached thumbnails are left to Windows' own <strong>Disk Cleanup</strong> (tick <em>Thumbnails</em>): the app will not close Explorer to get at them, on purpose.</li>
 </ul>
@@ -67,9 +71,9 @@ order: 8
 <p>WorkflowRemix does none of these for you. They belong to the operating system, and an ordinary app that reached for shadow copies, event logs or free space would behave like the software your antivirus is built to stop — which is exactly what this app is built not to be.</p>
 
 <h2 id="safe-mode">Safe mode</h2>
-<p>The shield in the sidebar hides any file whose prompt matches a word on your filter list, from listings and from the word directory. It is for a shared screen, or someone looking over your shoulder.</p>
+<p>The shield in the sidebar hides any file whose prompt matches a word on your filter list, or that you tagged NSFW yourself, from listings, the viewer and the Jobs page. Press it again for <strong>demo mode</strong>, which also hides every model, LoRA and workflow named or tagged NSFW and every NSFW button, so you can show the app to anyone. A folder called <code>nsfw</code> is hidden whole.</p>
 <ul>
-<li>The list is yours, under <strong>Settings → NSFW</strong>, and starts with only a few generic words.</li>
+<li>The list is yours, under <strong>Settings → NSFW</strong>, and starts with only a few generic words. Tag a file, a selection or a Studios project NSFW by hand where the words miss it.</li>
 <li>Matching ignores case and sees through digit-for-letter spellings, which model and LoRA file names use on purpose.</li>
 <li>A video and the still beside it are one item: if either is flagged, both are hidden.</li>
 <li>On a device using <a href="/docs/remote-access">remote access</a>, safe mode is held on by the computer and the list itself is never shown there, unless you tick <em>Show flagged media on remote devices</em> at the computer.</li>

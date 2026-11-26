@@ -1,79 +1,46 @@
 <!--
-title: The prompt library
-description: Keywords, replacement rules, variations, captures and collections: how WorkflowRemix builds many prompts from one.
+title: Keywords and collections
+description: Write a prompt once with [keywords] in it, tick the answers from your library, and run every combination. Collections answer the same prompt from another world.
 section: docs
 order: 4
+nav: Keywords and collections
 -->
-<h1>The prompt library</h1>
-<p class="lede">Write a prompt once with <code>[keywords]</code> in it, and choose what each keyword means from a library of text you keep. One prompt becomes as many as you tick.</p>
-<p>To see it done start to finish, watch <a href="/tutorials/keywords">the two-minute video</a>.</p>
+<h1>Keywords and collections</h1>
+<p class="lede">Write a prompt once with <code>[keywords]</code> in it, and choose what each keyword means from a library of text you keep. One prompt becomes as many as you tick, and a collection answers it from another world.</p>
+<p>Watch it done: <a href="/tutorials/keywords">variations from keywords</a>, and <a href="/tutorials/collections">one prompt answered by four collections</a>.</p>
 
-<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/full-remix-keywords.webp" alt="The Keywords tab: each keyword with its ticked answers on the left, and the six prompts the run will send on the right, coloured by keyword" width="1920" height="1200" loading="lazy"><figcaption>Three characters and two scenes ticked: six prompts, each shown in full, each part in the colour of the keyword that wrote it.</figcaption></figure>
+<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/shot-remix-keywords.webp" alt="The Keywords tab: each keyword with its ticked answers, and the prompts the run will send, coloured by the keyword that wrote each part" width="1920" height="1080" loading="lazy"><figcaption>The Keywords tab: every prompt the run will send, in full, each part in the colour of the keyword that wrote it.</figcaption></figure>
 
 <h2 id="pieces">The three pieces</h2>
 <ul>
-<li><strong>The library</strong>, on the <strong>Prompts</strong> page: rows of reusable text, filed on shelves. A shelf is a keyword. The <em>Scene</em> shelf is what <code>[scene]</code> is answered from.</li>
-<li><strong>The rules</strong>, in the <strong>Prompt Replacements</strong> panel, on the Remix page's <strong>Keywords</strong> tab (on the inspect page, at the foot of its Run tab): a list of <em>find → replace</em> pairs applied to the prompt just before a run is queued.</li>
-<li><strong>The collection</strong>, a drop-down at the top of that panel: which set of shelves answers.</li>
+<li><strong>The library</strong>, on the <strong>Prompts</strong> page: rows of reusable text, filed on shelves. A shelf is a keyword: the <em>Scene</em> shelf is what <code>[scene]</code> is answered from. Each row can carry a <strong>negative prompt</strong> of its own.</li>
+<li><strong>The rules</strong>, on the <strong>Keywords</strong> tab of Remix and of a workflow's own page: each keyword with the answers ticked for it, and plain <em>find → replace</em> pairs. They are the app's, not a workflow's, so they apply to whatever you run.</li>
+<li><strong>The collection</strong>, a menu at the top of that tab: which set of shelves answers.</li>
 </ul>
-<p>The rules are stored by the app, not in a workflow, so they apply to whatever you run.</p>
-
-<h2 id="rules">Rules</h2>
-<p>A rule's find is either plain text or a keyword in square brackets.</p>
-<ul>
-<li><strong>Plain text</strong> is replaced with what you type: <code>blonde → platinum</code>.</li>
-<li><strong>A <code>[keyword]</code></strong> is answered from the library. Its value cell opens a tick list over the shelf the keyword names, so you pick answers, you do not type them.</li>
-</ul>
-<p>Keywords are answered first, and plain-text rules then run over the finished text. So <code>blonde → platinum</code> also catches a “blonde” that arrived inside a library row.</p>
-<p>When you reach the panel, any <code>[keyword]</code> your prompt uses and no rule answers gets an empty row of its own, so a keyword is never silently swept out of a run.</p>
 
 <h2 id="variations">Several answers are several jobs</h2>
-<p>Tick three answers for <code>[character]</code> and a run queues three jobs, one per answer. Tick two for <code>[scene]</code> as well and it is six: every combination.</p>
-<p>The panel's summary line does the arithmetic before you press Run:</p>
-<pre><code>Prompt Replacements — 9 active, 3 ignored, 12 jobs total</code></pre>
-<ul>
-<li><strong>Active</strong> rules will change this run.</li>
-<li><strong>Ignored</strong> rules are switched on but cannot fire, because this prompt never mentions their keyword. They multiply nothing. Hover the number to see which.</li>
-<li><strong>Jobs total</strong> is what one click queues, with the models and files you picked counted in.</li>
-</ul>
-
-<h3 id="preview">Read every prompt before it runs</h3>
-<p>Open the panel and it shows each prompt the run will send, in full, with every replaced stretch painted in the colour of the rule that put it there. Each one has a tick box: untick a prompt and that job is never queued. Twenty-seven combinations of which you wanted five is five ticks.</p>
-
+<p>Tick three answers for <code>[character]</code> and a run queues three jobs, one per answer. Tick two for <code>[scene]</code> as well and it is six: every combination. The tab's summary does the arithmetic before you press Run, and counts only the keywords this prompt can reach.</p>
+<p>Under the rows, the tab shows <strong>every prompt the run will send</strong>, in full. Each has a tick box: untick a prompt and that job is never queued, so twenty-seven combinations of which you wanted five is five ticks. A keyword can hold another: a hairstyle row that says <code>[haircolor]</code> brings that keyword in with it.</p>
+<h3 id="negatives">Negatives that travel with their answer</h3>
+<p>A library row's negative prompt goes into the workflow's negative prompt whenever that answer is used, so a style and the things it should avoid are one choice and one job. The preview shows each prompt's negative under it.</p>
 <h3 id="index">Two answers in one picture</h3>
-<p>Variations are “one of these per job”. To put two answers from the same shelf in one picture, address them by position, counting from 0:</p>
-<pre><code>[character][0] sits across the table from [character][1]</code></pre>
-<p>Using an index anywhere stops that keyword multiplying the run: every answer rides along, and each reference takes its own. The tick list shows each answer's number.</p>
-
-<h3 id="captures">Captures</h3>
-<p>The <strong>＋</strong> on a previewed prompt saves that whole finished paragraph to the library, on a shelf called <em>Captured</em>, and adds a rule <code>[prompt1]</code> pointing at it (then <code>[prompt2]</code>, and so on). A capture is taken after every keyword in it was answered, so it stays as it is: it does not vary and costs no extra jobs.</p>
-<p>That is how two different, fully described figures share one picture: <code>[prompt1] stands beside [prompt2]</code>. While a capture is in use, the rules it was made from are switched off and folded away, and come back when it leaves the prompt.</p>
-<p>A <code>[promptN]</code> row can also be built by hand. Its answers are then <em>parts</em> joined into one description (a character, a hair style, an outfit), not alternatives. Only two answers from the same shelf count as variations.</p>
+<p>To put two answers from the same shelf in one picture, address them by position, counting from 0: <code>[character][0] sits across the table from [character][1]</code>. The <strong>＋</strong> on a previewed prompt saves that whole finished paragraph as a capture, <code>[prompt1]</code>, so two fully described figures can share a picture: <code>[prompt1] stands beside [prompt2]</code>.</p>
 
 <h2 id="collections">Collections</h2>
-
-<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/full-remix-keywords-logo.webp" alt="The Keywords tab with the Logo Design collection selected: two styles and four frames ticked for one subject" width="1920" height="1200" loading="lazy"><figcaption>The same prompt with the collection switched to Logo Design: two styles and four frames for one fox mark, so eight jobs.</figcaption></figure>
-<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/full-prompts-collections.webp" alt="The Prompts page on the Fantasy World collection: its own shelves, and the keywords it borrows from General" width="1920" height="1200" loading="lazy"><figcaption>The Prompts page: one tab per collection, its own shelves, and the keywords it answers from General’s.</figcaption></figure>
-<p>The library is filed in <strong>collections</strong>. A new install has five: General, Fantasy World, Cyberpunk, Futuristic Space and Logo Design. Choosing one in the <strong>Collection</strong> drop-down decides where every keyword is answered from. So one prompt:</p>
+<figure class="shot"><div class="shot-bar" aria-hidden="true"><span class="shot-title">{{icon:shuffle-variant}}WorkflowRemix</span><span class="shot-ctl"><i></i><i></i><i></i></span></div><img src="/assets/shot-prompts.webp" alt="The Prompts page: a tab per collection, the collection’s shelves, and each row’s text beside its negative prompt" width="1920" height="1080" loading="lazy"><figcaption>The Prompts page: one tab per collection, each row's text beside its negative prompt.</figcaption></figure>
+<p>A new install has six: <strong>General</strong>, <strong>Fantasy World</strong>, <strong>Cyberpunk</strong>, <strong>Futuristic Space</strong>, <strong>Logo Design</strong> and <strong>WaiSnackMix</strong>, a model's own style presets with the negative prompt each one goes with. Choosing one in the Collection menu decides where every keyword is answered from. So one prompt:</p>
 <pre><code>[style], [character], [expression], [action], [scene], [lighting]</code></pre>
-<p>is a robot in a rocket ship in one collection and a wizard in an enchanted forest in the next, with no rule edited. <a href="/examples/collections">The starter collections</a> shows all of them, Logo Design among them, whose own Showcase row turns the same <code>[showcase]</code> into a logo.</p>
+<p>is a wizard in an enchanted forest in one collection and a robot in a rocket ship in the next, with no rule edited. In Logo Design the same <code>[showcase]</code> becomes a logo in three styles.</p>
 <ul>
 <li><strong>The shelves are shared.</strong> <code>[scene]</code> means the Scene shelf whichever collection is answering. What differs is the rows on it.</li>
-<li><strong>General is the fall back.</strong> A keyword the chosen collection has no shelf for is answered from General's, and the row says so with a <em>General</em> tag.</li>
-<li><strong>A shelf with nothing ticked stays unanswered.</strong> If the collection has the shelf but you have ticked nothing on it, the keyword is left empty. It does not quietly borrow General's answer.</li>
-<li><strong>Ticks belong to their collection.</strong> Each collection remembers its own answers, so switching back finds them as you left them.</li>
-<li><strong>The choice is per device.</strong> The rules are shared; which collection is selected is this window's own.</li>
+<li><strong>General is the fall back.</strong> A keyword the chosen collection has no shelf for is answered from General's, and the row says so.</li>
+<li><strong>Each collection keeps its own ticks</strong>, and which collection is selected is this device's own.</li>
 </ul>
-<h3>Managing them</h3>
-<p>The Prompts page shows one collection at a time, as tabs. Add one with <strong>＋ Collection</strong>, rename it, or remove it. Under a collection's own shelves, a line lists the keywords it borrows from General, each with a ＋ that starts a shelf of its own for that keyword.</p>
-<div class="callout warn">
-<p class="callout-title">Removing a collection removes its rows</p>
-<p>Its prompts and the rules ticked from them go with it, after a confirmation that counts both. General can be neither renamed nor removed.</p>
-</div>
+<p>The Prompts page shows one collection at a time. Add, rename or remove a collection there; under its own shelves, a line lists the keywords it borrows from General, each with a ＋ to start a shelf of its own. Removing a collection removes its rows and the rules ticked from them, after a confirmation that counts both. <strong>Settings → Restore defaults</strong> puts the starter collections back as they shipped.</p>
 
 <h2 id="tips">Good habits</h2>
 <ul>
-<li>Keep rows free of pronouns where you can. “Holding a lantern” reads right after any character; “she holds a lantern” does not.</li>
-<li>Give every collection the same shelves if you want one prompt to work in all of them, and leave out the ones that should be shared.</li>
-<li>Watch the jobs total. Three keywords with three answers each is 27 jobs.</li>
+<li>Keep rows free of pronouns. “Holding a lantern” reads right after any character; “she holds a lantern” does not.</li>
+<li>Give every collection the same shelves if you want one prompt to work in all of them.</li>
+<li>Watch the count. Three keywords with three answers each is 27 jobs.</li>
 </ul>
